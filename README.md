@@ -1,2 +1,2 @@
 # Qt-Widgets
-Tutorials about qt5 widgets.
+Examples of programs that use Qt6 widgets. 
