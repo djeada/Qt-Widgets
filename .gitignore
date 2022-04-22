@@ -1,0 +1,69 @@
+#################
+## Qt
+#################
+*.moc
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+*.user*
+
+#################
+## Linux
+#################
+Makefile
+*.o
+*.so
+*.a
+*.swp
+
+#################
+## Visual Studio
+#################
+*.suo
+*.sln.docstates
+[Dd]ebug/
+[Rr]elease/
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.vspscc
+.builds
+*.dotCover
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.psess
+*.vsp
+
+
+############
+## Windows
+############
+Thumbs.db
+Desktop.ini
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+#Translations
+*.mo
+
+############
+## Builds
+############
+*build*
