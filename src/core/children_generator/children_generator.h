@@ -4,14 +4,13 @@
 #include <QObject>
 #include <QString>
 
-class ChildrenGenerator: public QObject
-{
-    Q_OBJECT
+class ChildrenGenerator : public QObject {
+  Q_OBJECT
 public:
-    ChildrenGenerator(QString name, QObject *parent = nullptr);
-    ~ChildrenGenerator();
-    QObject * createChild(QString name);
-    void deleteChild(QString name);
+  ChildrenGenerator(QString name, QObject *parent = nullptr);
+  ~ChildrenGenerator();
+  QObject *createChild(QString name);
+  void deleteChild(QString name);
 };
 
 #endif // CHILDRENGENERATOR_H
