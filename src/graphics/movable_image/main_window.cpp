@@ -1,6 +1,6 @@
-#include "mainwindow.h"
-#include "movableimage.h"
-#include "ui_mainwindow.h"
+#include "main_window.h"
+#include "movable_image.h"
+#include "ui_main_window.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {

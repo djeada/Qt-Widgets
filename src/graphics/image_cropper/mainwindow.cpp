@@ -7,6 +7,7 @@
 #include <QPainterPath>
 #include <QWheelEvent>
 #include <QtMath>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -39,7 +40,6 @@ void MainWindow::paintEvent(QPaintEvent *event) {
   painter.end();
 }
 
-#include <QDebug>
 void MainWindow::wheelEvent(QWheelEvent *event) {
   QPoint numDegrees = event->angleDelta() / 8;
   QPoint numSteps = numDegrees / 15;

@@ -1,4 +1,4 @@
-#include "movableimage.h"
+#include "movable_image.h"
 #include <QPainter>
 
 const int rectSize = 100;

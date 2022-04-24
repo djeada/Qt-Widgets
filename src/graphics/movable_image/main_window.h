@@ -19,7 +19,6 @@ public:
 
 private slots:
   void on_addButton_released();
-
   void on_removeButton_released();
 
 private:
