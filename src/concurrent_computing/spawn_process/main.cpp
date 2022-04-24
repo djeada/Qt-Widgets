@@ -4,41 +4,40 @@
 #include <QProcess>
 #include <QString>
 
-QByteArray spawnProcess(QString program, QStringList arguments, QString message) {
-    QProcess process;
-    process.start(program, arguments);
+QByteArray spawnProcess(QString program, QStringList arguments,
+                        QString message) {
+  QProcess process;
+  process.start(program, arguments);
 
-    if(!process.waitForStarted())
-        throw std::runtime_error("Process failed to start");
-    
-    if (!message.isEmpty()) {
-        process.write(message.toUtf8());
-        process.closeWriteChannel();
-    }
+  if (!process.waitForStarted())
+    throw std::runtime_error("Process failed to start");
 
-    if(!process.waitForFinished())
-        throw std::runtime_error("Process failed to finish");
+  if (!message.isEmpty()) {
+    process.write(message.toUtf8());
+    process.closeWriteChannel();
+  }
 
-    auto result = process.readAll();
-    qDebug() << process.readAll();
-    return result;
+  if (!process.waitForFinished())
+    throw std::runtime_error("Process failed to finish");
+
+  auto result = process.readAll();
+  qDebug() << process.readAll();
+  return result;
 }
 
+int main(int argc, char *argv[]) {
+  QCoreApplication a(argc, argv);
 
-int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
+  QString program = "ls";
+  QStringList arguments = {"-l, -a"};
+  QString message;
 
-    QString program = "ls";
-    QStringList arguments = {"-l, -a"};
-    QString message;
+  try {
+    auto result = spawnProcess(program, arguments, message);
+    qDebug() << result;
+  } catch (std::runtime_error &e) {
+    qDebug() << e.what();
+  }
 
-    try {
-        auto result = spawnProcess(program, arguments, message);
-        qDebug() << result;
-    } catch (std::runtime_error &e) {
-        qDebug() << e.what();
-    }
-
-    return a.exec();
+  return a.exec();
 }
