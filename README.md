@@ -31,7 +31,7 @@ So the obvious issue is whether you should use Qt's containers or STL. The ones 
 
 ## Widgets
 
-<code>QWidgets</code> are used for "standard" GUI components like as buttons, checkboxes, drop down menus, and so on. Because widgets are inherited from <code>QObjects</code>, we also have signals/slots and a parent-child relationship. It is best to utilize them for standard user interface components and customize them with a subset of CSS known as QSS and so-called stylesheets. There is, however, the option of drawing them yourself using the <code>paintEvent()</code> method, however this may be difficult.
+<code>QWidgets</code> are used for "standard" GUI components like as buttons, checkboxes, drop down menus, and so on. Because widgets are inherited from <code>QObjects</code>, we also have signals/slots and a parent-child relationship. It is best to utilize them for standard user interface components and customize them with a subset of CSS known as QSS and so-called stylesheets. There is, however, an option of drawing them yourself using the <code>paintEvent()</code> method, however this may be difficult.
 
 Description | Screenshot
 ---|---
