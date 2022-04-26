@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 
-add_executable(qlist
+add_executable(qmap
   main.cpp
 )
-target_link_libraries(qlist Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(qmap Qt${QT_VERSION_MAJOR}::Core)
