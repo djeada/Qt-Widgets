@@ -65,16 +65,16 @@ How to implement it using Qt framework?
 
 ## Graphics
 
-Two main classes allow us to implement custom graphics: QPainter</code> and QGraphicsView</code>.
+Two main classes allow us to implement custom graphics: <code>QPainter</code> and <code>QGraphicsView</code>.
 
 <code>QPainter</code> is capable of allowing you to manipulate pixels on a widget. It is used when we overwrite a widget's <code>paintEvent()</code> method. It is capable of interacting with both <code>QBrush</code> and <code>QPen</code>. Fill is done using brushes, while outlines are done with pens. A brush can be styled, colored, gradiented, or textured.
 
 With the painter you have an option to draw a:
-- A Point
-- A Line
-- A Rectangle
-- An Ellipse
-- A Polygon
+- A Point;
+- A Line;
+- A Rectangle;
+- An Ellipse;
+- A Polygon.
 
 The graphics scene framework allows you to arrange your geometry in a tree of <code>QGraphicsItems</code> and easily manipulate its components. Whatever you do, it's always <code>QPainter</code> who does the drawing. It is just abstracted away. Because <code>QGraphicsItem</code> is not derived from <code>QObject</code>, you don't have the signals/slots and so on, however you may use <code>QGraphicsObject</code> if you require them. The standard graphics item is more lightweight and includes certain additional features not provided by the widgets API. Similar to how there are standard widgets, there are a few basic graphics elements such as lines, rectangles, and so on. For everything unique, you must implement your own painting using <code>QPainter</code>, exactly like with widgets.
 
