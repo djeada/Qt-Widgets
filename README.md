@@ -29,9 +29,9 @@ Qt has implemented a large number of containers and accompanying algorithms that
 
 So the obvious issue is whether you should use Qt's containers or STL. The ones from Qt are fully integrated into the Qt APIs, therefore compatibility is an important consideration. There is no obvious winner in terms of efficiency and performance, and both are viable options. The STL, on the other hand, would enable you to design logic independent of the GUI framework, making the transition to another technology much easier. 
 
-Description | Screenshot
+Description | Screenshot 
 ---|---
-**[QList](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qlist)** - <code>QList</code> is a generic container class in Qt. It keeps a list of values and allows for rapid index-based access as well as quick insertions and deletions. Despite the fact that it is implemented as an array-list, it has very fast prepends and appends. <code>QList</code> is the ideal type to utilize for most purposes. Learn how to initialize, display, and find and delete the list's elements. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qlist.gif)
+**[QList](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qlist)** - <code>QList</code> is a generic container class in Qt. It keeps a list of values and allows for rapid index-based access as well as quick insertions and deletions. Despite the fact that it is implemented as an array-list, it has very fast prepends and appends. <code>QList</code> is the ideal type to utilize for most purposes. Learn how to initialize, display, and find and delete the list's elements. | <img width=1000/>![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qlist.gif)
 **[QList vs QVector](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qlist_vs_qvector)** - <code>QVector</code> is very similar in use to <code>QList</code>. One distinction is that items of <code>QVector</code> are always stored in a contignous way in memory, whereas <code>QList</code> does not. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qlist_vs_qvector.gif)
 **[QSet](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qset)** - <code>QSet</code> assures the uniquness of it's elements. Although the order in which the elements are inserted is lost. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qset.gif)
 **[QMap](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qmap)** - The <code>QMap</code> class is a template class that offers a dictionary based on a red-black tree. <code>QMap<Key, T></code> is a generic container class in Qt. It holds (key, value) pairs and allows for quick access to the value associated with a key. Use it anytime you don't want numeric (or ordered) indices. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qmap.gif)
@@ -42,7 +42,7 @@ Description | Screenshot
 
 Description | Screenshot
 ---|---
-**[QWidget Custom Painting](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/qwidget_custom_painting)** - To draw an arrow in the background, the method <code>paintEvent()</code> is overwritten. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qwidget_custom_painting.gif)
+**[QWidget Custom Painting](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/qwidget_custom_painting)** - To draw an arrow in the background, the method <code>paintEvent()</code> is overwritten. | <img width=1000/>![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qwidget_custom_painting.gif)
 
 ## MVC
 
