@@ -19,6 +19,7 @@ Makefile
 #################
 ## Visual Studio
 #################
+*json*
 *.suo
 *.sln.docstates
 [Dd]ebug/
