@@ -80,6 +80,12 @@ The graphics scene framework allows you to arrange your geometry in a tree of <c
 
 If your geometry is simple and does not require interactive and hierarchical features, you should use <code>QPainter</code> directly. Use <code>QGraphicsView</code> for anything complex and interactive. 
 
+Description | Screenshot 
+---|---
+**[Movable_Image](https://github.com/djeada/Qt-Widgets/tree/master/src/graphics/movable_image)** - A moveable object may be readily spawned on a graphics scene. Because the scene retains track of its items, deletion is not an issue. You can change the item's appearance by using the paint event. | <img width=1000/>![](https://github.com/djeada/Qt-Widgets/blob/master/resources/movable_image.gif)
+**[Image_Cropper](https://github.com/djeada/Qt-Widgets/tree/master/src/graphics/image_cropper)** - <code>QWidget</code> has been subclassed in order to receive image drops and show them with an elipsoidal crop. When the widget's width and height are equal, the crop has a circular form.  | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/image_cropper.gif)
+**[Transformations](https://github.com/djeada/Qt-Widgets/tree/master/src/graphics/transformations)** - The <code>scale()</code> function may scale the coordinate system by a specified offset, the <code>rotate()</code> function can rotate it clockwise, and the <code>translate()</code> function can translate it (i.e. add a given offset to the points). | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/transformations.gif)
+
 ## Files
 
 ## Networking 
