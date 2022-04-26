@@ -22,9 +22,5 @@ private slots:
 
 private:
   Ui::MainWindow *ui;
-  QPixmap pixmap;
-  QSize picSize;
-  void paintEvent(QPaintEvent *event);
-  void wheelEvent(QWheelEvent *event);
 };
 #endif // MAINWINDOW_H

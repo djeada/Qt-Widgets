@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
   scene = new QGraphicsScene(this);
   ui->graphicsView->setScene(scene);
 
-  QGraphicsTextItem *text =
+  auto text =
       scene->addText("Drop pictures here", QFont("Ubuntu", 20));
   text->setFlag(QGraphicsItem::ItemIsMovable);
   text->setFlag(QGraphicsItem::ItemIsSelectable);

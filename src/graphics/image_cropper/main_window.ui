@@ -18,62 +18,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="MovableImage" name="image">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>400</width>
-          <height>400</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>400</width>
-          <height>400</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-width: 1px;
-border-radius: 200px;
-border-color: black;
-border-style: outset;
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
+       <widget class="ImageCropper" name="image_cropper" native="true"/>
       </item>
      </layout>
     </item>
@@ -85,7 +30,7 @@ border-style: outset;
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -111,9 +56,10 @@ border-style: outset;
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MovableImage</class>
-   <extends>QLabel</extends>
-   <header>movable_image.h</header>
+   <class>ImageCropper</class>
+   <extends>QWidget</extends>
+   <header>image_cropper.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

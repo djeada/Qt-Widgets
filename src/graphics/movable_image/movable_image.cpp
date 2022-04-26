@@ -20,7 +20,7 @@ void MovableImage::paint(QPainter *painter,
   Q_UNUSED(option);
   Q_UNUSED(widget);
 
-  QColor brushColor = isSelected() ? Qt::darkBlue : Qt::darkGray;
+  auto brushColor = isSelected() ? Qt::darkBlue : Qt::darkGray;
   painter->setPen(Qt::black);
   painter->setBrush(brushColor);
   painter->drawRect(-rectSize / 2, -rectSize / 2, rectSize, rectSize);
