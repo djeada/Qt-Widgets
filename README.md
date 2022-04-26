@@ -4,7 +4,7 @@ Examples of programs that use Qt6 widgets.
 ## Core
 
 <code>QObject</code> is perhaps the most significant class in the whole Qt ecosystem. It carries with it two enormously important mechanisms:
-1. Slots and signals
+1. Slots and signals;
 2. Parent-child relationship. 
 
 When subclassing <code>QObject</code>, you must include the <code>Q_OBJECT</code> macro in the declaration. 
