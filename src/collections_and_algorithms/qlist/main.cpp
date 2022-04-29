@@ -39,7 +39,6 @@ void deleteObject(QList<QObject *> &list, QString name) {
 }
 
 int main(int argc, char *argv[]) {
-  QCoreApplication a(argc, argv);
 
   QList<QObject *> list;
   fillList(list, 10);
@@ -61,6 +60,6 @@ int main(int argc, char *argv[]) {
   list.clear();
   qDebug() << "List size: "
            << list.size(); // the objects are deleted, the list is empty
+  return 0;
 
-  return a.exec();
 }

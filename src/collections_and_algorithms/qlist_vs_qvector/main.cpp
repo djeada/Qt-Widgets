@@ -27,7 +27,6 @@ template <class T> void displayDistances(T &container) {
 }
 
 int main(int argc, char *argv[]) {
-  QCoreApplication a(argc, argv);
 
   QList<QObject *> list;
   fillContainer(list, 10);
@@ -37,5 +36,5 @@ int main(int argc, char *argv[]) {
   fillContainer(vector, 10);
   displayDistances(vector);
 
-  return a.exec();
-}
+  return 0;
+  }

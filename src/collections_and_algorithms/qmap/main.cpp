@@ -47,7 +47,6 @@ QList<int> sortedValues(const QMap<QObject *, int> &map) {
 }
 
 int main(int argc, char *argv[]) {
-  QCoreApplication a(argc, argv);
 
   QMap<QObject *, int> map;
   fillMap(map, 10);
@@ -71,5 +70,5 @@ int main(int argc, char *argv[]) {
     qDebug() << "  " << value;
   }
 
-  return a.exec();
+  return 0;
 }

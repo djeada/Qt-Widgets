@@ -17,7 +17,6 @@ void displaySet(const QSet<QObject *> &set) {
 }
 
 int main(int argc, char *argv[]) {
-  QCoreApplication a(argc, argv);
 
   QSet<QObject *> set;
   fillSet(set, 10);
@@ -30,5 +29,5 @@ int main(int argc, char *argv[]) {
   set.insert(obj);
   displaySet(set); // not in order
 
-  return a.exec();
+  return 0;
 }
