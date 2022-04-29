@@ -22,6 +22,13 @@ When subclassing <code>QObject</code>, you must include the <code>Q_OBJECT</code
     public slots:
       void someSlot();
     };
+    
+Description | Screenshot 
+---|---
+**[Children Generator](https://github.com/djeada/Qt-Widgets/tree/master/src/core/children_generator)** - Example of parent-child relationship in Qt. | <img width=1000/>![](https://github.com/djeada/Qt-Widgets/blob/master/resources/children_generator.gif)
+**[Custom Signal and Slots](https://github.com/djeada/Qt-Widgets/tree/master/src/core/custom_signal_slots)** - ... | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/custom_signal_slots.gif)
+**[Smart Pointers](https://github.com/djeada/Qt-Widgets/tree/master/src/core/smart_pointers)** - ... | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/smart_pointers.gif)
+**[QVariant and QMetaType](https://github.com/djeada/Qt-Widgets/tree/master/src/core/qvariant_and_qmetatype)** - The <code>QVariant</code> class serves as a union for the most commonly used Qt data types. Because C++ prohibits unions from containing types with non-default constructors or destructors, the majority of useful Qt classes cannot be used in unions. The type is registered via the <code>Q_DECLARE_METATYPE(Type)</code> macro, so that <code>QMetaType</code> can recognize this type. <code>Q_DECLARE_METATYPE</code> expects a class or struct to contain a default constructor, a copy constructor, and a public destructor.  | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qvariant_and_qmetatype.gif)
 
 ## Collections And Algorithms
 
