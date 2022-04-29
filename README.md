@@ -97,4 +97,6 @@ Description | Screenshot
 
 ## Plots
 
+Qt applications may be used to build visually appealing, interactive dashboards. Aside from the native QtCharts library, there is also support for the widely used Matplotlib. Any modern plotting library may, however, be used (with little effort).
+    
 ## Other
