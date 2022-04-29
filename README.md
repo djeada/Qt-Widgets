@@ -65,23 +65,31 @@ How to implement it using Qt framework?
 
 ## Graphics
 
-Two main classes allow us to implement custom graphics: QPainter</code> and QGraphicsView</code>.
+Two main classes allow us to implement custom graphics: <code>QPainter</code> and <code>QGraphicsView</code>.
 
 <code>QPainter</code> is capable of allowing you to manipulate pixels on a widget. It is used when we overwrite a widget's <code>paintEvent()</code> method. It is capable of interacting with both <code>QBrush</code> and <code>QPen</code>. Fill is done using brushes, while outlines are done with pens. A brush can be styled, colored, gradiented, or textured.
 
 With the painter you have an option to draw a:
-- A Point
-- A Line
-- A Rectangle
-- An Ellipse
-- A Polygon
+- A Point;
+- A Line;
+- A Rectangle;
+- An Ellipse;
+- A Polygon.
 
 The graphics scene framework allows you to arrange your geometry in a tree of <code>QGraphicsItems</code> and easily manipulate its components. Whatever you do, it's always <code>QPainter</code> who does the drawing. It is just abstracted away. Because <code>QGraphicsItem</code> is not derived from <code>QObject</code>, you don't have the signals/slots and so on, however you may use <code>QGraphicsObject</code> if you require them. The standard graphics item is more lightweight and includes certain additional features not provided by the widgets API. Similar to how there are standard widgets, there are a few basic graphics elements such as lines, rectangles, and so on. For everything unique, you must implement your own painting using <code>QPainter</code>, exactly like with widgets.
 
 If your geometry is simple and does not require interactive and hierarchical features, you should use <code>QPainter</code> directly. Use <code>QGraphicsView</code> for anything complex and interactive. 
 
-## Files
+Description | Screenshot 
+---|---
+**[Movable_Image](https://github.com/djeada/Qt-Widgets/tree/master/src/graphics/movable_image)** - We'll make a scene, and the scene will be shown with the elements we'll be adding. The <code>QGraphicsView</code> object is a widget created in designer that is used to display the contents of a <code>QGraphicsScene</code>. A moveable object may be readily spawned on a graphics scene. Because the scene retains track of its items, deletion is not an issue. You can change the item's appearance by using the paint event. | <img width=1000/>![](https://github.com/djeada/Qt-Widgets/blob/master/resources/movable_image.gif)
+**[Image_Cropper](https://github.com/djeada/Qt-Widgets/tree/master/src/graphics/image_cropper)** - <code>QWidget</code> has been subclassed in order to receive image drops and show them with an elipsoidal crop. When the widget's width and height are equal, the crop has a circular form.  | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/image_cropper.gif)
+**[Transformations](https://github.com/djeada/Qt-Widgets/tree/master/src/graphics/transformations)** - The <code>scale()</code> function may scale the coordinate system by a specified offset, the <code>rotate()</code> function can rotate it clockwise, and the <code>translate()</code> function can translate it (i.e. add a given offset to the points). It is important to note that any transformation is a matrix multiplication. As a result, the order in the code should be inverted to the order in which the transformations should be applied. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/transformations.gif)
 
+## Files
+    
+<code>QFile</code> is an I/O device that allows you to read and write text and binary files and resources. A <code>QFile</code> can be used alone or, more easily, in conjunction with a <code>QTextStream</code> or <code>QDataStream</code>.
+    
 ## Networking 
 
 ## Concurrent Computing 
