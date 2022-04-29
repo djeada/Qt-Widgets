@@ -5,22 +5,18 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
-  scene = new QGraphicsScene(this);
-  ui->graphicsView->setScene(scene);
+  scene = new BorderedScene(QRectF(0, 0, 300, 300), 10,  this);
+    ui->graphicsView->setScene(scene);
 
-  // set QSurfaceFormat for graphicsView
-
-
-  auto text =
-      scene->addText("Drop pictures here", QFont("Ubuntu", 20));
-  text->setFlag(QGraphicsItem::ItemIsMovable);
-  text->setFlag(QGraphicsItem::ItemIsSelectable);
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, scene, &BorderedScene::advance);
+    timer->start(100);
 }
 
 MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::on_addButton_released() {
-  scene->addItem(new MovableImage(this));
+  scene->addItem(new MovableImage(scene->sceneRect(), this));
 }
 
 void MainWindow::on_removeButton_released() {
