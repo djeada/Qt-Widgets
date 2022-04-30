@@ -1,3 +1,6 @@
+#ifndef _HOME_ADAM_QT_WIDGETS_SRC_CORE_QVARIANT_AND_QMETATYPE_CUSTOM_TYPE_H
+#define _HOME_ADAM_QT_WIDGETS_SRC_CORE_QVARIANT_AND_QMETATYPE_CUSTOM_TYPE_H
+
 #include <QMetaType>
 #include <QObject>
 #include <QString>
@@ -14,3 +17,5 @@ public:
 };
 
 Q_DECLARE_METATYPE(Person)
+
+#endif

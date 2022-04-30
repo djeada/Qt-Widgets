@@ -2,9 +2,9 @@
 #include <QCoreApplication>
 #include <QDebug>
 
-int main(int argc, char *argv[]) {
+auto main(int /*argc*/, char * /*argv*/[]) -> int {
 
-  QVariant variant;
+  QVariant variant = 0;
   variant = 42;
   qDebug() << variant.toInt();
 
