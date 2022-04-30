@@ -12,7 +12,7 @@ ChildrenGenerator::~ChildrenGenerator() {
            << this->objectName();
 }
 
-QObject *ChildrenGenerator::createChild(QString /*name*/) {
+QObject *ChildrenGenerator::createChild(QString name) {
   qDebug() << "Creating child with name: " << name;
   try {
     auto child = new ChildrenGenerator(name, this);
@@ -23,7 +23,7 @@ QObject *ChildrenGenerator::createChild(QString /*name*/) {
   }
 }
 
-static void ChildrenGenerator::deleteChild(QString /*name*/) {
+void ChildrenGenerator::deleteChild(QString name) {
   qDebug() << "Attempting to delete child with name: " << name;
   auto child = this->findChild<QObject *>(name);
   if (child) {
