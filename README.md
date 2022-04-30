@@ -102,6 +102,13 @@ Description | Screenshot
 
 ## Concurrent Computing 
 
+Description | Screenshot 
+---|---
+**[Spawn Thread](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/spawn_thread)** - ... | <img width=1000/>![](https://github.com/djeada/Qt-Widgets/blob/master/resources/spawn_thread.gif)
+**[Gui Thread](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/gui_thread.cpp)** - ... | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/gui_thread.gif)
+**[Spawn Process](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/spawn_process)** - ... | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/spawn_process.gif)
+**[CMD Interface](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/cmd_interface)** - ...  | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/cmd_interface.gif)
+    
 ## Plots
 
 Qt applications may be used to build visually appealing, interactive dashboards. Aside from the native QtCharts library, there is also support for the widely used Matplotlib. Any modern plotting library may, however, be used (with little effort).
