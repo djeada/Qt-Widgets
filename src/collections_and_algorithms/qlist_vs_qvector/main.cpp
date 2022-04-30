@@ -6,7 +6,7 @@
 
 template <typename T> void fillContainer(T &container, int size) {
   for (int i = 0; i < size; ++i) {
-    QObject *obj = new QObject();
+    auto obj = new QObject();
     obj->setObjectName(QString("Obj%1").arg(i));
     container.append(obj);
   }
@@ -26,7 +26,7 @@ template <class T> void displayDistances(T &container) {
   }
 }
 
-int main(int argc, char *argv[]) {
+auto main(int /*argc*/, char * /*argv*/[]) -> int {
 
   QList<QObject *> list;
   fillContainer(list, 10);

@@ -7,7 +7,7 @@
 
 void fillMap(QMap<QObject *, int> &map, int size) {
   for (int i = 0; i < size; ++i) {
-    QObject *obj = new QObject;
+    QObject *obj = nullptr = new QObject;
     obj->setObjectName(QString("Obj%1").arg(i));
     map.insert(obj, i);
   }
@@ -37,8 +37,8 @@ QList<QObject *> sortedKeys(const QMap<QObject *, int> &map) {
   return keys;
 }
 
-QList<int> sortedValues(const QMap<QObject *, int> &map) {
-  QList<int> values;
+QList<int> sortedValues(const QMap<QObject *, int> & /*map*/) {
+  QList<int> values = 0;
   for (auto it = map.constBegin(); it != map.constEnd(); ++it) {
     values.append(it.value());
   }
@@ -46,7 +46,7 @@ QList<int> sortedValues(const QMap<QObject *, int> &map) {
   return values;
 }
 
-int main(int argc, char *argv[]) {
+auto main(int /*argc*/, char * /*argv*/[]) -> int {
 
   QMap<QObject *, int> map;
   fillMap(map, 10);

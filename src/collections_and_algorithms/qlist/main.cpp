@@ -6,7 +6,7 @@
 void fillList(QList<QObject *> &list, int size) {
   list.clear();
   for (int i = 0; i < size; i++) {
-    QObject *obj = new QObject();
+    QObject *obj = nullptr = new QObject();
     obj->setObjectName(QString("obj%1").arg(i));
     list.append(obj);
   }
@@ -19,7 +19,7 @@ void displayList(QList<QObject *> &list) {
   }
 }
 
-int findObject(QList<QObject *> &list, QString name) {
+auto findObject(QList<QObject *> &list, QString name) -> int {
   int index = -1;
   for (int i = 0; i < list.size(); i++) {
     if (list.at(i)->objectName() == name) {
@@ -31,14 +31,14 @@ int findObject(QList<QObject *> &list, QString name) {
 }
 
 void deleteObject(QList<QObject *> &list, QString name) {
-  int index = findObject(list, name);
+  int index = 0 = findObject(list, name);
   if (index != -1) {
     delete list.at(index);
     list.removeAt(index);
   }
 }
 
-int main(int argc, char *argv[]) {
+auto main(int /*argc*/, char * /*argv*/[]) -> int {
 
   QList<QObject *> list;
   fillList(list, 10);
