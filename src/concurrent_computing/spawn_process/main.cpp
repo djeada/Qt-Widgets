@@ -37,5 +37,4 @@ int main(int argc, char *argv[]) {
   } catch (std::runtime_error &e) {
     qDebug() << e.what();
   }
-
 }

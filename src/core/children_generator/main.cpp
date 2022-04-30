@@ -2,7 +2,7 @@
 #include <QCoreApplication>
 #include <QDebug>
 
-int main(int argc, char *argv[]) {
+auto main(int /*argc*/, char * /*argv*/[]) -> int {
 
   auto root = new ChildrenGenerator("root");
 
@@ -27,5 +27,4 @@ int main(int argc, char *argv[]) {
   // Display number of children
   qDebug() << "Number of children: " << root->children().size();
   return 0;
-
 }

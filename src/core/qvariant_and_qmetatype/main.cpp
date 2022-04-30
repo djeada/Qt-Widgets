@@ -15,5 +15,4 @@ int main(int argc, char *argv[]) {
   qDebug() << variant.value<Person>().name;
   qDebug() << variant.value<Person>().age;
   return 0;
-
 }

@@ -1,19 +1,16 @@
 #include "image_cropper.h"
+#include <QDebug>
+#include <QMessageBox>
+#include <QMimeData>
 #include <QPainter>
 #include <QPainterPath>
 #include <QWheelEvent>
 #include <QtMath>
-#include <QDebug>
-#include <QMessageBox>
-#include <QMimeData>
 
-ImageCropper::ImageCropper(QWidget *parent) : QWidget(parent)
-{
+ImageCropper::ImageCropper(QWidget *parent) : QWidget(parent) {
   // accept droped images
   setAcceptDrops(true);
-
 }
-
 
 void ImageCropper::paintEvent(QPaintEvent *event) {
   Q_UNUSED(event);
@@ -27,7 +24,6 @@ void ImageCropper::paintEvent(QPaintEvent *event) {
   painter.setBrush(Qt::NoBrush);
   painter.drawEllipse(rect().center(), rect().width() / 2, rect().height() / 2);
   painter.end();
-
 
   if (!pixmap.isNull()) {
     // draw pixmap within the circle drawn above
@@ -50,7 +46,6 @@ void ImageCropper::paintEvent(QPaintEvent *event) {
     painter.drawText(rect(), Qt::AlignCenter, "Drag and drop an image here");
     painter.end();
   }
-
 }
 
 void ImageCropper::dropEvent(QDropEvent *event) {
@@ -65,15 +60,14 @@ void ImageCropper::setPixmapFromFile(QString fileName) {
   QPixmap newPix(fileName);
 
   if (newPix.isNull()) {
-      QMessageBox::warning(this, tr("Invalid Image"),
-                           tr("You tried loading an invalid file."));
-      return;
+    QMessageBox::warning(this, tr("Invalid Image"),
+                         tr("You tried loading an invalid file."));
+    return;
   }
 
   pixmap = newPix;
   update();
 }
-
 
 void ImageCropper::dragEnterEvent(QDragEnterEvent *event) {
   // accept the event if the mime data contains a url

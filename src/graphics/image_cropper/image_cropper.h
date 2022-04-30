@@ -3,12 +3,11 @@
 
 #include <QWidget>
 
-class ImageCropper : public QWidget
-{
-    Q_OBJECT
+class ImageCropper : public QWidget {
+  Q_OBJECT
 public:
-    explicit ImageCropper(QWidget *parent = nullptr);
-    void setPixmapFromFile(QString fileName);
+  explicit ImageCropper(QWidget *parent = nullptr);
+  void setPixmapFromFile(QString fileName);
 
 signals:
 

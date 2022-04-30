@@ -5,12 +5,12 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
-  scene = new BorderedScene(QRectF(0, 0, 300, 300), 10,  this);
-    ui->graphicsView->setScene(scene);
+  scene = new BorderedScene(QRectF(0, 0, 300, 300), 10, this);
+  ui->graphicsView->setScene(scene);
 
-    timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, scene, &BorderedScene::advance);
-    timer->start(100);
+  timer = new QTimer(this);
+  connect(timer, &QTimer::timeout, scene, &BorderedScene::advance);
+  timer->start(100);
 }
 
 MainWindow::~MainWindow() { delete ui; }

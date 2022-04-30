@@ -1,10 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "bordered_scene.h"
 #include <QGraphicsScene>
 #include <QMainWindow>
 #include <QTimer>
-#include "bordered_scene.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -26,6 +26,6 @@ private slots:
 private:
   Ui::MainWindow *ui;
   BorderedScene *scene;
-      QTimer *timer;
+  QTimer *timer;
 };
 #endif // MAINWINDOW_H

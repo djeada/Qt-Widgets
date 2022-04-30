@@ -61,5 +61,4 @@ int main(int argc, char *argv[]) {
   qDebug() << "List size: "
            << list.size(); // the objects are deleted, the list is empty
   return 0;
-
 }

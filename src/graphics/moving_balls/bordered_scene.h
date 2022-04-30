@@ -3,16 +3,16 @@
 
 #include <QGraphicsScene>
 
-class BorderedScene : public QGraphicsScene
-{
+class BorderedScene : public QGraphicsScene {
 public:
-    explicit BorderedScene(QRectF borderRect, unsigned int numBalls = 10, QObject *parent = nullptr);
+  explicit BorderedScene(QRectF borderRect, unsigned int numBalls = 10,
+                         QObject *parent = nullptr);
 
 public slots:
-    void advance();
+  void advance();
 
 private:
-    void drawSceneBorder();
+  void drawSceneBorder();
 };
 
 #endif // BORDEREDSCENE_H

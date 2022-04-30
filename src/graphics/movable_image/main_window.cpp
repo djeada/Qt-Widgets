@@ -10,9 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 
   // set QSurfaceFormat for graphicsView
 
-
-  auto text =
-      scene->addText("Drop pictures here", QFont("Ubuntu", 20));
+  auto text = scene->addText("Drop pictures here", QFont("Ubuntu", 20));
   text->setFlag(QGraphicsItem::ItemIsMovable);
   text->setFlag(QGraphicsItem::ItemIsSelectable);
 }

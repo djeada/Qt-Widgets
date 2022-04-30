@@ -37,4 +37,4 @@ int main(int argc, char *argv[]) {
   displayDistances(vector);
 
   return 0;
-  }
+}

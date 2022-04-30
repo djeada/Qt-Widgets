@@ -59,5 +59,4 @@ int main(int argc, char *argv[]) {
   qDebug() << "weakPtr1 value: " << weakPtr1.isNull();
   qDebug() << "sharedPtr1 value: " << sharedPtr1;
   return 0;
-
 }
