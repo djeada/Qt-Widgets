@@ -6,7 +6,7 @@
 void fillList(QList<QObject *> &list, int size) {
   list.clear();
   for (int i = 0; i < size; i++) {
-    QObject *obj = nullptr = new QObject();
+    auto obj = new QObject();
     obj->setObjectName(QString("obj%1").arg(i));
     list.append(obj);
   }
