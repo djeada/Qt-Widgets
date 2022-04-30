@@ -26,7 +26,6 @@ QByteArray spawnProcess(QString program, QStringList arguments,
 }
 
 int main(int argc, char *argv[]) {
-  QCoreApplication a(argc, argv);
 
   QString program = "ls";
   QStringList arguments = {"-l, -a"};
@@ -39,5 +38,4 @@ int main(int argc, char *argv[]) {
     qDebug() << e.what();
   }
 
-  return a.exec();
 }
