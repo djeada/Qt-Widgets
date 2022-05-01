@@ -27,8 +27,8 @@ QByteArray spawnProcess(QString program, QStringList arguments,
 
 int main(int argc, char *argv[]) {
 
-  QString program = "ls";
-  QStringList arguments = {"-l, -a"};
+  QString program = "python";
+  QStringList arguments = {"example.py"};
   QString message;
 
   try {
