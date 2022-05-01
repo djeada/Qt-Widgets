@@ -97,7 +97,13 @@ Description | Screenshot
 ## Files
     
 <code>QFile</code> is an I/O device that allows you to read and write text and binary files and resources. A <code>QFile</code> can be used alone or, more easily, in conjunction with a <code>QTextStream</code> or <code>QDataStream</code>.
-    
+
+Description | Screenshot 
+---|---
+**[File Info](https://github.com/djeada/Qt-Widgets/tree/master/src/files/file_info)** - ... | <img width=1000/>![](https://github.com/djeada/Qt-Widgets/blob/master/resources/file_info.gif)
+**[File Operations](https://github.com/djeada/Qt-Widgets/tree/master/src/files/file_operations)** - ... | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/file_operations.gif)
+**[Storage Info](https://github.com/djeada/Qt-Widgets/tree/master/src/files/storage_info)** - ... | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/storage_info.gif)
+**[JSON Serialization](https://github.com/djeada/Qt-Widgets/tree/master/src/files/json_serialization)** - ...  | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/json_serialization.gif)    
 ## Networking 
 
 ## Concurrent Computing 
