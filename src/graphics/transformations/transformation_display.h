@@ -1,5 +1,5 @@
-#ifndef TransformationDisplay_H
-#define TransformationDisplay_H
+#ifndef _HOME_ADAM_QT_WIDGETS_SRC_GRAPHICS_TRANSFORMATIONS_TRANSFORMATION_DISPLAY_H
+#define _HOME_ADAM_QT_WIDGETS_SRC_GRAPHICS_TRANSFORMATIONS_TRANSFORMATION_DISPLAY_H
 
 #include <QWidget>
 
@@ -12,8 +12,8 @@ public:
   void setScale(float scale);
   void setRotate(float angle);
   QPoint getTranslate();
-  float getScale();
-  float getRotate();
+  auto getScale() const -> float;
+  auto getRotate() const -> float;
 
 protected:
   QSize sizeHint() const override;
@@ -25,4 +25,4 @@ private:
   float scale;
 };
 
-#endif // TransformationDisplay_H
+#endif // _HOME_ADAM_QT_WIDGETS_SRC_GRAPHICS_TRANSFORMATIONS_TRANSFORMATION_DISPLAY_H

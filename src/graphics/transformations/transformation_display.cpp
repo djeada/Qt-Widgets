@@ -24,11 +24,11 @@ void TransformationDisplay::setRotate(float angle) {
 
 QPoint TransformationDisplay::getTranslate() { return translation; }
 
-float TransformationDisplay::getScale() { return scale; }
+auto TransformationDisplay::getScale() const -> float { return scale; }
 
-float TransformationDisplay::getRotate() { return rotation; }
+auto TransformationDisplay::getRotate() const -> float { return rotation; }
 
-void TransformationDisplay::paintEvent(QPaintEvent *e) {
+void TransformationDisplay::paintEvent(QPaintEvent * /*e*/) {
   QPainter painter(this);
 
   // apply transformations

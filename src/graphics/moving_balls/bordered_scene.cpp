@@ -9,7 +9,7 @@ BorderedScene::BorderedScene(QRectF borderRect, unsigned int numBalls,
   setSceneRect(borderRect);
   drawSceneBorder();
 
-  for (int i = 0; i < numBalls; i++) {
+  for (int i; i < numBalls; i++) {
     addItem(new MovableImage(sceneRect(), this));
   }
 }

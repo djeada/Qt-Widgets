@@ -31,7 +31,7 @@ auto findObject(QList<QObject *> &list, QString name) -> int {
 }
 
 void deleteObject(QList<QObject *> &list, QString name) {
-  int index = 0 = findObject(list, name);
+  int index = findObject(list, name);
   if (index != -1) {
     delete list.at(index);
     list.removeAt(index);
