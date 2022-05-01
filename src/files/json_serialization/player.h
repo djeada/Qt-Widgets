@@ -1,3 +1,6 @@
+#ifndef _HOME_ADAM_QT_WIDGETS_SRC_FILES_JSON_SERIALIZATION_PLAYER_H
+#define _HOME_ADAM_QT_WIDGETS_SRC_FILES_JSON_SERIALIZATION_PLAYER_H
+
 #include "json_serializable_interface.h"
 #include <QString>
 
@@ -13,15 +16,17 @@ public:
   Player(QString name, int score);
   Player(const Player &other);
   Player();
-  Player &operator=(const Player &other);
+  auto operator=(const Player &other) -> Player &;
   virtual ~Player();
 
   QString getName() const;
-  int getScore() const;
+  auto getScore() const -> int;
 
   virtual void toJson(QJsonObject &root) const;
   virtual void fromJson(const QJsonObject &root);
 
-  bool operator==(const Player &other) const;
+  auto operator==(const Player &other) const -> bool;
   friend QDebug operator<<(QDebug dbg, const Player &player);
 };
+
+#endif

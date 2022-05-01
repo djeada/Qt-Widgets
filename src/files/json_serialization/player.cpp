@@ -6,7 +6,7 @@ Player::Player(const Player &other) : name(other.name), score(other.score) {}
 
 Player::Player() : name(""), score(0) {}
 
-Player &Player::operator=(const Player &other) {
+auto Player::operator=(const Player &other) -> Player & {
   name = other.name;
   score = other.score;
   return *this;
@@ -16,7 +16,7 @@ Player::~Player() {}
 
 QString Player::getName() const { return name; }
 
-int Player::getScore() const { return score; }
+auto Player::getScore() const -> int { return score; }
 
 void Player::toJson(QJsonObject &root) const {
   root["name"] = name;
@@ -33,6 +33,6 @@ QDebug operator<<(QDebug dbg, const Player &player) {
   return dbg.space();
 }
 
-bool Player::operator==(const Player &other) const {
+auto Player::operator==(const Player &other) const -> bool {
   return name == other.name && score == other.score;
 }

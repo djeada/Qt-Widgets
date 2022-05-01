@@ -23,8 +23,7 @@ void displayStorageInfo(QStorageInfo storageInfo) {
            << "MB";
 }
 
-int main(int argc, char *argv[]) {
-  QCoreApplication a(argc, argv);
+auto main(int argc, char *argv[]) -> int {
 
   auto volumes = QStorageInfo::mountedVolumes();
   for (auto &volume : volumes) {
@@ -33,6 +32,4 @@ int main(int argc, char *argv[]) {
 
   auto root = QStorageInfo::root();
   displaySubDirInfo(root.rootPath());
-
-  return a.exec();
 }

@@ -10,9 +10,9 @@ void createDir(QString path, QString name) {
   if (!dir.exists(name)) {
     if (!dir.mkdir(name)) {
       throw std::runtime_error("Cannot create directory");
-    } else {
-      qDebug() << "Directory created successfully";
     }
+    qDebug() << "Directory created successfully";
+
   } else {
     qDebug() << "Directory already exists";
   }
@@ -23,9 +23,9 @@ void removeDir(QString path, QString name) {
   if (dir.exists(name)) {
     if (!dir.rmdir(name)) {
       throw std::runtime_error("Cannot remove directory");
-    } else {
-      qDebug() << "Directory removed successfully";
     }
+    qDebug() << "Directory removed successfully";
+
   } else {
     qDebug() << "Directory does not exist";
   }
@@ -36,9 +36,9 @@ void renameDir(QString path, QString oldName, QString newName) {
   if (dir.exists(oldName)) {
     if (!dir.rename(oldName, newName)) {
       throw std::runtime_error("Cannot rename directory");
-    } else {
-      qDebug() << "Directory renamed successfully";
     }
+    qDebug() << "Directory renamed successfully";
+
   } else {
     qDebug() << "Directory does not exist";
   }
@@ -50,14 +50,14 @@ void createFile(QString path, QString name, QVector<QString> content) {
     QFile file(path + "/" + name);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
       throw std::runtime_error("Cannot create file");
-    } else {
-      QTextStream out(&file);
-      for (int i = 0; i < content.size(); i++) {
-        out << content[i] << '\n';
-      }
-      file.close();
-      qDebug() << "File created successfully";
     }
+    QTextStream out(&file);
+    for (int i; i < content.size(); i++) {
+      out << content[i] << '\n';
+    }
+    file.close();
+    qDebug() << "File created successfully";
+
   } else {
     qDebug() << "File already exists";
   }
@@ -68,16 +68,15 @@ void removeFile(QString path, QString name) {
   if (dir.exists(name)) {
     if (!dir.remove(name)) {
       throw std::runtime_error("Cannot remove file");
-    } else {
-      qDebug() << "File removed successfully";
     }
+    qDebug() << "File removed successfully";
+
   } else {
     qDebug() << "File does not exist";
   }
 }
 
-int main(int argc, char *argv[]) {
-  QCoreApplication a(argc, argv);
+auto main(int argc, char *argv[]) -> int {
 
   QString path = QDir::tempPath();
   QString dir_name = "test_dir";
@@ -102,6 +101,4 @@ int main(int argc, char *argv[]) {
   } catch (std::runtime_error &e) {
     qDebug() << e.what();
   }
-
-  return a.exec();
 }

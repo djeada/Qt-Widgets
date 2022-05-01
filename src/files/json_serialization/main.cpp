@@ -4,8 +4,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
-int main(int argc, char *argv[]) {
-  QCoreApplication a(argc, argv);
+auto main(int argc, char *argv[]) -> int {
 
   Player player("John", 100);
   QJsonObject root;
@@ -40,6 +39,4 @@ int main(int argc, char *argv[]) {
 
   // remove temp file
   QFile::remove(path);
-
-  return a.exec();
 }
