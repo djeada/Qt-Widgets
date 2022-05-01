@@ -4,8 +4,6 @@
 #include "json_serializable_interface.h"
 #include <QString>
 
-class JsonSerializableInterface;
-
 class Player : public JsonSerializableInterface {
 
 private:
