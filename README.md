@@ -1,5 +1,5 @@
 # Qt-Widgets
-Examples of programs that use Qt6 widgets.
+Programs written in C++ and Python that make advantage of Qt6 widgets.
 
 ## Core
 
