@@ -70,3 +70,6 @@ Desktop.ini
 ## Builds
 ############
 *build*
+
+
+*__pycache__*
