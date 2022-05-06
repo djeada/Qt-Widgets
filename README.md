@@ -1,7 +1,24 @@
 # Qt-Widgets
 Programs written in C++ and Python that make advantage of Qt6 widgets.
 
-## Core
+## Requirements
+
+* C++14
+* CMake 3.10+
+* Qt6
+
+## Compilation
+
+Open the terminal in the project directory and use the following commands:
+
+    mkdir build
+    cd build
+    cmake -GNinja ..
+    ninja ../project_name
+
+## Content
+
+### Core
 
 <code>QObject</code> is perhaps the most significant class in the whole Qt ecosystem. It carries with it two enormously important mechanisms:
 1. Slots and signals;
@@ -30,7 +47,7 @@ Description | Screenshot
 **[Smart Pointers](https://github.com/djeada/Qt-Widgets/tree/master/src/core/smart_pointers)** - A smart pointer is an abstract data type that has all of the properties of a raw pointer plus automated garbage collection. Qt featured smart pointers long before they were included in C++ standard. These are also used in some of the projects. However, raw pointers are typically used for <code>QObjects</code> since they utilise a parent-child model to manage all issues related to the objects life cycle. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/smart_pointers.gif)
 **[QVariant and QMetaType](https://github.com/djeada/Qt-Widgets/tree/master/src/core/qvariant_and_qmetatype)** - The <code>QVariant</code> class serves as a union for the most commonly used Qt data types. Because C++ prohibits unions from containing types with non-default constructors or destructors, the majority of useful Qt classes cannot be used in raw unions. The type is registered via the <code>Q_DECLARE_METATYPE(Type)</code> macro, so that <code>QMetaType</code> can recognize this type. <code>Q_DECLARE_METATYPE</code> expects a class or struct to contain a default constructor, a copy constructor, and a public destructor.  | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qvariant_and_qmetatype.gif)
 
-## Collections And Algorithms
+### Collections And Algorithms
 
 Qt has implemented a large number of containers and accompanying algorithms that correspond to STL containers and algorithms. Some have been deprecated, such as <code>qSort()</code>, so be careful to read the documentation before using them. This is due to the fact that it was created prior to the standardization of STL containers. Some features, like as the <code>contains()</code> function, were first added in C++20, about 30 years later.
 
@@ -43,7 +60,7 @@ Description | Screenshot
 **[QSet](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qset)** - <code>QSet</code> assures the uniquness of it's elements. Although the order in which the elements are inserted is lost. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qset.gif)
 **[QMap](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qmap)** - The <code>QMap</code> class is a template class that offers a dictionary based on a red-black tree. <code>QMap<Key, T></code> is a generic container class in Qt. It holds (key, value) pairs and allows for quick access to the value associated with a key. Use it anytime you don't want numeric (or ordered) indices. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qmap.gif)
 
-## Widgets
+### Widgets
 
 <code>QWidgets</code> are used for "standard" GUI components like as buttons, checkboxes, drop down menus, and so on. Because widgets are inherited from <code>QObjects</code>, we also have signals/slots and a parent-child relationship. It is best to utilize them for standard user interface components and customize them with a subset of CSS known as QSS and so-called stylesheets. There is, however, an option of drawing them yourself using the <code>paintEvent()</code> method, however this may be difficult.
 
@@ -54,7 +71,7 @@ Description | Screenshot
 **[QWidget Custom Painting](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/cpp/custom_painting)** - To draw an arrow in the background, the method <code>paintEvent()</code> is overwritten. The majority of the drawing tasks required by GUI programs are handled by very efficient algorithms in <code>QPainter</code>. It can draw anything from fundamental graphical primitives like point, line, rectangle, ellipse, and polygon to more complex forms like vector routes.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/custom_painting">Python</a> implementation as well. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/qwidget_custom_painting.gif)
 **[Status Bar](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/cpp/status_bar)** - The <code>QStatusBar</code> class implements a horizontal bar for displaying status information. We use a timer to regulate how long it takes the bar to reach 100%. We use three buttons to control the bar: start, stop, and reset.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/status_bar">Python</a> implementation as well. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/status_bar.gif)
 
-## MVC
+### MVC
 
 What is Model-View-Controler?
 
@@ -94,7 +111,7 @@ Description | Screenshot
 **[Transformations](https://github.com/djeada/Qt-Widgets/tree/master/src/graphics/transformations)** - The <code>scale()</code> function may scale the coordinate system by a specified offset, the <code>rotate()</code> function can rotate it clockwise, and the <code>translate()</code> function can translate it (i.e. add a given offset to the points). It is important to note that any transformation is a matrix multiplication. As a result, the order in the code should be inverted to the order in which the transformations should be applied. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/transformations.gif)
 **[Moving balls](https://github.com/djeada/Qt-Widgets/tree/master/src/graphics/moving_balls)** - <code>QGraphicView</code> is a camera in Qt's universe, while <code>QGraphicScene</code> is a movie scene. In the actual world, the camera has one coordinate system and the scene has another; they do not match, but there is a transformation that connects them. When actors move in the film, their size on the scene may change while their real size stays constant. In the example, we use coloured balls to demonstrate how to control the position of an item on the scene. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/moving_balls.gif)
 
-## Files
+### Files
     
 <code>QFile</code> is an I/O device that allows you to read and write text and binary files and resources. A <code>QFile</code> can be used alone or, more easily, in conjunction with a <code>QTextStream</code> or <code>QDataStream</code>.
 
@@ -104,9 +121,9 @@ Description | Screenshot
 **[File Operations](https://github.com/djeada/Qt-Widgets/tree/master/src/files/file_operations)** - ... | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/file_operations.gif)
 **[Storage Info](https://github.com/djeada/Qt-Widgets/tree/master/src/files/storage_info)** - ... | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/storage_info.gif)
 **[JSON Serialization](https://github.com/djeada/Qt-Widgets/tree/master/src/files/json_serialization)** - ...  | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/json_serialization.gif)    
-## Networking 
+### Networking 
 
-## Concurrent Computing 
+### Concurrent Computing 
 
 Description | Screenshot 
 ---|---
@@ -119,4 +136,4 @@ Description | Screenshot
 
 Qt applications may be used to build visually appealing, interactive dashboards. Aside from the native QtCharts library, there is also support for the widely used Matplotlib. Any modern plotting library may, however, be used (with little effort).
     
-## Other
+### Other
