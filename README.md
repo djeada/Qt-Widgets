@@ -41,7 +41,7 @@ Open the terminal in the project directory and use the following commands:
 
 ### PyQt
 
-The recommended approach to launch PyQT projects is to use virtualenv:
+The recommended approach to launch PyQT projects is to use <code>virtualenv</code>:
 
     $ virtualenv env
     $ source env/bin/activate
