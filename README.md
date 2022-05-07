@@ -3,18 +3,50 @@ Programs written in C++ and Python that make advantage of Qt6 widgets.
 
 ## Requirements
 
+For C++ projects you will need:
+
 * C++14
 * CMake 3.10+
 * Qt6
 
+For Python projects you will need:
+* Python 3.10+
+* Whatever library is mentioned in the project's requirements.txt file. 
+
 ## Compilation
+
+### Qt Creator IDE
+
+To create the project, open the appropriate *CMakeLists.txt* file in Qt Creator.
+
+### Terminal
+
+Set the environment variable "*CMAKE PREFIX PATH*" to the Qt6 installation path.
 
 Open the terminal in the project directory and use the following commands:
 
-    mkdir build
-    cd build
-    cmake -GNinja ..
-    ninja ../project_name
+#### Windows:
+
+    $ mkdir build
+    $ cd build
+    $ cmake ..
+    $ start ./Qt.project_name.sln
+
+#### Linux/macOS:
+
+    $ mkdir build
+    $ cd build
+    $ cmake -GNinja ..
+    $ ninja ../project_name
+
+### PyQt
+
+The recommended approach to launch PyQT projects is to use virtualenv:
+
+    $ virtualenv env
+    $ source env/bin/activate
+    $ pip install -r requirements.txt
+    $ python main.py
 
 ## Content
 
