@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(qvariant_and_qmetatype LANGUAGES CXX)
+project(custom_type LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -14,15 +14,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 
-set(project_headers 
-custom_type.h
-)
-
-set(project_sources 
+add_executable(${PROJECT_NAME}
   main.cpp
+  custom_type.h
   custom_type.cpp
 )
-
-add_executable(${PROJECT_NAME} ${project_headers} ${project_sources})
-
-target_link_libraries(${PROJECT_NAME}  Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(${PROJECT_NAME} Qt${QT_VERSION_MAJOR}::Core)

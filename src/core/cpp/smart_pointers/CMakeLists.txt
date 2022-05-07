@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(Smart_Pointers LANGUAGES CXX)
+project(smart_pointers LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 
-add_executable(qpointer
+add_executable(${PROJECT_NAME}
   main.cpp
 )
-target_link_libraries(qpointer Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(${PROJECT_NAME} Qt${QT_VERSION_MAJOR}::Core)

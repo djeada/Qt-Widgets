@@ -32,12 +32,28 @@ void removeDir(QString path, QString name) {
 }
 
 void renameDir(QString path, QString oldName, QString newName) {
+
   QDir dir(path);
+
   if (dir.exists(oldName)) {
+      QString oldPathAbsolute = dir.absolutePath() + "/" + oldName;
+
+      // check if it exists 
+      if (!QFileInfo(oldPathAbsolute).isDir()) {
+        throw std::runtime_error("Dir does not exist");
+      }
+
+      QString newPathAbsolute = dir.absolutePath() + "/" + newName;
+
+      // check if it exists
+      if (QFileInfo(newPathAbsolute).isDir()) {
+        throw std::runtime_error("New name is already in use");
+      }
+
     if (!dir.rename(oldName, newName)) {
-      throw std::runtime_error("Cannot rename directory");
+      throw std::runtime_error("Cannot rename dir");
     }
-    qDebug() << "Directory renamed successfully";
+    qDebug() << "Dir renamed successfully";
 
   } else {
     qDebug() << "Directory does not exist";
@@ -97,7 +113,7 @@ auto main(int argc, char *argv[]) -> int {
     removeFile(new_path, file_name);
     removeFile(new_path, file_name_2);
 
-    removeDir(path, dir_name);
+    removeDir(path, new_dir_name);
   } catch (std::runtime_error &e) {
     qDebug() << e.what();
   }

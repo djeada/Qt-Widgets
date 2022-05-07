@@ -14,16 +14,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 
-set(project_headers
-  player.h
-  json_serializable_interface.h
-)
-
-set(project_sources
+add_executable(${PROJECT_NAME}
   main.cpp
+  json_serializable_interface.h
+  player.h
   player.cpp
 )
-
-add_executable(${PROJECT_NAME} ${project_headers} ${project_sources})
-
-target_link_libraries(${PROJECT_NAME}  Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(${PROJECT_NAME} Qt${QT_VERSION_MAJOR}::Core)
