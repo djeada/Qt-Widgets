@@ -160,7 +160,7 @@ Description | Screenshot
 
 Description | Screenshot 
 ---|---
-**[Spawn Thread](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/spawn_thread)** - ... | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/json_serialization.gif" alt="drawing" width="2000"/>
+**[Spawn Thread](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/spawn_thread)** - ... | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/spawn_thread.gif" alt="drawing" width="2000"/>
 **[Gui Thread](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/gui_thread.cpp)** - Ensure the GUI's responsiveness while the threads perform their tasks. When worker threads finish their work, the view is updated to show the results of their work. When the worker thread completes its task, <code>QFutureWatcher</code> emits the <code>finished() </code>signal. Regrettably, there is currently no support for clearing the watcher. One solution is to spawn the watchers along with the threads on the fly. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/gui_thread.gif" alt="drawing" width="2000"/>
 **[Spawn Process](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/spawn_process)** - ... | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/spawn_process.gif" alt="drawing" width="2000"/>
 **[CMD Interface](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/cmd_interface)** - ...  | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/cmd_interface.gif" alt="drawing" width="2000"/>
