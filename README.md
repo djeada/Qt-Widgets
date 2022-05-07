@@ -117,10 +117,11 @@ Description | Screenshot
 
 Description | Screenshot 
 ---|---
-**[File Info](https://github.com/djeada/Qt-Widgets/tree/master/src/files/file_info)** - ... | <img width=1000/>![](https://github.com/djeada/Qt-Widgets/blob/master/resources/file_info.gif)
-**[File Operations](https://github.com/djeada/Qt-Widgets/tree/master/src/files/file_operations)** - ... | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/file_operations.gif)
-**[Storage Info](https://github.com/djeada/Qt-Widgets/tree/master/src/files/storage_info)** - ... | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/storage_info.gif)
-**[JSON Serialization](https://github.com/djeada/Qt-Widgets/tree/master/src/files/json_serialization)** - ...  | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/json_serialization.gif)    
+**[File Info](https://github.com/djeada/Qt-Widgets/tree/master/src/files/file_info)** - Display informations about files. Get list of files in a given directory and all its subdirectories. Use <code>QFileInfo</code> to get the file's name, size, and other data. | <img width=1000/>![](https://github.com/djeada/Qt-Widgets/blob/master/resources/file_info.gif)
+**[File Operations](https://github.com/djeada/Qt-Widgets/tree/master/src/files/file_operations)** - Manipulate files, by copying, moving, or deleting them. Create a temporary directory, and fill it with text files. If any error occurs, display it in on the console. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/file_operations.gif)
+**[Storage Info](https://github.com/djeada/Qt-Widgets/tree/master/src/files/storage_info)** - Display informations about storage, like free space, total space, and used space. Show mounted volumes, and their names. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/storage_info.gif)
+**[JSON Serialization](https://github.com/djeada/Qt-Widgets/tree/master/src/files/json_serialization)** - Serialize an object of a custom class to a JSON file. Deserialize a JSON file to an object of a custom class. Check if the objects are the same. | ![](https://github.com/djeada/Qt-Widgets/blob/master/resources/json_serialization.gif)   
+ 
 ### Networking 
 
 ### Concurrent Computing 
