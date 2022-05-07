@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(file_info LANGUAGES CXX)
+project(json_serialization LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -16,5 +16,8 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 
 add_executable(${PROJECT_NAME}
   main.cpp
+  json_serializable_interface.h
+  player.h
+  player.cpp
 )
 target_link_libraries(${PROJECT_NAME} Qt${QT_VERSION_MAJOR}::Core)
