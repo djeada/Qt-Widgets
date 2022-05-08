@@ -154,7 +154,7 @@ Description | Screenshot
 **[Storage Info](https://github.com/djeada/Qt-Widgets/tree/master/src/files/cpp/storage_info)** - Display informations about storage, like free space, total space, and used space. Show mounted volumes, and their names.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/files/python/storage_info">Python</a> implementation as well. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/storage_info.gif" alt="drawing" width="2000"/> 
 **[JSON Serialization](https://github.com/djeada/Qt-Widgets/tree/master/src/files/cpp/json_serialization)** - Serialize an object of a custom class to a JSON file. Deserialize a JSON file to an object of a custom class. Check if the objects are the same.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/files/python/json_serialization">Python</a> implementation as well. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/json_serialization.gif" alt="drawing" width="2000"/>
  
-### Networking 
+### Network
 
 ### Concurrent Computing 
 
