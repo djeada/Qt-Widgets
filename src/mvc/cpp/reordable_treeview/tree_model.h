@@ -13,23 +13,28 @@ Based on https://code.qt.io/cgit/qt/qtbase.git/tree/examples/widgets/itemviews/s
 class TreeItem
 {
 public:
-    explicit TreeItem(const QVector<QVariant> &data, TreeItem *parentItem = nullptr);
+    TreeItem(const QVector<QVariant> &data, TreeItem *parentItem = nullptr);
     TreeItem(const QStringList &data, TreeItem *parentItem = nullptr);
     ~TreeItem();
 
     void appendChild(TreeItem *child);
     void setData(const QVector<QVariant> &data);
+    void setParent(TreeItem *parent);
 
     TreeItem *child(int row);
+    int childRow(TreeItem *child);
     QVector<TreeItem*> childrenItems();
     int rowCount() const;
     int columnCount() const;
     int childrenColumnCount() const;
     QVariant data(int column) const;
+    QVector<QVariant> data() const;
     int row() const;
     void removeRow(int row);
     void removeRows(int row, int count);
-    TreeItem *parentItem();
+    void removeChild(TreeItem *child);
+    void removeChildren();
+    TreeItem *parentItem() ;
 
 private:
     QVector<TreeItem*> m_childItems;
@@ -53,6 +58,7 @@ public:
     QModelIndex index(int row, int column,
                       const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &index) const override;
+    QModelIndex indexFromItem( TreeItem *item) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     void appendRow(const QStringList &data);

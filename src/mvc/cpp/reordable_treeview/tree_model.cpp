@@ -35,8 +35,16 @@ TreeItem::~TreeItem()
 
 void TreeItem::appendChild(TreeItem *item)
 {
+    if (!item)
+        return;
 
+    auto currentPurrent = item->parentItem();
+    if (currentPurrent)
+        currentPurrent->removeChild(item);
+    
+    item->setParent(this);
     m_childItems.append(item);
+
 }
 
 TreeItem *TreeItem::child(int row)
@@ -44,6 +52,11 @@ TreeItem *TreeItem::child(int row)
     if (row < 0 || row >= m_childItems.size())
         return nullptr;
     return m_childItems.at(row);
+}
+
+int TreeItem::childRow(TreeItem *child)
+{
+    return m_childItems.indexOf(child);
 }
 
 QVector<TreeItem*> TreeItem::childrenItems()
@@ -80,7 +93,12 @@ QVariant TreeItem::data(int column) const
     return m_itemData.at(column);
 }
 
-TreeItem *TreeItem::parentItem()
+
+QVector<QVariant> TreeItem::data() const {
+    return m_itemData;
+}  
+
+TreeItem *TreeItem::parentItem() 
 {
     return m_parentItem;
 }
@@ -108,12 +126,29 @@ void TreeItem::removeRows(int row, int count)
         m_childItems.remove(row);
 }
 
+void TreeItem::removeChild(TreeItem *child)
+{
+    m_childItems.removeOne(child);
+}
+
+void TreeItem::removeChildren()
+{
+    m_childItems.clear();
+}
+
 
 void TreeItem::setData(const QVector<QVariant> &data)
 {
     m_itemData = data;
 }
 
+void TreeItem::setParent(TreeItem *parent)
+{
+    if (!parent)
+        return;
+
+    m_parentItem = parent;
+}
 
 TreeModel::TreeModel(const QVector<QStringList> &data, QObject *parent)
     : QAbstractItemModel(parent)
@@ -156,8 +191,10 @@ QVariant TreeModel::data(const QModelIndex &index, int role) const
     return item->data(index.column());
 }
 
+
 Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const
 {
+
     if (!index.isValid())
         return Qt::NoItemFlags;
 
@@ -245,4 +282,11 @@ TreeItem * TreeModel::item(const QModelIndex &index) const {
 
 TreeItem * TreeModel::item(int row, int column) const {
     return item(index(row, column));
+}
+ 
+QModelIndex TreeModel::indexFromItem( TreeItem *item) const {
+    if (item == rootItem)
+        return QModelIndex();
+
+    return createIndex(item->row(), 0, item);
 }

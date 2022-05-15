@@ -6,18 +6,32 @@ ReordableTreeModel::ReordableTreeModel(QObject *parent)
     : TreeModel(parent) {
 }
 
-void ReordableTreeModel::swapItems(QModelIndex sourceIndex, QModelIndex destinationIndex) {
-   
-   // Get the source and destination items
+void ReordableTreeModel::appendToDestination(QModelIndex sourceIndex, QModelIndex destinationIndex) {
     auto sourceItem = static_cast<TreeItem*>(sourceIndex.internalPointer());
     auto destinationItem = static_cast<TreeItem*>(destinationIndex.internalPointer());
-
-    // Append the source children rows from source to destination
-    for (auto& child : sourceItem->childrenItems()) {
-        destinationItem->appendChild(child);
-    }
+    auto sourceParentItem = sourceItem->parentItem();
+    destinationItem->appendChild(sourceItem);
+    emit dataChanged(sourceIndex, sourceIndex);
+    emit dataChanged(destinationIndex, destinationIndex);
 }
 
+
+ Qt::DropActions ReordableTreeModel::supportedDropActions() const
+ {
+     return Qt::CopyAction | Qt::MoveAction;
+ }
+
+Qt::ItemFlags ReordableTreeModel::flags(const QModelIndex &index) const
+{
+
+     Qt::ItemFlags defaultFlags = QAbstractItemModel::flags(index);
+
+     if (index.isValid())
+         return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | defaultFlags;
+     else
+         return Qt::ItemIsDropEnabled | defaultFlags;
+
+}
 
 ReordableTreeView::ReordableTreeView(QWidget *parent)
     : QTreeView(parent) {
@@ -39,14 +53,6 @@ ReordableTreeModel* ReordableTreeView::model() const {
 
 void ReordableTreeView::setModel(ReordableTreeModel *model) {
     QTreeView::setModel(model);
-    connect(model, &ReordableTreeModel::layoutChanged, this, [=]() {
-      qDebug() << "layoutChanged";
-    });
-        connect(model, &ReordableTreeModel::dataChanged, this, [=]() {
-          qDebug() << "dataChanged";
-        });
-
-
 }
 
 void ReordableTreeView::startDrag(Qt::DropActions supportedActions) {
@@ -61,11 +67,9 @@ void ReordableTreeView::dragEnterEvent(QDragEnterEvent *event) {
 
 
 void ReordableTreeView::dropEvent(QDropEvent *event) {
-    qDebug() << "dropEvent";
     dropIndex = indexAt(event->position().toPoint());
-    model()->swapItems(dragIndex, dropIndex);
+    model()->appendToDestination(dragIndex, dropIndex);
     reset();
-    //QTreeView::dropEvent(event);
 }
 
 
@@ -77,6 +81,8 @@ void ReordableTreeView::dragMoveEvent(QDragMoveEvent *event) {
 void ReordableTreeView::dragLeaveEvent(QDragLeaveEvent *event) {
     QTreeView::dragLeaveEvent(event);
 }
+
+
 
 
 

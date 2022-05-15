@@ -5,7 +5,9 @@ class ReordableTreeModel : public TreeModel {
 
     public:
         ReordableTreeModel(QObject *parent = nullptr);
-        void swapItems(QModelIndex sourceIndex, QModelIndex destinationIndex);
+        void appendToDestination(QModelIndex sourceIndex, QModelIndex destinationIndex);
+        Qt::ItemFlags flags(const QModelIndex &index) const override;
+        Qt::DropActions supportedDropActions() const override;
 };
 
 class ReordableTreeView : public QTreeView {
