@@ -39,7 +39,9 @@ TreeItem *TreeItem::child(int row) {
   return childItems.at(row);
 }
 
-int TreeItem::childFromRow(TreeItem *child) { return childItems.indexOf(child); }
+int TreeItem::childFromRow(TreeItem *child) {
+  return childItems.indexOf(child);
+}
 
 QVector<TreeItem *> TreeItem::childrenItems() { return childItems; }
 
@@ -102,79 +104,69 @@ void TreeItem::setParent(TreeItem *parent) {
   parentItem = parent;
 }
 
-void TreeItem::removeColumns(int position, int columns)
-{
-    if (position < 0 || position + columns > itemData.size()) {
-        throw std::out_of_range("removeColumns: invalid arguments");
-    }
+void TreeItem::removeColumns(int position, int columns) {
+  if (position < 0 || position + columns > itemData.size()) {
+    throw std::out_of_range("removeColumns: invalid arguments");
+  }
 
-    for (int column = 0; column < columns; column++) {
-        itemData.remove(position);
-    }
+  for (int column = 0; column < columns; column++) {
+    itemData.remove(position);
+  }
 
-    for (const auto &child : childItems) {
-        child->removeColumns(position, columns);
-    }
+  for (const auto &child : childItems) {
+    child->removeColumns(position, columns);
+  }
 }
 
-void TreeItem::insertColumns(int position, int columns)
-{
-    if (position < 0 || position > itemData.size())  {
-        throw std::out_of_range("insertColumns: invalid arguments");
-    }
+void TreeItem::insertColumns(int position, int columns) {
+  if (position < 0 || position > itemData.size()) {
+    throw std::out_of_range("insertColumns: invalid arguments");
+  }
 
-    for (int column = 0; column < columns; ++column) {
-        itemData.insert(position, QVariant());
-    }
+  for (int column = 0; column < columns; ++column) {
+    itemData.insert(position, QVariant());
+  }
 
-    for (const auto &child : childItems) {
-        child->insertColumns(position, columns);
-    }
-
+  for (const auto &child : childItems) {
+    child->insertColumns(position, columns);
+  }
 }
 
-void TreeItem::insertRows(int position, int count, int columns)
-{
-    if (position < 0 || position > childItems.size())  {
-        throw std::out_of_range("insertRows: invalid arguments");
-    }
+void TreeItem::insertRows(int position, int count, int columns) {
+  if (position < 0 || position > childItems.size()) {
+    throw std::out_of_range("insertRows: invalid arguments");
+  }
 
-    for (int row = 0; row < count; ++row) {
-        QVector<QVariant> data(columns);
-        auto item = new TreeItem(data, this);
-        childItems.insert(position, item);
-    }
+  for (int row = 0; row < count; ++row) {
+    QVector<QVariant> data(columns);
+    auto item = new TreeItem(data, this);
+    childItems.insert(position, item);
+  }
 }
 
-void TreeItem::setData(int column, const QVariant &value)
-{
-    if (column < 0 || column >= itemData.size())  {
-        throw std::out_of_range("setData: invalid arguments");
-    }
+void TreeItem::setData(int column, const QVariant &value) {
+  if (column < 0 || column >= itemData.size()) {
+    throw std::out_of_range("setData: invalid arguments");
+  }
 
-    itemData[column] = value;
+  itemData[column] = value;
 }
-
 
 TreeModel::TreeModel(const QStringList &headers, QObject *parent)
-    : QAbstractItemModel(parent),readOnly(false) { 
-    QVector<QVariant> rootData;
-    for (const QString &header : headers) {
-        rootData << header;
-    }
+    : QAbstractItemModel(parent), readOnly(false) {
+  QVector<QVariant> rootData;
+  for (const QString &header : headers) {
+    rootData << header;
+  }
 
-    rootItem = new TreeItem(rootData);
+  rootItem = new TreeItem(rootData);
 }
 
 TreeModel::~TreeModel() { delete rootItem; }
 
-void TreeModel:: setReadOnly(bool flag) {
-  readOnly = flag;
-}
+void TreeModel::setReadOnly(bool flag) { readOnly = flag; }
 
-bool TreeModel::isReadOnly() const {
-  return readOnly;
-}
+bool TreeModel::isReadOnly() const { return readOnly; }
 
 int TreeModel::columnCount(const QModelIndex &parent) const {
   if (parent.isValid()) {
@@ -185,7 +177,7 @@ int TreeModel::columnCount(const QModelIndex &parent) const {
 }
 
 QVariant TreeModel::data(const QModelIndex &index, int role) const {
-  if (!index.isValid()){
+  if (!index.isValid()) {
     return QVariant();
   }
 
@@ -194,30 +186,30 @@ QVariant TreeModel::data(const QModelIndex &index, int role) const {
     return item->data(index.column());
   }
 
-  return QVariant();  
+  return QVariant();
 }
 
 Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const {
 
-  if (!index.isValid())  {
+  if (!index.isValid()) {
     return Qt::NoItemFlags;
   }
 
   if (readOnly) {
-      return QAbstractItemModel::flags(index);
+    return QAbstractItemModel::flags(index);
   }
 
-  if(hasChildren(index)){
-      return Qt::ItemIsEnabled|Qt::ItemIsSelectable;
-    } else {
-      return Qt::ItemIsEnabled|Qt::ItemIsSelectable|Qt::ItemIsEditable;
-    }
-    return Qt::ItemIsEnabled;
+  if (hasChildren(index)) {
+    return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+  } else {
+    return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable;
+  }
+  return Qt::ItemIsEnabled;
 }
 
 QVariant TreeModel::headerData(int section, Qt::Orientation orientation,
                                int role) const {
-  if (orientation == Qt::Horizontal && role == Qt::DisplayRole)  {
+  if (orientation == Qt::Horizontal && role == Qt::DisplayRole) {
     return rootItem->data(section);
   }
 
@@ -232,7 +224,7 @@ QModelIndex TreeModel::index(int row, int column,
 
   TreeItem *parentItem;
 
-  if (!parent.isValid()){
+  if (!parent.isValid()) {
     parentItem = rootItem;
   } else {
     parentItem = static_cast<TreeItem *>(parent.internalPointer());
@@ -309,112 +301,107 @@ QModelIndex TreeModel::indexFromItem(TreeItem *item) const {
   return createIndex(item->row(), 0, item);
 }
 
-bool TreeModel::removeColumns(int position, int columns, const QModelIndex &parent)
-{
-    beginRemoveColumns(parent, position, position + columns - 1);
-    try {
-        rootItem->removeColumns(position, columns);
-    } catch (std::out_of_range &e) {
-        qDebug() << e.what();
-        endRemoveColumns();
-        return false;
-    }
+bool TreeModel::removeColumns(int position, int columns,
+                              const QModelIndex &parent) {
+  beginRemoveColumns(parent, position, position + columns - 1);
+  try {
+    rootItem->removeColumns(position, columns);
+  } catch (std::out_of_range &e) {
+    qDebug() << e.what();
     endRemoveColumns();
+    return false;
+  }
+  endRemoveColumns();
 
-    if (rootItem->columnCount() == 0) {
-        removeRows(0, rowCount());
-    }
+  if (rootItem->columnCount() == 0) {
+    removeRows(0, rowCount());
+  }
 
-    return true;
+  return true;
 }
 
-bool TreeModel::removeRows(int position, int rows, const QModelIndex &parent)
-{
-    auto parentItem = itemFromIndex(parent);
-    if (!parentItem) {
-        return false;
-    }
+bool TreeModel::removeRows(int position, int rows, const QModelIndex &parent) {
+  auto parentItem = itemFromIndex(parent);
+  if (!parentItem) {
+    return false;
+  }
 
-    beginRemoveRows(parent, position, position + rows - 1);
-    try {
-        parentItem->removeRows(position, rows);
-    } catch (std::out_of_range &e) {
-        qDebug() << e.what();
-        endRemoveRows();
-        return false;
-    }
+  beginRemoveRows(parent, position, position + rows - 1);
+  try {
+    parentItem->removeRows(position, rows);
+  } catch (std::out_of_range &e) {
+    qDebug() << e.what();
     endRemoveRows();
+    return false;
+  }
+  endRemoveRows();
 
-    return true;
+  return true;
 }
 
-bool TreeModel::setData(const QModelIndex &index, const QVariant &value, int role)
-{
-    if (role != Qt::EditRole) {
-        return false;
-    }
+bool TreeModel::setData(const QModelIndex &index, const QVariant &value,
+                        int role) {
+  if (role != Qt::EditRole) {
+    return false;
+  }
 
-    auto item = itemFromIndex(index);
-    try {
-        item->setData(index.column(), value);
-    } catch (std::out_of_range &e) {
-        qDebug() << e.what();
-        return false;
-    }
-    emit dataChanged(index, index, {Qt::DisplayRole, Qt::EditRole});
-    return true;
+  auto item = itemFromIndex(index);
+  try {
+    item->setData(index.column(), value);
+  } catch (std::out_of_range &e) {
+    qDebug() << e.what();
+    return false;
+  }
+  emit dataChanged(index, index, {Qt::DisplayRole, Qt::EditRole});
+  return true;
 }
 
 bool TreeModel::setHeaderData(int section, Qt::Orientation orientation,
-                              const QVariant &value, int role)
-{
-    if (role != Qt::EditRole || orientation != Qt::Horizontal) {
-        return false;
-    }
+                              const QVariant &value, int role) {
+  if (role != Qt::EditRole || orientation != Qt::Horizontal) {
+    return false;
+  }
 
-    try {
-        rootItem->setData(section, value);
-    } catch (std::out_of_range &e) {
-        qDebug() << e.what();
-        return false;
-    }
+  try {
+    rootItem->setData(section, value);
+  } catch (std::out_of_range &e) {
+    qDebug() << e.what();
+    return false;
+  }
 
-    emit headerDataChanged(orientation, section, section);
-    return true;
+  emit headerDataChanged(orientation, section, section);
+  return true;
 }
 
-bool TreeModel::insertColumns(int position, int columns, const QModelIndex &parent)
-{
-    beginInsertColumns(parent, position, position + columns - 1);
-    try {
-        rootItem->insertColumns(position, columns);
-    } catch (std::out_of_range &e) {
-        qDebug() << e.what();
-        endInsertColumns();
-        return false;
-    }
+bool TreeModel::insertColumns(int position, int columns,
+                              const QModelIndex &parent) {
+  beginInsertColumns(parent, position, position + columns - 1);
+  try {
+    rootItem->insertColumns(position, columns);
+  } catch (std::out_of_range &e) {
+    qDebug() << e.what();
     endInsertColumns();
-    return true;
+    return false;
+  }
+  endInsertColumns();
+  return true;
 }
 
-bool TreeModel::insertRows(int position, int rows, const QModelIndex &parent)
-{
-    auto parentItem = itemFromIndex(parent);
-    if (!parentItem) {
-        return false;
-    }
+bool TreeModel::insertRows(int position, int rows, const QModelIndex &parent) {
+  auto parentItem = itemFromIndex(parent);
+  if (!parentItem) {
+    return false;
+  }
 
-    beginInsertRows(parent, position, position + rows - 1);
-    try {
-        parentItem->insertRows(position, rows, rootItem->columnCount());
-    } catch (std::out_of_range &e) {
-        qDebug() << e.what();
-        endInsertRows();
-        return false;
-    }
+  beginInsertRows(parent, position, position + rows - 1);
+  try {
+    parentItem->insertRows(position, rows, rootItem->columnCount());
+  } catch (std::out_of_range &e) {
+    qDebug() << e.what();
     endInsertRows();
+    return false;
+  }
+  endInsertRows();
 
-    return true;
+  return true;
 }
-
-

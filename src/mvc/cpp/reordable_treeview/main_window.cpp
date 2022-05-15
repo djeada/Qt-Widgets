@@ -7,7 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
 
-  auto model = new ReordableTreeModel(QStringList() << "Col A" << "Col B" << "Col C");
+  auto model = new ReordableTreeModel(QStringList() << "Col A"
+                                                    << "Col B"
+                                                    << "Col C");
 
   /*
 ├─Elements

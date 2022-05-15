@@ -2,7 +2,9 @@
 #include <QDebug>
 #include <QMouseEvent>
 
-ReordableTreeModel::ReordableTreeModel(const QStringList &headers, QObject *parent) : TreeModel(headers,parent) {}
+ReordableTreeModel::ReordableTreeModel(const QStringList &headers,
+                                       QObject *parent)
+    : TreeModel(headers, parent) {}
 
 void ReordableTreeModel::appendToDestination(QModelIndex sourceIndex,
                                              QModelIndex destinationIndex) {

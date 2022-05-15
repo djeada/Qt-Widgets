@@ -4,7 +4,7 @@
 class ReordableTreeModel : public TreeModel {
 
 public:
-  ReordableTreeModel(const QStringList &headers, QObject *parent=nullptr);
+  ReordableTreeModel(const QStringList &headers, QObject *parent = nullptr);
   void appendToDestination(QModelIndex sourceIndex,
                            QModelIndex destinationIndex);
   Qt::ItemFlags flags(const QModelIndex &index) const override;

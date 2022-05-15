@@ -45,7 +45,7 @@ class TreeModel : public QAbstractItemModel {
   Q_OBJECT
 
 public:
-  TreeModel(const QStringList &headers, QObject *parent=nullptr);
+  TreeModel(const QStringList &headers, QObject *parent = nullptr);
   ~TreeModel();
 
   QVariant data(const QModelIndex &index, int role) const override;
@@ -60,18 +60,18 @@ public:
   int columnCount(const QModelIndex &parent = QModelIndex()) const override;
   void appendRow(const QStringList &data);
   void setHorizontalHeaderLabels(const QStringList &labels);
-      bool setData(const QModelIndex &index, const QVariant &value,
-                 int role = Qt::EditRole) override;
-    bool setHeaderData(int section, Qt::Orientation orientation,
-                       const QVariant &value, int role = Qt::EditRole) override;
-    bool insertColumns(int position, int columns,
-                       const QModelIndex &parent = QModelIndex()) override;
-    bool removeColumns(int position, int columns,
-                       const QModelIndex &parent = QModelIndex()) override;
-    bool insertRows(int position, int rows,
-                    const QModelIndex &parent = QModelIndex()) override;
-    bool removeRows(int position, int rows,
-                    const QModelIndex &parent = QModelIndex()) override;
+  bool setData(const QModelIndex &index, const QVariant &value,
+               int role = Qt::EditRole) override;
+  bool setHeaderData(int section, Qt::Orientation orientation,
+                     const QVariant &value, int role = Qt::EditRole) override;
+  bool insertColumns(int position, int columns,
+                     const QModelIndex &parent = QModelIndex()) override;
+  bool removeColumns(int position, int columns,
+                     const QModelIndex &parent = QModelIndex()) override;
+  bool insertRows(int position, int rows,
+                  const QModelIndex &parent = QModelIndex()) override;
+  bool removeRows(int position, int rows,
+                  const QModelIndex &parent = QModelIndex()) override;
   TreeItem *item(int row, int column = 0) const;
   TreeItem *itemFromIndex(const QModelIndex &index) const;
   void setReadOnly(bool flag);
