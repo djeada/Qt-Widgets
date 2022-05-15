@@ -43,7 +43,9 @@ def create_file(path, name, content):
     curr_dir = QtCore.QDir(path)
     if not curr_dir.exists(name):
         file = QtCore.QFile(path + "/" + name)
-        if not file.open(QtCore.QIODevice.OpenModeFlag.WriteOnly | QtCore.QIODevice.OpenModeFlag.Text):
+        if not file.open(
+            QtCore.QIODevice.OpenModeFlag.WriteOnly | QtCore.QIODevice.OpenModeFlag.Text
+        ):
             raise RuntimeError("Cannot create file")
         text_stream = QtCore.QTextStream(file)
         for i in range(len(content)):
@@ -90,5 +92,5 @@ def main():
         print(e)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

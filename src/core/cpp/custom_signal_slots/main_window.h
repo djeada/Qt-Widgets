@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
 #include <QDebug>
+#include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,10 +17,10 @@ public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
 signals:
-    void sendString(QString);
-    
+  void sendString(QString);
+
 private slots:
-    void display(QString);
+  void display(QString);
 
 private:
   Ui::MainWindow *ui;

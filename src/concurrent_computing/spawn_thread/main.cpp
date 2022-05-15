@@ -1,13 +1,15 @@
 
 #include <QCoreApplication>
-#include <QtConcurrent>
 #include <QDebug>
 #include <QVector>
+#include <QtConcurrent>
 
 void foo() {
-  qDebug() << "Starting worker function with id: " << QThread::currentThreadId();
+  qDebug() << "Starting worker function with id: "
+           << QThread::currentThreadId();
   QThread::sleep(1);
-  qDebug() << "Worker function finished with id: " << QThread::currentThreadId();
+  qDebug() << "Worker function finished with id: "
+           << QThread::currentThreadId();
 }
 
 int main(int argc, char *argv[]) {
@@ -24,5 +26,4 @@ int main(int argc, char *argv[]) {
   }
 
   return 0;
- 
 }

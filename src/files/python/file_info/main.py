@@ -1,10 +1,14 @@
 from PyQt6 import QtCore
 
+
 def display_sub_dir_info(root_dir):
     print(f"Following subdirs found in : {root_dir.absolutePath()}")
-    dirs = root_dir.entryInfoList(QtCore.QDir.Filter.Dirs | QtCore.QDir.Filter.NoDotAndDotDot)
+    dirs = root_dir.entryInfoList(
+        QtCore.QDir.Filter.Dirs | QtCore.QDir.Filter.NoDotAndDotDot
+    )
     for found_dir in dirs:
         print(found_dir.fileName())
+
 
 def display_child_files_info(root_dir):
     print(f"Following files found in : {root_dir.absolutePath()}")
@@ -27,5 +31,5 @@ def main():
     display_file_info(QtCore.QDir.homePath())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -7,7 +7,7 @@ from PyQt6.QtCore import pyqtSlot
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main_window.ui', self)
+        uic.loadUi("main_window.ui", self)
 
         # connect reset button released with progressBar
         self.resetButton.clicked.connect(self.slot_resetButton)
@@ -22,7 +22,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     @pyqtSlot()
     def slot_resetButton(self):
-        print('rest')
+        print("rest")
         self.progressBar.setValue(0)
 
     @pyqtSlot()
@@ -32,7 +32,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.progressBar.stop()
 
     @pyqtSlot()
-    def slot_startButton(self, flag ):
+    def slot_startButton(self, flag):
         self.stopButton.setChecked(not flag)
         if flag:
             self.progressBar.start()
@@ -44,5 +44,5 @@ def main():
     app.exec()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

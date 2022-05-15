@@ -12,7 +12,9 @@ def main():
 
     path = "player.json"
     file = QtCore.QFile(path)
-    if not file.open(QtCore.QIODevice.OpenModeFlag.WriteOnly | QtCore.QIODevice.OpenModeFlag.Text):
+    if not file.open(
+        QtCore.QIODevice.OpenModeFlag.WriteOnly | QtCore.QIODevice.OpenModeFlag.Text
+    ):
         print("Cannot create file")
         return 1
     text_stream = QtCore.QTextStream(file)
@@ -40,5 +42,5 @@ def main():
     QtCore.QFile.remove(path)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

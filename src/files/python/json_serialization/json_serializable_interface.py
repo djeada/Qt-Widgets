@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-class JsonSerializableInterface(ABC):
 
+class JsonSerializableInterface(ABC):
     @abstractmethod
     def to_json(self, root) -> None:
         pass

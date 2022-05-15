@@ -20,7 +20,6 @@ void ArrowBox::paintEvent(QPaintEvent *e) {
                       << QPointF(width() / 2, height())
                       << QPointF(width() / 2 - 0.2 * width(), 0.8 * height())
                       << QPointF(width() / 2 + 0.2 * width(), 0.8 * height()));
-                
 }
 
 QSize ArrowBox::sizeHint() const {

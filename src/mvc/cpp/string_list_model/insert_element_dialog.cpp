@@ -11,7 +11,6 @@ InsertElementDialog::InsertElementDialog(QWidget *parent)
     emit elementSelected(data);
     close();
   });
-
 }
 
 void InsertElementDialog::setMaxIndex(int maxIndex) {

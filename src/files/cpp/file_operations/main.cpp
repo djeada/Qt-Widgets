@@ -36,19 +36,19 @@ void renameDir(QString path, QString oldName, QString newName) {
   QDir dir(path);
 
   if (dir.exists(oldName)) {
-      QString oldPathAbsolute = dir.absolutePath() + "/" + oldName;
+    QString oldPathAbsolute = dir.absolutePath() + "/" + oldName;
 
-      // check if it exists 
-      if (!QFileInfo(oldPathAbsolute).isDir()) {
-        throw std::runtime_error("Dir does not exist");
-      }
+    // check if it exists
+    if (!QFileInfo(oldPathAbsolute).isDir()) {
+      throw std::runtime_error("Dir does not exist");
+    }
 
-      QString newPathAbsolute = dir.absolutePath() + "/" + newName;
+    QString newPathAbsolute = dir.absolutePath() + "/" + newName;
 
-      // check if it exists
-      if (QFileInfo(newPathAbsolute).isDir()) {
-        throw std::runtime_error("New name is already in use");
-      }
+    // check if it exists
+    if (QFileInfo(newPathAbsolute).isDir()) {
+      throw std::runtime_error("New name is already in use");
+    }
 
     if (!dir.rename(oldName, newName)) {
       throw std::runtime_error("Cannot rename dir");

@@ -21,6 +21,5 @@ private:
   Ui::MainWindow *ui;
   int counter;
   QFutureWatcher<int> watcher;
-
 };
 #endif // MAINWINDOW_H

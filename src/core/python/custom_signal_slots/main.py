@@ -10,9 +10,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def __init__(self):
         super().__init__()
-        uic.loadUi('main_window.ui', self)
+        uic.loadUi("main_window.ui", self)
 
-        self.pushButton.clicked.connect(lambda : self.send_string.emit(self.lineEdit.text()))
+        self.pushButton.clicked.connect(
+            lambda: self.send_string.emit(self.lineEdit.text())
+        )
         self.send_string.connect(lambda message: self.slot_display_string(message))
         self.show()
 
@@ -27,5 +29,5 @@ def main():
     app.exec()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
