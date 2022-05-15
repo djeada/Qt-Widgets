@@ -2,14 +2,13 @@
 #include <QDebug>
 #include <QMouseEvent>
 
-ReordableTreeModel::ReordableTreeModel(QObject *parent) : TreeModel(parent) {}
+ReordableTreeModel::ReordableTreeModel(const QStringList &headers, QObject *parent) : TreeModel(headers,parent) {}
 
 void ReordableTreeModel::appendToDestination(QModelIndex sourceIndex,
                                              QModelIndex destinationIndex) {
   auto sourceItem = static_cast<TreeItem *>(sourceIndex.internalPointer());
   auto destinationItem =
       static_cast<TreeItem *>(destinationIndex.internalPointer());
-  auto sourceParentItem = sourceItem->parentItem();
   destinationItem->appendChild(sourceItem);
   emit dataChanged(sourceIndex, sourceIndex);
   emit dataChanged(destinationIndex, destinationIndex);
@@ -60,6 +59,7 @@ void ReordableTreeView::dropEvent(QDropEvent *event) {
   dropIndex = indexAt(event->position().toPoint());
   model()->appendToDestination(dragIndex, dropIndex);
   reset();
+  expandAll();
 }
 
 void ReordableTreeView::dragMoveEvent(QDragMoveEvent *event) {
