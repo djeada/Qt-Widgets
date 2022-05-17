@@ -1,3 +1,27 @@
+## Table of Contents
+<!--ts-->
+
+  - [Requirements](#Requirements)
+  - [Compilation](#Compilation)
+    - [Qt-Creator-IDE](#Qt-Creator-IDE)
+    - [Terminal](#Terminal)
+      - [Windows:](#Windows:)
+      - [Linux/macOS:](#Linux/macOS:)
+    - [PyQt](#PyQt)
+  - [Content](#Content)
+    - [Core](#Core)
+    - [Collections-And-Algorithms](#Collections-And-Algorithms)
+    - [Widgets](#Widgets)
+    - [MVC](#MVC)
+    - [Graphics](#Graphics)
+    - [Files](#Files)
+    - [Network](#Network)
+    - [Concurrent-Computing](#Concurrent-Computing)
+    - [Plots](#Plots)
+    - [Other](#Other)
+
+<!--te-->
+
 # Qt-Widgets
 Programs written in C++ and Python that make use of Qt6 widgets.
 
@@ -119,7 +143,7 @@ How to implement it using Qt framework?
 
 2. The separation of real data storage and organization (which must occur in the model and the related proxy models) and presentation is an obvious benefit of <code>QAbstractItemModel</code> abstraction. Allows for complete customisation. It requires a thorough understanding of its inner workings.
 
-## Graphics
+### Graphics
 
 Two main classes allow us to implement custom graphics: <code>QPainter</code> and <code>QGraphicsView</code>.
 
@@ -165,7 +189,7 @@ Description | Screenshot
 **[Spawn Process](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/spawn_process)** - The <code>QProcess</code> allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes. Spawn a single process and wait for it to finish.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/status_bar">Python</a> implementation as well. | <img src="" width="2000"/>
 **[CMD Interface](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/cmd_interface)** - A simple command line interface that allows you to execute commands as if they were typed in the console.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/status_bar">Python</a> implementation as well. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/cmd_interface.gif" alt="drawing" width="2000"/>
     
-## Plots
+### Plots
 
 Qt applications may be used to build visually appealing, interactive dashboards. Aside from the native QtCharts library, there is also support for the widely used Matplotlib. Any modern plotting library may, however, be used (with little effort).
     
