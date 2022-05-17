@@ -1,5 +1,5 @@
 # Qt-Widgets
-Programs written in C++ and Python that make advantage of Qt6 widgets.
+Programs written in C++ and Python that make use of Qt6 widgets.
 
 ## Requirements
 
