@@ -143,6 +143,13 @@ How to implement it using Qt framework?
 
 2. The separation of real data storage and organization (which must occur in the model and the related proxy models) and presentation is an obvious benefit of <code>QAbstractItemModel</code> abstraction. Allows for complete customisation. It requires a thorough understanding of its inner workings.
 
+Description | Screenshot 
+---|---
+**[String List Model](https://github.com/djeada/Qt-Widgets/tree/master/src/mvc/cpp/string_list_model)** - The <code>QStringListModel</code> class provides a simple model that stores a list of strings. It is suitable for use with a <code>QListView</code> or <code>QComboBox</code>. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/string_list_model.gif" alt="drawing" width="2000"/>
+**[Tree Model](https://github.com/djeada/Qt-Widgets/tree/master/src/mvc/cpp/tree_model)** - Simple implementation of a tree model. The items are stored using hierarchical relationships. It is suitable for use with a <code>QTreeView</code>. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/tree_model.gif" alt="drawing" width="2000"/>
+**[Reordable Tree View](https://github.com/djeada/Qt-Widgets/tree/master/src/mvc/cpp/reordable_tree_view)** - Extending tree model to allow reordering of items. Reordering is triggered trough drag and drop mechanis in <code>QTreeView</code>. Selected item is moved with all its children to the new position. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/reordable_tree_view.gif" alt="drawing" width="2000"/>
+**[Custom Item Delegate](https://github.com/djeada/Qt-Widgets/tree/master/src/mvc/cpp/item_delegate)** - Custom item delegate for <code>QListView</code>. The example shows how to position the text and add different style to it, as well as how to paint custom shapes and how to dipslay custom widgets instead of text. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/custom_delegate.gif" alt="drawing" width="2000"/>
+
 ### Graphics
 
 Two main classes allow us to implement custom graphics: <code>QPainter</code> and <code>QGraphicsView</code>.
