@@ -8,19 +8,18 @@
 ClickableTreeView::ClickableTreeView(QWidget *parent) : QTreeView(parent) {
 
   setContextMenuPolicy(Qt::CustomContextMenu);
-  connect(this, &ClickableTreeView::customContextMenuRequested, this,
-          [&](const QPoint &pos) {
+  auto setupMenu = [&](const QPoint &pos) {
             QModelIndex index = indexAt(pos);
             if (!index.isValid())
               return;
             QMenu menu;
-            QList<QString> actionNames = {"New Directory", "New File", "Remove selected", "Rename selected", "Copy", "Cut", "Paste", "Copy Absolute Path", "Expand All", "Collapse All"};
+            QList<QString> actionNames = {"New Directory", "New File", "Remove selected", "Rename", "Copy", "Cut", "Paste", "Copy Absolute Path", "Expand All", "Collapse All"};
             for (auto &name : actionNames) {
               auto action = new QAction(name, this);
               menu.addAction(action);
             }
             menu.insertSeparator(menu.actions().at(2));
-            menu.insertSeparator(menu.actions().at(5));
+            menu.insertSeparator(menu.actions().at(4));
             menu.insertSeparator(menu.actions().at(10));
             auto selectedAction = menu.exec(mapToGlobal(pos));
             switch (menu.actions().indexOf(selectedAction)) {
@@ -36,15 +35,15 @@ ClickableTreeView::ClickableTreeView(QWidget *parent) : QTreeView(parent) {
             }
             case 3:{
               // remove selected
-              while ( selectedIndexes().size() > 0 ) {
-                model()->remove(selectedIndexes().at(0));
-              }
+              auto selceted = selectedIndexes();
+              for (auto iterator = selceted.end(); iterator-- != selceted.begin(); ) {
+                model()->remove(*iterator);
+            }
               break;
             }
-            case 4:{
+            case 5:{
               // rename selected
-              qDebug() << "rename selected";
-              edit(index);
+                edit(index);
               break;
             }
             case 6:{
@@ -87,11 +86,13 @@ ClickableTreeView::ClickableTreeView(QWidget *parent) : QTreeView(parent) {
               break;
             }
             }
-          });
+          };
 
+  connect(this, &ClickableTreeView::customContextMenuRequested, this, setupMenu);
   setEditTriggers(QAbstractItemView::NoEditTriggers);
-  header()->hide();
   setSelectionMode(QAbstractItemView::ExtendedSelection);
+  header()->hide();
+
 }
 
 ClickableTreeView::~ClickableTreeView() {}
@@ -107,16 +108,4 @@ void ClickableTreeView::setModel(FileDirModel *model) {
     hideColumn(i);
 }
 
-void ClickableTreeView::addChild(QModelIndex index) {
-  auto model = this->model();
 
-  expandAll();
-}
-
-void ClickableTreeView::removeItem(QModelIndex index) {
-  auto model = this->model();
-
-  expandAll();
-}
-
-void ClickableTreeView::editItem(QModelIndex index) { edit(index); }

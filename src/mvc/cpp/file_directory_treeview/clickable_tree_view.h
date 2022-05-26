@@ -7,9 +7,6 @@ class ClickableTreeView : public QTreeView {
 public:
   ClickableTreeView(QWidget *parent = nullptr);
   ~ClickableTreeView();
-  void addChild(QModelIndex index);
-  void removeItem(QModelIndex index);
-  void editItem(QModelIndex index);
   void setModel(FileDirModel *model);
   FileDirModel *model() const;
 private:

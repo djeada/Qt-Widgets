@@ -168,5 +168,3 @@ bool FileDirModel::paste(const QModelIndex &index, const QString &path){
     return false;
 }
 
-
-
