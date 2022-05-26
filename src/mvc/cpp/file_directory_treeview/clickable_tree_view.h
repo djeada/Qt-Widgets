@@ -12,4 +12,7 @@ public:
   void editItem(QModelIndex index);
   void setModel(FileDirModel *model);
   FileDirModel *model() const;
+private:
+  QModelIndex previouslySelected;
+  QString selectedPath;
 };

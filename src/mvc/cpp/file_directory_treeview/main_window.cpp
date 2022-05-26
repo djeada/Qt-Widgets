@@ -10,9 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
   auto model = new FileDirModel(this);
   model->setRootPath(QDir::currentPath());
   ui->treeView->setModel(model);
-  
-
-
 }
 
 MainWindow::~MainWindow() { delete ui; }

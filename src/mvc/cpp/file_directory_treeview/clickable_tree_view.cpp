@@ -2,6 +2,8 @@
 #include <QAction>
 #include <QMenu>
 #include <QHeaderView>
+#include <QApplication>
+#include <QClipboard>
 
 ClickableTreeView::ClickableTreeView(QWidget *parent) : QTreeView(parent) {
 
@@ -12,28 +14,84 @@ ClickableTreeView::ClickableTreeView(QWidget *parent) : QTreeView(parent) {
             if (!index.isValid())
               return;
             QMenu menu;
-            auto addChildAction = menu.addAction("Add Child");
-            auto removeItemAction = menu.addAction("Remove Item");
-            auto editItemAction = menu.addAction("Edit Item");
+            QList<QString> actionNames = {"New Directory", "New File", "Remove selected", "Rename selected", "Copy", "Cut", "Paste", "Copy Absolute Path", "Expand All", "Collapse All"};
+            for (auto &name : actionNames) {
+              auto action = new QAction(name, this);
+              menu.addAction(action);
+            }
+            menu.insertSeparator(menu.actions().at(2));
+            menu.insertSeparator(menu.actions().at(5));
+            menu.insertSeparator(menu.actions().at(10));
             auto selectedAction = menu.exec(mapToGlobal(pos));
             switch (menu.actions().indexOf(selectedAction)) {
-            case 0:
-              addChild(index);
+            case 0:{
+              // create new directory using mkdir
+              model()->mkdir(index, "");
               break;
-            case 1:
-              removeItem(index);
+            }
+            case 1:{
+              // create new file using touch
+              model()->touch(index, "");
               break;
-            case 2:
-              editItem(index);
+            }
+            case 3:{
+              // remove selected
+              while ( selectedIndexes().size() > 0 ) {
+                model()->remove(selectedIndexes().at(0));
+              }
               break;
-            default:
+            }
+            case 4:{
+              // rename selected
+              qDebug() << "rename selected";
+              edit(index);
               break;
+            }
+            case 6:{
+              // copy selected
+              selectedPath = model()->filePath(index);
+              break;
+            }
+            case 7:{
+              // cut selected
+              selectedPath = model()->filePath(index);
+              previouslySelected = index;
+              break;
+            }
+            case 8:{
+              // paste selected
+              if (selectedPath.isEmpty()) {
+                return;
+              }
+              model()->paste(index, selectedPath);
+              if (previouslySelected.isValid()) {
+                model()->remove(previouslySelected);
+                previouslySelected = QModelIndex();
+                selectedPath = "";
+              }
+              break;
+            }
+            case 9:{
+              // copy absolute path
+              QApplication::clipboard()->setText(model()->filePath(index));
+              break;
+            }
+            case 11:{
+              // expand all
+              expandAll();
+              break;
+            }
+            case 12:{
+              // collapse all
+              collapseAll();
+              break;
+            }
             }
           });
 
   setEditTriggers(QAbstractItemView::NoEditTriggers);
-  // hide header
   header()->hide();
+  setSelectionMode(QAbstractItemView::ExtendedSelection);
 }
 
 ClickableTreeView::~ClickableTreeView() {}
