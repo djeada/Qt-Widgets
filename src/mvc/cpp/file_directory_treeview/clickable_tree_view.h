@@ -1,5 +1,5 @@
-#include <QTreeView>
 #include "file_dir_model.h"
+#include <QTreeView>
 
 class ClickableTreeView : public QTreeView {
   Q_OBJECT
@@ -9,6 +9,7 @@ public:
   ~ClickableTreeView();
   void setModel(FileDirModel *model);
   FileDirModel *model() const;
+
 private:
   QModelIndex previouslySelected;
   QString selectedPath;
