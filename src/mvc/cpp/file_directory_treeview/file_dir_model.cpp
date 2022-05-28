@@ -143,7 +143,7 @@ bool FileDirModel::paste(const QModelIndex &index, const QString &path) {
   // if path represents a file copy a file to parentIndex
   if (QFileInfo(path).isFile()) {
     auto uniqueName = getUniqueName(fileInfo(parentIndex).absoluteFilePath(),
-                                    QFileInfo(path).fileName());
+                                    QFileInfo(path).baseName());
     auto destPath = fileInfo(parentIndex).absoluteFilePath() + "/" + uniqueName;
     return copyFile(path, destPath);
   }
@@ -151,10 +151,20 @@ bool FileDirModel::paste(const QModelIndex &index, const QString &path) {
   // if path represents a directory copy a directory to parentIndex
   if (QFileInfo(path).isDir()) {
     auto uniqueName = getUniqueName(fileInfo(parentIndex).absoluteFilePath(),
-                                    QFileInfo(path).fileName());
+                                    QFileInfo(path).baseName());
     auto destPath = fileInfo(parentIndex).absoluteFilePath() + "/" + uniqueName;
     return copyDirectory(path, destPath);
   }
 
   return false;
+}
+
+
+bool FileDirModel::appendToDestination(QModelIndex sourceIndex,
+                                             QModelIndex destinationIndex) {
+    if(paste(destinationIndex, fileInfo(sourceIndex).absoluteFilePath())) {
+    remove(sourceIndex);
+    return true;
+    }
+    return false;
 }

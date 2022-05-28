@@ -4,12 +4,88 @@
 #include <QClipboard>
 #include <QHeaderView>
 #include <QMenu>
+#include <QDropEvent>
 
 ClickableTreeView::ClickableTreeView(QWidget *parent) : QTreeView(parent) {
 
   setContextMenuPolicy(Qt::CustomContextMenu);
-  auto setupMenu = [&](const QPoint &pos) {
-    QModelIndex index = indexAt(pos);
+  connect(this, &ClickableTreeView::customContextMenuRequested, this,  &ClickableTreeView::setupContextMenu);
+  setEditTriggers(QAbstractItemView::NoEditTriggers);
+  setSelectionMode(QAbstractItemView::ExtendedSelection);
+  setDragEnabled(true);
+  setAcceptDrops(true);
+  setDropIndicatorShown(true);
+  setDragDropMode(QAbstractItemView::InternalMove);
+  header()->hide();
+}
+
+ClickableTreeView::~ClickableTreeView() {}
+
+FileDirModel *ClickableTreeView::model() const {
+  return static_cast<FileDirModel *>(QTreeView::model());
+}
+
+void ClickableTreeView::setModel(FileDirModel *model) {
+  QTreeView::setModel(model);
+  // hide all columns except the first one
+  for (int i = 1; i < model->columnCount(); ++i)
+    hideColumn(i);
+}
+
+
+void ClickableTreeView::startDrag(Qt::DropActions supportedActions) {
+  dragIndex = currentIndex();
+  QTreeView::startDrag(supportedActions);
+}
+
+void ClickableTreeView::dropEvent(QDropEvent *event) {
+  dropIndex = indexAt(event->position().toPoint());
+  model()->appendToDestination(dragIndex, dropIndex);
+}
+
+bool ClickableTreeView::mkdir(const QModelIndex &index, const QString &name) {
+  return model()->mkdir(index, name).isValid();
+}
+
+
+bool ClickableTreeView::touch(const QModelIndex &index, const QString &name) {
+  return model()->touch(index, name);
+}
+
+
+void ClickableTreeView::removeSelectedIndexes() {
+  auto selceted = selectedIndexes();
+  for (auto iterator = selceted.end(); iterator-- != selceted.begin();) {
+    model()->remove(*iterator);
+  }
+}
+
+
+void ClickableTreeView::startCopy(const QModelIndex &sourceIndex) {
+  selectedPath = model()->filePath(sourceIndex);
+}
+
+
+void ClickableTreeView::startCut(const QModelIndex &sourceIndex) {
+    selectedPath = model()->filePath(sourceIndex);
+    previouslySelected = sourceIndex;  
+}
+
+bool ClickableTreeView::pasteSelected(const QModelIndex &destinationIndex) {
+ if (selectedPath.isEmpty()) {
+        return true;
+      }
+      auto flag = model()->paste(destinationIndex, selectedPath);
+      if (previouslySelected.isValid()) {
+        flag &= model()->remove(previouslySelected);
+        previouslySelected = QModelIndex();
+        selectedPath = "";
+      }
+      return flag;
+}
+
+void ClickableTreeView:: setupContextMenu(const QPoint &pos) {
+auto index = indexAt(pos);
     if (!index.isValid())
       return;
     QMenu menu;
@@ -28,20 +104,17 @@ ClickableTreeView::ClickableTreeView(QWidget *parent) : QTreeView(parent) {
     switch (menu.actions().indexOf(selectedAction)) {
     case 0: {
       // create new directory using mkdir
-      model()->mkdir(index, "");
+      mkdir(index, "");
       break;
     }
     case 1: {
       // create new file using touch
-      model()->touch(index, "");
+      touch(index, "");
       break;
     }
     case 3: {
       // remove selected
-      auto selceted = selectedIndexes();
-      for (auto iterator = selceted.end(); iterator-- != selceted.begin();) {
-        model()->remove(*iterator);
-      }
+      removeSelectedIndexes();
       break;
     }
     case 5: {
@@ -51,26 +124,17 @@ ClickableTreeView::ClickableTreeView(QWidget *parent) : QTreeView(parent) {
     }
     case 6: {
       // copy selected
-      selectedPath = model()->filePath(index);
+      startCopy(index);
       break;
     }
     case 7: {
       // cut selected
-      selectedPath = model()->filePath(index);
-      previouslySelected = index;
+      startCut(index);
       break;
     }
     case 8: {
       // paste selected
-      if (selectedPath.isEmpty()) {
-        return;
-      }
-      model()->paste(index, selectedPath);
-      if (previouslySelected.isValid()) {
-        model()->remove(previouslySelected);
-        previouslySelected = QModelIndex();
-        selectedPath = "";
-      }
+      pasteSelected(index);
       break;
     }
     case 9: {
@@ -89,24 +153,24 @@ ClickableTreeView::ClickableTreeView(QWidget *parent) : QTreeView(parent) {
       break;
     }
     }
-  };
-
-  connect(this, &ClickableTreeView::customContextMenuRequested, this,
-          setupMenu);
-  setEditTriggers(QAbstractItemView::NoEditTriggers);
-  setSelectionMode(QAbstractItemView::ExtendedSelection);
-  header()->hide();
 }
 
-ClickableTreeView::~ClickableTreeView() {}
+void ClickableTreeView::keyPressEvent(QKeyEvent *event)
+{
+    // check if key is ctrl+c, ctrl+x, ctrl+v or delete
+    if (event->key() == Qt::Key_Delete || event->key() == Qt::Key_Backspace) {
+        removeSelectedIndexes();
+    }
+    else if (event->key() == Qt::Key_C && event->modifiers() == Qt::ControlModifier) {
+        startCopy(currentIndex());
+    }
+    else if (event->key() == Qt::Key_X && event->modifiers() == Qt::ControlModifier) {
+        startCut(currentIndex());
+    }
+    else if (event->key() == Qt::Key_V && event->modifiers() == Qt::ControlModifier) {
+        pasteSelected(currentIndex());
+    }
+    
+    QTreeView::keyPressEvent(event);
 
-FileDirModel *ClickableTreeView::model() const {
-  return static_cast<FileDirModel *>(QTreeView::model());
-}
-
-void ClickableTreeView::setModel(FileDirModel *model) {
-  QTreeView::setModel(model);
-  // hide all columns except the first one
-  for (int i = 1; i < model->columnCount(); ++i)
-    hideColumn(i);
 }
