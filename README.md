@@ -132,8 +132,8 @@ Description | Screenshot
 What is Model-View-Controler?
 
 It is a common method of separating concerns about the presentation and modification of dynamic content in graphical applications:
-
-* Model: It is concerned with connecting to the data source. The data may already be in memory, or it may be requested from a database or read from a file. After receiving the necessary information, it organizes it into cells with potentially numerous rows and columns. It chooses what should and should not be displayed. Finally, the model provides an API for accessing, modifying, inserting, and removing cells. It determines what is allowed and how it is carried out. 
+  
+* Model: It is concerned with connecting us to the data source. The data may already be in memory, or it may be requested from a database or read from a file. After receiving the necessary information, it organizes it into cells with potentially numerous rows and columns. It chooses what should and should not be displayed. Finally, the model provides an API for accessing, modifying, inserting, and removing cells. It determines what data interactions are permitted and how they are carried out.
 * View: It receives the model's data. The data already has a suitable structure, and the view is aware of the cells, rows, and columns that model has prepared. It is simply concerned with how those elements will be displayed. It selects the appropriate font, colors, spacing between elements, slider bars, and so forth.
 * Controller: The controller allows the user to interact with the data displayed in the view. The standard method is to collect user events such as keystrokes and mouse clicks and then call the relevant function from the model API. 
 
