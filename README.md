@@ -96,66 +96,12 @@ When subclassing <code>QObject</code>, you must include the <code>Q_OBJECT</code
       void someSlot();
     };
 
-<table>
-    <tr>
-        <th align="center">
-            <img width="441"/>
-<p>Description</p>
-        </th>
-        <th align="center">
-            <img width="441"/>
-<p>Screenshot</p>
-        </th>
-    </tr>
-    <tr>
-        <td>
-
-**[Children Generator](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/children_generator)** - Example of parent-child relationship in Qt. The generator may be used to create and delete children on the fly. When the generator instance is destroyed, all of its children are also destroyed.
-
-</td>
-<td>
-
-![](https://user-images.githubusercontent.com/37275728/174343131-44e1644d-2188-42c0-9b86-d6d6ae9e9818.gif)
-
-</td>
-    </tr>
-    <tr>
-        <td>
-          
-**[Custom Signal and Slots](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/custom_signal_slots)** - A slot is just a standard method that may be connected to a signal. Many slots can be connected to a single signal. A signal is just a value that may be emitted by any function. When the signal is emitted, the value emitted by the signal is passed as a parameter to all associated slots.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/core/python/custom_signal_slots">Python</a> implementation as well.
-
-</td>
-<td>
-  
-![custom_signal_slots](https://user-images.githubusercontent.com/37275728/174352043-88d09439-d504-4ffe-802b-555a5fe669d8.gif)
-
-</td>
-    </tr>
-    <tr>
-        <td>
-          
-**[Smart Pointers](https://github.com/djeada/Qt-Widgets/tree/master/src/core/smart_pointers)** - A smart pointer is an abstract data type that has all of the properties of a raw pointer plus automated garbage collection. Qt featured smart pointers long before they were included in C++ standard. These are also used in some of the projects. However, raw pointers are typically used for <code>QObjects</code> since they utilise a parent-child model to manage all issues related to the objects life cycle.
-
-</td>
-<td>
-
-![smart_pointers](https://user-images.githubusercontent.com/37275728/174352307-5e5a7333-6cb3-4d16-87d7-ffe48cac5bcf.gif)
-
-</td>
-    </tr>
-    <tr>
-        <td>
-          
-**[QVariant and QMetaType](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/qvariant_and_qmetatype)** - The <code>QVariant</code> class serves as a union for the most commonly used Qt data types. Because C++ prohibits unions from containing types with non-default constructors or destructors, the majority of useful Qt classes cannot be used in raw unions. The type is registered via the <code>Q_DECLARE_METATYPE(Type)</code> macro, so that <code>QMetaType</code> can recognize this type. <code>Q_DECLARE_METATYPE</code> expects a class or struct to contain a default constructor, a copy constructor, and a public destructor.
-
-</td>
-<td>
-
-![qvariant_and_qmetatype](https://user-images.githubusercontent.com/37275728/174352447-56258e05-1edf-4073-918b-20afa8784f42.gif)
-
-</td>
-    </tr>
-</table>
+Description | Screenshot
+---|---
+**[Children Generator](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/children_generator)** - Example of parent-child relationship in Qt. The generator may be used to create and delete children on the fly. When the generator instance is destroyed, all of its children are also destroyed.| <img width="2000"/>![](https://user-images.githubusercontent.com/37275728/174343131-44e1644d-2188-42c0-9b86-d6d6ae9e9818.gif)
+**[Custom Signal and Slots](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/custom_signal_slots)** - A slot is just a standard method that may be connected to a signal. Many slots can be connected to a single signal. A signal is just a value that may be emitted by any function. When the signal is emitted, the value emitted by the signal is passed as a parameter to all associated slots.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/core/python/custom_signal_slots">Python</a> implementation as well.|![custom_signal_slots](https://user-images.githubusercontent.com/37275728/174352043-88d09439-d504-4ffe-802b-555a5fe669d8.gif)
+**[Smart Pointers](https://github.com/djeada/Qt-Widgets/tree/master/src/core/smart_pointers)** - A smart pointer is an abstract data type that has all of the properties of a raw pointer plus automated garbage collection. Qt featured smart pointers long before they were included in C++ standard. These are also used in some of the projects. However, raw pointers are typically used for <code>QObjects</code> since they utilise a parent-child model to manage all issues related to the objects life cycle.|![smart_pointers](https://user-images.githubusercontent.com/37275728/174352307-5e5a7333-6cb3-4d16-87d7-ffe48cac5bcf.gif)
+**[QVariant and QMetaType](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/qvariant_and_qmetatype)** - The <code>QVariant</code> class serves as a union for the most commonly used Qt data types. Because C++ prohibits unions from containing types with non-default constructors or destructors, the majority of useful Qt classes cannot be used in raw unions. The type is registered via the <code>Q_DECLARE_METATYPE(Type)</code> macro, so that <code>QMetaType</code> can recognize this type. <code>Q_DECLARE_METATYPE</code> expects a class or struct to contain a default constructor, a copy constructor, and a public destructor.|![qvariant_and_qmetatype](https://user-images.githubusercontent.com/37275728/174352447-56258e05-1edf-4073-918b-20afa8784f42.gif)
 
 ### Collections And Algorithms
 
@@ -165,10 +111,10 @@ So the obvious issue is whether you should use Qt's containers or STL. The ones 
 
 Description | Screenshot 
 ---|---
-**[QList](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qlist)** - <code>QList</code> is a generic container class in Qt. It keeps a list of values and allows for rapid index-based access as well as quick insertions and deletions. Despite the fact that it is implemented as an array-list, it has very fast prepends and appends. <code>QList</code> is the ideal type to utilize for most purposes. This example shows how to initialize, display, and find and delete the list's elements.<br><br> A quick remark for Python programmers: Python lists cannot be serialized using <code>QDataStream</code>, whereas <code>QList</code> can be serialized using C++. When porting the C++ code, <code>QList</code> cannot always be replaced with Python list.| <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/qlist.gif" alt="drawing" width="2000"/>
-**[QList vs QVector](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qlist_vs_qvector)** - <code>QVector</code> is very similar in use to <code>QList</code>. One distinction is that items of <code>QVector</code> are always stored in a contignous way in memory, whereas <code>QList</code> does not. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/qlist_vs_qvector.gif" alt="drawing" width="2000"/>
-**[QSet](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qset)** - <code>QSet</code> assures the uniquness of it's elements. Although the order in which the elements are inserted is lost. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/qset.gif" alt="drawing" width="2000"/>
-**[QMap](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qmap)** - The <code>QMap</code> class is a template class that offers a dictionary based on a red-black tree. <code>QMap<Key, T></code> is a generic container class in Qt. It holds (key, value) pairs and allows for quick access to the value associated with a key. Use it anytime you don't want numeric (or ordered) indices. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/qmap.gif" alt="drawing" width="2000"/>
+**[QList](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qlist)** - <code>QList</code> is a generic container class in Qt. It keeps a list of values and allows for rapid index-based access as well as quick insertions and deletions. Despite the fact that it is implemented as an array-list, it has very fast prepends and appends. <code>QList</code> is the ideal type to utilize for most purposes. This example shows how to initialize, display, and find and delete the list's elements.<br><br> A quick remark for Python programmers: Python lists cannot be serialized using <code>QDataStream</code>, whereas <code>QList</code> can be serialized using C++. When porting the C++ code, <code>QList</code> cannot always be replaced with Python list.| <img width="2000"/>![qlist](https://user-images.githubusercontent.com/37275728/174391054-adbe0a88-456d-4ed3-9ee6-9ef6db12b0f0.gif)
+**[QList vs QVector](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qlist_vs_qvector)** - <code>QVector</code> is very similar in use to <code>QList</code>. One distinction is that items of <code>QVector</code> are always stored in a contignous way in memory, whereas <code>QList</code> does not. | ![qlist_vs_qvector](https://user-images.githubusercontent.com/37275728/174391027-7851c137-8462-4ba3-81cb-8eb313e2fb0a.gif)
+**[QSet](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qset)** - <code>QSet</code> assures the uniquness of it's elements. Although the order in which the elements are inserted is lost. | ![qset](https://user-images.githubusercontent.com/37275728/174390876-de5497cb-77b1-43a6-a7d1-b0f6c966acad.gif)
+**[QMap](https://github.com/djeada/Qt-Widgets/tree/master/src/collections_and_algorithms/qmap)** - The <code>QMap</code> class is a template class that offers a dictionary based on a red-black tree. <code>QMap<Key, T></code> is a generic container class in Qt. It holds (key, value) pairs and allows for quick access to the value associated with a key. Use it anytime you don't want numeric (or ordered) indices. | ![qmap](https://user-images.githubusercontent.com/37275728/174390916-7f6786b2-ef60-4075-af4c-0a977f2a1be0.gif)
 
 ### Widgets
 
@@ -176,11 +122,11 @@ Description | Screenshot
 
 Description | Screenshot
 ---|---
- **[Message Box](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/cpp/message_box)** - The <code>QMessageBox</code> class provides a modal dialog for informing the user or asking for and receiving an answer from the user. A message box displays a primary message to notify the user to an issue, an informative explanation to better clarify the message, or a query to the user. Furthermore, the message box can display an icon as well as ordinary buttons for receiving user answers.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/message_box">Python</a> implementation as well. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/message_box.gif" alt="drawing" width="2000"/>
-**[Custom Tooltip](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/cpp/custom_tooltip)** - When you hover your cursor over a widget, a tooltip will appear. Aside from conventional text, the tooltip may be styled with a subset of HTML.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/custom_tooltip">Python</a> implementation as well. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/custom_tooltip.gif" alt="drawing" width="2000"/>
-**[QWidget Custom Painting](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/cpp/custom_painting)** - To draw an arrow in the background, the method <code>paintEvent()</code> is overwritten. The majority of the drawing tasks required by GUI programs are handled by very efficient algorithms in <code>QPainter</code>. It can draw anything from fundamental graphical primitives like point, line, rectangle, ellipse, and polygon to more complex forms like vector routes.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/custom_painting">Python</a> implementation as well. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/qwidget_custom_painting.gif" alt="drawing" width="2000"/> 
-**[Status Bar](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/cpp/status_bar)** - The <code>QStatusBar</code> class implements a horizontal bar for displaying status information. We use a timer to regulate how long it takes the bar to reach 100%. We use three buttons to control the bar: start, stop, and reset.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/status_bar">Python</a> implementation as well. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/status_bar.gif" alt="drawing" width="2000"/>
-
+ **[Message Box](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/cpp/message_box)** - The <code>QMessageBox</code> class provides a modal dialog for informing the user or asking for and receiving an answer from the user. A message box displays a primary message to notify the user to an issue, an informative explanation to better clarify the message, or a query to the user. Furthermore, the message box can display an icon as well as ordinary buttons for receiving user answers.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/message_box">Python</a> implementation as well. | <img width="2000"/>![message_box](https://user-images.githubusercontent.com/37275728/174391108-b9f9a7fe-c43c-4571-83bf-91148c276ca3.gif)
+**[Custom Tooltip](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/cpp/custom_tooltip)** - When you hover your cursor over a widget, a tooltip will appear. Aside from conventional text, the tooltip may be styled with a subset of HTML.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/custom_tooltip">Python</a> implementation as well. | ![custom_tooltip](https://user-images.githubusercontent.com/37275728/174391265-8c4dc1db-4583-44f3-8057-b6c9a088deae.gif)
+**[QWidget Custom Painting](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/cpp/custom_painting)** - To draw an arrow in the background, the method <code>paintEvent()</code> is overwritten. The majority of the drawing tasks required by GUI programs are handled by very efficient algorithms in <code>QPainter</code>. It can draw anything from fundamental graphical primitives like point, line, rectangle, ellipse, and polygon to more complex forms like vector routes.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/custom_painting">Python</a> implementation as well. | ![qwidget_custom_painting](https://user-images.githubusercontent.com/37275728/174391245-3f98c4e9-68db-4ced-9cc7-498c004ea945.gif)
+**[Status Bar](https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/cpp/status_bar)** - The <code>QStatusBar</code> class implements a horizontal bar for displaying status information. We use a timer to regulate how long it takes the bar to reach 100%. We use three buttons to control the bar: start, stop, and reset.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/status_bar">Python</a> implementation as well. | ![status_bar](https://user-images.githubusercontent.com/37275728/174391150-776450f1-e6f2-4170-b5fe-ae10eaea830a.gif)
+  
 ### MVC
 
 What is Model-View-Controler?
