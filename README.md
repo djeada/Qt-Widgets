@@ -95,13 +95,67 @@ When subclassing <code>QObject</code>, you must include the <code>Q_OBJECT</code
     public slots:
       void someSlot();
     };
-    
-Description | Screenshot 
----|---
-**[Children Generator](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/children_generator)** - Example of parent-child relationship in Qt. The generator may be used to create and delete children on the fly. When the generator instance is destroyed, all of its children are also destroyed. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/children_generator.gif" alt="drawing" width="2000"/>
-**[Custom Signal and Slots](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/custom_signal_slots)** - A slot is just a standard method that may be connected to a signal. Many slots can be connected to a single signal. A signal is just a value that may be emitted by any function. When the signal is emitted, the value emitted by the signal is passed as a parameter to all associated slots.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/core/python/custom_signal_slots">Python</a> implementation as well. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/custom_signal_slots.gif" alt="drawing" width="2000"/>
-**[Smart Pointers](https://github.com/djeada/Qt-Widgets/tree/master/src/core/smart_pointers)** - A smart pointer is an abstract data type that has all of the properties of a raw pointer plus automated garbage collection. Qt featured smart pointers long before they were included in C++ standard. These are also used in some of the projects. However, raw pointers are typically used for <code>QObjects</code> since they utilise a parent-child model to manage all issues related to the objects life cycle. | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/smart_pointers.gif" alt="drawing" width="2000"/>
-**[QVariant and QMetaType](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/qvariant_and_qmetatype)** - The <code>QVariant</code> class serves as a union for the most commonly used Qt data types. Because C++ prohibits unions from containing types with non-default constructors or destructors, the majority of useful Qt classes cannot be used in raw unions. The type is registered via the <code>Q_DECLARE_METATYPE(Type)</code> macro, so that <code>QMetaType</code> can recognize this type. <code>Q_DECLARE_METATYPE</code> expects a class or struct to contain a default constructor, a copy constructor, and a public destructor.  | <img src="https://github.com/djeada/Qt-Widgets/blob/master/resources/qvariant_and_qmetatype.gif" alt="drawing" width="2000"/>
+
+<table>
+    <tr>
+        <th align="center">
+            <img width="441"/>
+<p>Description</p>
+        </th>
+        <th align="center">
+            <img width="441"/>
+<p>Screenshot</p>
+        </th>
+    </tr>
+    <tr>
+        <td>
+
+**[Children Generator](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/children_generator)** - Example of parent-child relationship in Qt. The generator may be used to create and delete children on the fly. When the generator instance is destroyed, all of its children are also destroyed.
+
+</td>
+<td>
+
+![](https://user-images.githubusercontent.com/37275728/174343131-44e1644d-2188-42c0-9b86-d6d6ae9e9818.gif)
+
+</td>
+    </tr>
+    <tr>
+        <td>
+          
+**[Custom Signal and Slots](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/custom_signal_slots)** - A slot is just a standard method that may be connected to a signal. Many slots can be connected to a single signal. A signal is just a value that may be emitted by any function. When the signal is emitted, the value emitted by the signal is passed as a parameter to all associated slots.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/core/python/custom_signal_slots">Python</a> implementation as well.
+
+</td>
+<td>
+  
+![custom_signal_slots](https://user-images.githubusercontent.com/37275728/174352043-88d09439-d504-4ffe-802b-555a5fe669d8.gif)
+
+</td>
+    </tr>
+    <tr>
+        <td>
+          
+**[Smart Pointers](https://github.com/djeada/Qt-Widgets/tree/master/src/core/smart_pointers)** - A smart pointer is an abstract data type that has all of the properties of a raw pointer plus automated garbage collection. Qt featured smart pointers long before they were included in C++ standard. These are also used in some of the projects. However, raw pointers are typically used for <code>QObjects</code> since they utilise a parent-child model to manage all issues related to the objects life cycle.
+
+</td>
+<td>
+
+![smart_pointers](https://user-images.githubusercontent.com/37275728/174352307-5e5a7333-6cb3-4d16-87d7-ffe48cac5bcf.gif)
+
+</td>
+    </tr>
+    <tr>
+        <td>
+          
+**[QVariant and QMetaType](https://github.com/djeada/Qt-Widgets/tree/master/src/core/cpp/qvariant_and_qmetatype)** - The <code>QVariant</code> class serves as a union for the most commonly used Qt data types. Because C++ prohibits unions from containing types with non-default constructors or destructors, the majority of useful Qt classes cannot be used in raw unions. The type is registered via the <code>Q_DECLARE_METATYPE(Type)</code> macro, so that <code>QMetaType</code> can recognize this type. <code>Q_DECLARE_METATYPE</code> expects a class or struct to contain a default constructor, a copy constructor, and a public destructor.
+
+</td>
+<td>
+
+![qvariant_and_qmetatype](https://user-images.githubusercontent.com/37275728/174352447-56258e05-1edf-4073-918b-20afa8784f42.gif)
+
+</td>
+    </tr>
+</table>
 
 ### Collections And Algorithms
 
