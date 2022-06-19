@@ -16,11 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="CryptoRankingTable" name="tableView">
-      <property name="sizeAdjustPolicy">
-       <enum>QAbstractScrollArea::AdjustToContents</enum>
-      </property>
-     </widget>
+     <widget class="EmojiPickerTree" name="treeView"/>
     </item>
    </layout>
   </widget>
@@ -38,9 +34,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>CryptoRankingTable</class>
-   <extends>QTableView</extends>
-   <header>crypto_ranking_table.h</header>
+   <class>EmojiPickerTree</class>
+   <extends>QTreeView</extends>
+   <header>emoji_picker_tree.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
