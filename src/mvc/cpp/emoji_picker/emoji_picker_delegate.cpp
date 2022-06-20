@@ -54,4 +54,3 @@ QSize EmojiPickerDelegate::sizeHint(const QStyleOptionViewItem &option,
   auto originalSize = QStyledItemDelegate::sizeHint(option, index);
   return QSize(originalSize.width(), originalSize.height() * 2);
 }
-

@@ -9,8 +9,6 @@ CryptoRankingModel::CryptoRankingModel(const QList<CryptoRankingData> &data, QOb
     modelData = data;
 }
 
-CryptoRankingModel::~CryptoRankingModel() {}
-
 int CryptoRankingModel::rowCount(const QModelIndex &parent) const
 {
     return modelData.size();

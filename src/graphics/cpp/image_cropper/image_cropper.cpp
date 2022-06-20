@@ -25,25 +25,24 @@ void ImageCropper::paintEvent(QPaintEvent *event) {
   painter.drawEllipse(rect().center(), rect().width() / 2, rect().height() / 2);
   painter.end();
 
-  if (!pixmap.isNull()) {
-    // draw pixmap within the circle drawn above
-    // it should not go out of the circle bounds
-    // the picture has to be cropped with clip path ellipse
-    QPainterPath path;
-    path.addEllipse(rect().center(), rect().width() / 2, rect().height() / 2);
-
-    painter.begin(this);
-    painter.setClipPath(path);
-    painter.drawPixmap(rect(), pixmap);
-    painter.end();
-  }
-
-  else {
+  if (pixmap.isNull()) {
     // draw text: "Drag and drop an image here"
     painter.begin(this);
     painter.setPen(Qt::black);
     painter.setBrush(Qt::NoBrush);
     painter.drawText(rect(), Qt::AlignCenter, "Drag and drop an image here");
+    painter.end();
+  }
+
+  else {
+    // draw pixmap within the circle drawn above
+    // it should not go out of the circle bounds
+    // the picture has to be cropped with clip path ellipse
+    QPainterPath path;
+    path.addEllipse(rect().center(), rect().width() / 2, rect().height() / 2);
+    painter.begin(this);
+    painter.setClipPath(path);
+    painter.drawPixmap(rect(), pixmap);
     painter.end();
   }
 }
