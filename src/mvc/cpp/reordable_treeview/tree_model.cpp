@@ -24,9 +24,9 @@ void TreeItem::appendChild(TreeItem *item) {
     return;
   }
 
-  auto currentPurrent = item->parent();
-  if (currentPurrent) {
-    currentPurrent->removeChild(item);
+  auto currentParent = item->parent();
+  if (currentParent) {
+    currentParent->removeChild(item);
   }
   item->setParent(this);
   childItems.append(item);
