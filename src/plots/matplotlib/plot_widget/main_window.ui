@@ -16,7 +16,20 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="PlotWidget" name="plot_widget" native="true"/>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="1">
+       <widget class="PlotWidget" name="plot_b" native="true"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="PlotWidget" name="plot_a" native="true"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="PlotWidget" name="plot_c" native="true"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="PlotWidget" name="plot_d" native="true"/>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

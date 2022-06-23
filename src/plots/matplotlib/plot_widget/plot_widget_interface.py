@@ -1,69 +1,91 @@
-from abc import ABC, abstractmethod
+from dataclasses import dataclass
+from typing import Iterable
 
-class PlotWidgetInterface(ABC):
-    @abstractmethod
-    def plot(self, x, y, title, xlabel, ylabel, legend):
-        pass
+
+@dataclass
+class Labels:
+    x: str
+    y: str
+
+@dataclass
+class Legend:
+    labels: Iterable[str]
+    loc: str
+
+@dataclass
+class Font:
+    family: str
+    size: int
+    color: str
+
+@dataclass
+class PlotStyle:
+    color_palette: Iterable[str]
+    background_color: str
+    line_style: str
+    line_width: int
+    marker_style: str
+    marker_size: int
+    grid: bool
+    font: Font
+
+class PlotWidgetInterface:
+    def plot(self, x, y, labels: Labels, title: str = ""):
+        raise NotImplementedError
+
+    def scatter(self, x, y, labels: Labels, title: str = ""):
+        raise NotImplementedError
+
+    def histogram(self, x, labels: Labels, title: str = ""):
+        raise NotImplementedError
+    
+    def clear(self):
+        raise NotImplementedError
 
     @property
-    @abstractmethod
+    def style(self):
+        raise NotImplementedError
+    
+    @style.setter
+    def style(self, style: PlotStyle):
+        raise NotImplementedError
+
+    @property
     def title(self):
-        pass
+        raise NotImplementedError
 
     @title.setter
-    @abstractmethod
     def title(self, title):
-        pass
+        raise NotImplementedError
 
     @property
-    @abstractmethod
     def legend(self):
-        pass
-
+        raise NotImplementedError
+    
     @legend.setter
-    @abstractmethod
-    def legend(self, legend):
-        pass
+    def legend(self, legend: Legend):
+        raise NotImplementedError
 
     @property
-    @abstractmethod
     def labels(self):
-        pass
+        raise NotImplementedError
 
     @labels.setter
-    @abstractmethod
-    def labels(self, labels):
-        pass
+    def labels(self, labels: Labels):
+        raise NotImplementedError
 
     @property
-    @abstractmethod
     def xlim(self):
-        pass
-
+        raise NotImplementedError
+    
     @xlim.setter
-    @abstractmethod
     def xlim(self, xlim):
-        pass
-
+        raise NotImplementedError
+    
     @property
-    @abstractmethod
     def ylim(self):
-        pass
+        raise NotImplementedError
 
     @ylim.setter
-    @abstractmethod
     def ylim(self, ylim):
-        pass
-
-    @property
-    @abstractmethod
-    def style(self):
-        pass
-
-    @style.setter
-    def style(self, style):
-        pass
-
-    @abstractmethod
-    def clear(self):
-        pass
+        raise NotImplementedError
