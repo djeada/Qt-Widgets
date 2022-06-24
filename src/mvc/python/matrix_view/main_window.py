@@ -1,6 +1,5 @@
 import numpy as np
 from PyQt6 import QtWidgets, uic
-from PyQt6.QtGui import QColor
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -12,16 +11,8 @@ class MainWindow(QtWidgets.QMainWindow):
         matrix = np.random.rand(10, 10)
         self.tableWidget.matrix = matrix
         self.tableWidget.horizontal_header = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
-
-        # 1d matrix of floats
-        matrix = np.array([1, 2, 3, 4, 5, 6]).T
-        self.tableWidget.matrix = matrix
-        #self.tableWidget.horizontal_header = ["A", "B", "C", "D", "E", "F"]
-
-        # 1d matrix of strings
-        #matrix = np.array(["A", "B", "C", "D", "E", "F"]).T
-        #self.tableWidget.matrix = matrix
-        #self.tableWidget.horizontal_header = ["A", "B", "C", "D", "E", "F"]
+        self.colored_cells.toggled.connect(lambda flag: setattr(self.tableWidget, "colored_cells", flag))
+        self.format_input.textChanged.connect(lambda text: setattr(self.tableWidget, "precision", int(text)))
 
         self.show()
 
