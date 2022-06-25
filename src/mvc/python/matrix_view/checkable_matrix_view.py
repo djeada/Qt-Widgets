@@ -23,8 +23,8 @@ class ColumnState(VectorState):
 
 class CheckableMatrixView(MatrixView):
     # emit signal when row or column is checked
-    row_state_changed = pyqtSignal(RowState)
-    column_state_changed = pyqtSignal(ColumnState)
+    row_selection_changed = pyqtSignal(RowState)
+    column_selection_changed = pyqtSignal(ColumnState)
 
     def __init__(self, parent=None, colored_cells: bool = False, checkable: bool = False):
         super().__init__(parent=parent, colored_cells=colored_cells)
@@ -32,8 +32,8 @@ class CheckableMatrixView(MatrixView):
         self._horizontally_checkable = checkable
         self._x_offset = 1 if checkable else 0
         self._y_offset = 1 if checkable else 0
-        self.row_state_changed.connect(lambda state: self._mark_row_as_checked(state.index, state.checked))
-        self.column_state_changed.connect(lambda state: self._mark_column_as_checked(state.index, state.checked))
+        self.row_selection_changed.connect(lambda state: self._mark_row_as_checked(state.index, state.checked))
+        self.column_selection_changed.connect(lambda state: self._mark_column_as_checked(state.index, state.checked))
 
     @MatrixView.matrix.setter
     def matrix(self, matrix: np.ndarray):
@@ -130,6 +130,24 @@ class CheckableMatrixView(MatrixView):
             if checked and not self.column_checked(col - self._x_offset):
                 continue
             self.item(row + self._y_offset, col).setFlags(flags)
+    
+    @property
+    def checked_rows(self) -> list:
+        return [row for row in range(self.rowCount()-self._y_offset) if self.row_checked(row)]
+    
+    @checked_rows.setter
+    def checked_rows(self, rows: list):
+        for row in range(self.rowCount()-self._y_offset):
+            self.set_row_checked(row, row in rows)
+
+    @property
+    def checked_columns(self) -> list:
+        return [col for col in range(self.columnCount()-self._x_offset) if self.column_checked(col)]
+    
+    @checked_columns.setter
+    def checked_columns(self, columns: list):
+        for col in range(self.columnCount()-self._x_offset):
+            self.set_column_checked(col, col in columns)
 
     def inject_checkboxes(self):
         # insert column on index 0 and row on index 0
@@ -139,7 +157,7 @@ class CheckableMatrixView(MatrixView):
             self.setVerticalHeaderItem(0, QTableWidgetItem(""))
             for row in range(0, self.rowCount()):
                 widget = CenteredCheckBox()
-                widget.state_changed.connect(lambda state, row=row: self.row_state_changed.emit(RowState(state, row)))
+                widget.state_changed.connect(lambda state, row=row: self.row_selection_changed.emit(RowState(state, row)))
                 self.setCellWidget(row, 0, widget)
 
         if self._vertically_checkable:
@@ -147,7 +165,7 @@ class CheckableMatrixView(MatrixView):
             self.setHorizontalHeaderItem(0, QTableWidgetItem(""))
             for col in range(self._x_offset, self.columnCount()):
                 widget = CenteredCheckBox()
-                widget.state_changed.connect(lambda state, col=col-self._x_offset: self.column_state_changed.emit(ColumnState(state, col)))
+                widget.state_changed.connect(lambda state, col=col-self._x_offset: self.column_selection_changed.emit(ColumnState(state, col)))
                 self.setCellWidget(0, col, widget)
 
 

@@ -17,12 +17,21 @@ class MainWindow(QtWidgets.QMainWindow):
         self.plot.style = style
         self.plot.scatter(x_points, y_points, Labels(x="x", y="y"), title="Lasso Scatter Plot")
         self.plot.legend = Legend(loc="upper right", labels=["sin(x)"])
+        # self.plot.selection_changed.connect(self.on_plot_selection_changed)
 
         # 1 column is x_points, 2 column is y_points
-        matrix = np.array([x_points, y_points])
-        self.tableWidget.matrix = matrix.T
-        self.tableWidget.horizontal_header = ["x", "y"]
-        self.tableWidget.checkable = True
-        self.tableWidget.resizeColumnsToContents()
-
+        # matrix = np.array([x_points, y_points])
+        # self.tableWidget.matrix = matrix.T
+        # self.tableWidget.horizontal_header = ["x", "y"]
+        # self.tableWidget.checkable = True
+        # self.tableWidget.resizeColumnsToContents()
+        # self.tableWidget.row_selection_changed.connect(self.on_table_selection_changed)
+        self.tableWidget.hide()
         self.show()
+
+    def on_table_selection_changed(self):
+        selected_rows = self.tableWidget.checked_rows
+        self.plot.selected_indices = selected_rows
+
+    def on_plot_selection_changed(self, indices):
+        self.tableWidget.checked_rows = indices
