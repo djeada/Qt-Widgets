@@ -18,4 +18,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.plot.scatter(x_points, y_points, Labels(x="x", y="y"), title="Lasso Scatter Plot")
         self.plot.legend = Legend(loc="upper right", labels=["sin(x)"])
 
+        # 1 column is x_points, 2 column is y_points
+        matrix = np.array([x_points, y_points])
+        self.tableWidget.matrix = matrix.T
+        self.tableWidget.horizontal_header = ["x", "y"]
+        self.tableWidget.checkable = True
+        self.tableWidget.resizeColumnsToContents()
+
         self.show()

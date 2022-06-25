@@ -14,13 +14,12 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
     <item>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="LassoScatter" name="plot" native="true"/>
-      </item>
-     </layout>
+     <widget class="LassoScatter" name="plot" native="true"/>
+    </item>
+    <item>
+     <widget class="CheckableMatrixView" name="tableWidget"/>
     </item>
    </layout>
   </widget>
@@ -41,6 +40,11 @@
    <extends>QWidget</extends>
    <header>lasso_scatter.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CheckableMatrixView</class>
+   <extends>QTableWidget</extends>
+   <header>checkable_matrix_view.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
