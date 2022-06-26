@@ -1,6 +1,7 @@
 from PyQt6 import QtWidgets, uic
 import numpy as np
 
+from lasso_scatter import SelectionMode
 from plot_widget import Labels, PlotStyle, Legend, Font
 
 
@@ -27,7 +28,18 @@ class MainWindow(QtWidgets.QMainWindow):
         # self.tableWidget.resizeColumnsToContents()
         # self.tableWidget.row_selection_changed.connect(self.on_table_selection_changed)
         self.tableWidget.hide()
+
+        self.stateSelectionButton.addItems(['Select', 'Deselect'])
+        self.stateSelectionButton.setCurrentIndex(1)
+        self.stateSelectionButton.currentIndexChanged.connect(self.on_state_selection_changed)
+        self.clearSelectionButton.released.connect(self.plot.clear_selection)
         self.show()
+
+    def on_state_selection_changed(self, index):
+        if index == 0:
+            self.plot.selection_mode = SelectionMode.SELECT
+        else:
+            self.plot.selection_mode = SelectionMode.DESELECT
 
     def on_table_selection_changed(self):
         selected_rows = self.tableWidget.checked_rows

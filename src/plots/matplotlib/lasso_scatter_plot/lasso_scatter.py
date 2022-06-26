@@ -1,3 +1,4 @@
+from enum import Enum, auto
 from itertools import chain
 import matplotlib
 import numpy as np
@@ -8,6 +9,9 @@ from matplotlib.widgets import LassoSelector
 from plot_widget import PlotWidget
 from plot_widget_interface import Labels
 
+class SelectionMode(Enum):
+    SELECT = auto()
+    DESELECT = auto()
 
 class LassoScatter(PlotWidget):
 
@@ -18,6 +22,7 @@ class LassoScatter(PlotWidget):
         self._select_from_collection = None
         self._selected_indices = list()
         self._points = list()
+        self.selection_mode = SelectionMode.DESELECT
 
     def scatter(self, x, y, labels: Labels, title: str = ""):
         self._points = self.axes.scatter(x, y, picker=5)
@@ -84,8 +89,13 @@ class LassoScatter(PlotWidget):
 
     def on_select(self, vertices):
         indices_inside_curve = (i for i, flag in enumerate(Path(vertices).contains_points(self._point_offset)) if flag)
-        self._selected_indices = list(set(self.all_indices) - set(chain(self.deselected_indices, indices_inside_curve)))
-        self._face_colors[self.deselected_indices, -1] = self.opacity_factor
-        self._points.set_facecolors(self._face_colors)
+        self.insert_to_current_mode(indices_inside_curve)
         self.selection_changed.emit(self.selected_indices)
         self.draw_idle()
+
+    def insert_to_current_mode(self, indices):
+        if self.selection_mode == SelectionMode.SELECT:
+            self.selected_indices = list(set(self.selected_indices) | set(indices))
+        elif self.selection_mode == SelectionMode.DESELECT:
+            self.selected_indices = list(set(self.selected_indices) - set(indices))
+        

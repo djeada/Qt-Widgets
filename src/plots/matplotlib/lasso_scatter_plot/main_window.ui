@@ -14,12 +14,71 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="LassoScatter" name="plot" native="true"/>
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
+      <item>
+       <widget class="LassoScatter" name="plot" native="true"/>
+      </item>
+      <item>
+       <widget class="CheckableMatrixView" name="tableWidget"/>
+      </item>
+     </layout>
     </item>
     <item>
-     <widget class="CheckableMatrixView" name="tableWidget"/>
+     <widget class="QWidget" name="widget" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="clearSelectionButton">
+         <property name="text">
+          <string>Clear Selection</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="ToggleButton" name="stateSelectionButton" native="true"/>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -35,6 +94,12 @@
   </action>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>ToggleButton</class>
+   <extends>QWidget</extends>
+   <header>toggle_button.h</header>
+   <container>1</container>
+  </customwidget>
   <customwidget>
    <class>LassoScatter</class>
    <extends>QWidget</extends>
