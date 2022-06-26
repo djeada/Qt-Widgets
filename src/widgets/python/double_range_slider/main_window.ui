@@ -29,6 +29,45 @@
      </spacer>
     </item>
     <item>
+     <widget class="QWidget" name="widget_2" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QSlider" name="doubleRangeSLider_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
      <widget class="QWidget" name="widget" native="true">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
@@ -45,9 +84,9 @@
         </spacer>
        </item>
        <item>
-        <widget class="SwitchButton" name="switchButton">
-         <property name="text">
-          <string/>
+        <widget class="DoubleRangeSlider" name="doubleRangeSLider">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
@@ -85,9 +124,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SwitchButton</class>
-   <extends>QCheckBox</extends>
-   <header>switch_button.h</header>
+   <class>DoubleRangeSlider</class>
+   <extends>QSlider</extends>
+   <header>double_range_slider.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -1,4 +1,4 @@
-from PyQt6 import QtWidgets, uic
+from PyQt6 import QtWidgets
 import sys
 
 from main_window import MainWindow
