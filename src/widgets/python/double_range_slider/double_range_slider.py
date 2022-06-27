@@ -49,8 +49,8 @@ class DoubleRangeSlider(QSlider):
         """
         if value < 0:
             value = 0
-        if value + HANDLE_WIDTH//2 > self._right_handle:
-            value = self._right_handle - HANDLE_WIDTH//2
+        if value + HANDLE_WIDTH // 2 > self._right_handle:
+            value = self._right_handle - HANDLE_WIDTH // 2
         self._left_handle = value
         self.update()
         self.value_changed.emit(ValueRange(self.min_value, self.max_value))
@@ -69,8 +69,8 @@ class DoubleRangeSlider(QSlider):
         """
         if value > 100:
             value = 100
-        if value < self._left_handle + HANDLE_WIDTH//2:
-            value = self._left_handle + HANDLE_WIDTH//2
+        if value < self._left_handle + HANDLE_WIDTH // 2:
+            value = self._left_handle + HANDLE_WIDTH // 2
         self._right_handle = value
         self.update()
         self.value_changed.emit(ValueRange(self.min_value, self.max_value))
@@ -116,7 +116,9 @@ class DoubleRangeSlider(QSlider):
             if QApplication.mouseButtons() == Qt.MouseButton.LeftButton:
                 option.state = QStyle.StateFlag.State_Off
             else:
-                option.state = QStyle.StateFlag.State_Enabled | QStyle.StateFlag.State_MouseOver
+                option.state = (
+                    QStyle.StateFlag.State_Enabled | QStyle.StateFlag.State_MouseOver
+                )
                 option.activeSubControls = QStyle.SubControl.SC_SliderHandle
         else:
             option.activeSubControls = QStyle.SubControl.SC_None
@@ -135,7 +137,9 @@ class DoubleRangeSlider(QSlider):
         right_position = self._value_to_pixels(self._right_handle)
         event_pos = event.pos().x()
 
-        if event_pos < left_position or abs(event_pos - left_position) < abs(event_pos - right_position):
+        if event_pos < left_position or abs(event_pos - left_position) < abs(
+            event_pos - right_position
+        ):
             self.min_value = self._pixels_to_value(event_pos)
         else:
             self.max_value = self._pixels_to_value(event_pos)
@@ -153,11 +157,15 @@ class DoubleRangeSlider(QSlider):
         dist_right = abs(event_pos - right_position)
 
         if event_pos < left_position or dist_left < dist_right:
-            self._last_state = LastSate.LEFT if dist_left <= HANDLE_WIDTH else LastSate.NONE
+            self._last_state = (
+                LastSate.LEFT if dist_left <= HANDLE_WIDTH else LastSate.NONE
+            )
             if event.buttons() == Qt.MouseButton.LeftButton:
                 self.min_value = self._pixels_to_value(event_pos)
         else:
-            self._last_state = LastSate.RIGHT if dist_right <= HANDLE_WIDTH else LastSate.NONE
+            self._last_state = (
+                LastSate.RIGHT if dist_right <= HANDLE_WIDTH else LastSate.NONE
+            )
             if event.buttons() == Qt.MouseButton.LeftButton:
                 self.max_value = self._pixels_to_value(event_pos)
         self.update()

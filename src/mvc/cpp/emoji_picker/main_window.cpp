@@ -1,8 +1,8 @@
 #include "main_window.h"
 #include "./ui_main_window.h"
-#include <QModelIndex>
 #include <QDir>
 #include <QFileInfo>
+#include <QModelIndex>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -17,12 +17,12 @@ MainWindow::MainWindow(QWidget *parent)
   QFileInfoList fileInfoList = dir.entryInfoList(QDir::Files);
   for (auto fileInfo : fileInfoList) {
     iconPaths.append(fileInfo.absoluteFilePath());
-}
-   QList<EmojiData> emojis;
+  }
+  QList<EmojiData> emojis;
 
-   for (const auto& iconPath : iconPaths) {
-     emojis.append(EmojiData(iconPath, iconPath, QList<QString>()));
-   }
+  for (const auto &iconPath : iconPaths) {
+    emojis.append(EmojiData(iconPath, iconPath, QList<QString>()));
+  }
 
   EmojiCategory category = EmojiCategory("Category A", emojis);
   model->setColumnCount(7);
@@ -31,7 +31,6 @@ MainWindow::MainWindow(QWidget *parent)
   model->appendRow(category);
 
   ui->treeView->setModel(model);
-
 }
 
 MainWindow::~MainWindow() { delete ui; }

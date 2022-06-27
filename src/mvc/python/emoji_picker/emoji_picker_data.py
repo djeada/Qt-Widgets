@@ -7,6 +7,7 @@ class EmojiData:
     iconPath: str
     tags: list
 
+
 @dataclass
 class EmojiCategory:
     name: str

@@ -9,9 +9,11 @@ from matplotlib.widgets import LassoSelector
 from plot_widget import PlotWidget
 from plot_widget_interface import Labels
 
+
 class SelectionMode(Enum):
     SELECT = auto()
     DESELECT = auto()
+
 
 class LassoScatter(PlotWidget):
 
@@ -43,10 +45,10 @@ class LassoScatter(PlotWidget):
             self._face_colors = np.tile(self._face_colors, (len(self._point_offset), 1))
         self._selected_indices = self.all_indices
 
-        old_marker_size = matplotlib.rcParams['lines.markersize']
-        matplotlib.rcParams.update({'lines.markersize': 0})
+        old_marker_size = matplotlib.rcParams["lines.markersize"]
+        matplotlib.rcParams.update({"lines.markersize": 0})
         self.lasso = LassoSelector(self.axes, onselect=self.on_select)
-        matplotlib.rcParams.update({'lines.markersize': old_marker_size})
+        matplotlib.rcParams.update({"lines.markersize": old_marker_size})
 
     @property
     def all_indices(self):
@@ -58,9 +60,11 @@ class LassoScatter(PlotWidget):
 
     @selected_indices.setter
     def selected_indices(self, indices):
-        if (len(indices) > len(self.all_indices)):
-            raise ValueError(f"Size of indices ({len(indices)}) is larger than size of all indices ({len(self.all_indices)})")
-        if (len(set(indices)) != len(indices)):
+        if len(indices) > len(self.all_indices):
+            raise ValueError(
+                f"Size of indices ({len(indices)}) is larger than size of all indices ({len(self.all_indices)})"
+            )
+        if len(set(indices)) != len(indices):
             raise ValueError("Indices must be unique")
 
         self.clear_selection()
@@ -88,7 +92,11 @@ class LassoScatter(PlotWidget):
         self._points.set_facecolors(self._face_colors)
 
     def on_select(self, vertices):
-        indices_inside_curve = (i for i, flag in enumerate(Path(vertices).contains_points(self._point_offset)) if flag)
+        indices_inside_curve = (
+            i
+            for i, flag in enumerate(Path(vertices).contains_points(self._point_offset))
+            if flag
+        )
         self.insert_to_current_mode(indices_inside_curve)
         self.selection_changed.emit(self.selected_indices)
         self.draw_idle()
@@ -98,4 +106,3 @@ class LassoScatter(PlotWidget):
             self.selected_indices = list(set(self.selected_indices) | set(indices))
         elif self.selection_mode == SelectionMode.DESELECT:
             self.selected_indices = list(set(self.selected_indices) - set(indices))
-        

@@ -7,16 +7,19 @@ class Labels:
     x: str
     y: str
 
+
 @dataclass
 class Legend:
     labels: Iterable[str]
     loc: str
+
 
 @dataclass
 class Font:
     family: str
     size: int
     color: str
+
 
 @dataclass
 class PlotStyle:
@@ -29,6 +32,7 @@ class PlotStyle:
     grid: bool
     font: Font
 
+
 class PlotWidgetInterface:
     def plot(self, x, y, labels: Labels, title: str = ""):
         raise NotImplementedError
@@ -38,14 +42,14 @@ class PlotWidgetInterface:
 
     def histogram(self, x, labels: Labels, title: str = ""):
         raise NotImplementedError
-    
+
     def clear(self):
         raise NotImplementedError
 
     @property
     def style(self):
         raise NotImplementedError
-    
+
     @style.setter
     def style(self, style: PlotStyle):
         raise NotImplementedError
@@ -61,7 +65,7 @@ class PlotWidgetInterface:
     @property
     def legend(self):
         raise NotImplementedError
-    
+
     @legend.setter
     def legend(self, legend: Legend):
         raise NotImplementedError
@@ -77,11 +81,11 @@ class PlotWidgetInterface:
     @property
     def xlim(self):
         raise NotImplementedError
-    
+
     @xlim.setter
     def xlim(self, xlim):
         raise NotImplementedError
-    
+
     @property
     def ylim(self):
         raise NotImplementedError

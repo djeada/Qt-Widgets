@@ -13,7 +13,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def on_actionOpen_triggered(self):
         file_name = QtWidgets.QFileDialog.getOpenFileName(
-            self, "Open Image", QDir.currentPath(),
-            "Image Files (*.jpg *.JPG *.png *.PNG, *.bmp, *.BMP)"
+            self,
+            "Open Image",
+            QDir.currentPath(),
+            "Image Files (*.jpg *.JPG *.png *.PNG, *.bmp, *.BMP)",
         )
         self.image_cropper.set_pixmap_from_file(file_name)

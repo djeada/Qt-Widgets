@@ -8,18 +8,22 @@ from plot_widget_interface import Labels
 
 
 class FilterHistogram(QWidget):
-
     def __init__(self, parent=None):
         super().__init__(parent)
         uic.loadUi("filter_histogram.ui", self)
         self._array = np.array([])
         # post resize event
         QCoreApplication.postEvent(self, QResizeEvent(self.size(), self.size()))
-        self.slider.value_changed.connect(lambda _ :self.update_histogram())
+        self.slider.value_changed.connect(lambda _: self.update_histogram())
         self._n_bins = 30
 
     def update_histogram(self):
-        self.plot.histogram(self.array, self.n_bins, disabled_bins=self.disabled_bins, labels=Labels(x="data", y="count"))
+        self.plot.histogram(
+            self.array,
+            self.n_bins,
+            disabled_bins=self.disabled_bins,
+            labels=Labels(x="data", y="count"),
+        )
         print(self.filtered_array(), len(self.filtered_array()))
 
     @property
@@ -37,7 +41,10 @@ class FilterHistogram(QWidget):
         min_value = self.slider.min_value if self.slider.min_value != 0 else -1
         max_value = self.slider.max_value
         bins_range = np.array(range(self.n_bins))
-        disabled_bins = bins_range[(bins_range <= min_value*self.n_bins//100) | (bins_range >= max_value*self.n_bins//100)]
+        disabled_bins = bins_range[
+            (bins_range <= min_value * self.n_bins // 100)
+            | (bins_range >= max_value * self.n_bins // 100)
+        ]
         return list(disabled_bins)
 
     @disabled_bins.setter
@@ -70,8 +77,10 @@ class FilterHistogram(QWidget):
         for i, edge in enumerate(bins[1:]):
             if i in self.disabled_bins:
                 continue
-            previous_edge = bins[i-1]
-            indices_from_range = np.where((self.array >= previous_edge) & (self.array <= edge))[0]
+            previous_edge = bins[i - 1]
+            indices_from_range = np.where(
+                (self.array >= previous_edge) & (self.array <= edge)
+            )[0]
             indices.extend(indices_from_range)
 
         return sorted(set(indices))
@@ -80,6 +89,12 @@ class FilterHistogram(QWidget):
         return self.array[self.filtered_array_indices()]
 
     def resizeEvent(self, event):
-        self.slider.setGeometry(QRect(self.slider.x()+0.15* self.width(), self.slider.y(), 0.7 * self.width(), self.slider.height()))
+        self.slider.setGeometry(
+            QRect(
+                self.slider.x() + 0.15 * self.width(),
+                self.slider.y(),
+                0.7 * self.width(),
+                self.slider.height(),
+            )
+        )
         super().resizeEvent(event)
-

@@ -159,12 +159,11 @@ bool FileDirModel::paste(const QModelIndex &index, const QString &path) {
   return false;
 }
 
-
 bool FileDirModel::appendToDestination(QModelIndex sourceIndex,
-                                             QModelIndex destinationIndex) {
-    if(paste(destinationIndex, fileInfo(sourceIndex).absoluteFilePath())) {
+                                       QModelIndex destinationIndex) {
+  if (paste(destinationIndex, fileInfo(sourceIndex).absoluteFilePath())) {
     remove(sourceIndex);
     return true;
-    }
-    return false;
+  }
+  return false;
 }

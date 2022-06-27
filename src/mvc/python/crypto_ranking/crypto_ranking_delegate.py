@@ -19,23 +19,21 @@ class CryptoRankingDelegate(QStyledItemDelegate):
                 painter.setPen(QPen(QColor("#006600")))
             icon = index.data(Qt.ItemDataRole.DecorationRole)
             pixmap = icon.pixmap(option.decorationSize)
-            painter.drawPixmap(option.rect.x() + 1, option.rect.y() + option.rect.height() / 2 - pixmap.height() / 2, pixmap)
-            painter.drawText(option.rect,
-                            Qt.AlignmentFlag.AlignCenter,
-                         f"{value:.0f}%")
+            painter.drawPixmap(
+                option.rect.x() + 1,
+                option.rect.y() + option.rect.height() / 2 - pixmap.height() / 2,
+                pixmap,
+            )
+            painter.drawText(option.rect, Qt.AlignmentFlag.AlignCenter, f"{value:.0f}%")
             painter.setPen(oldPen)
         elif column == 1 or column == 3 or column == 4:
             value = index.data()
             rect = option.rect
             rect.setX(rect.x() + 3)
-            painter.drawText(rect,
-                            option.displayAlignment,
-                           f"${value:.0f}%")
+            painter.drawText(rect, option.displayAlignment, f"${value:.0f}%")
         else:
             super().paint(painter, option, index)
-    
+
     def sizeHint(self, option, index):
         originalSize = QStyledItemDelegate.sizeHint(self, option, index)
         return QSize(originalSize.width(), originalSize.height() * 2)
-    
-

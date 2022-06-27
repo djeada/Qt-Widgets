@@ -1,6 +1,13 @@
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QPixmap, QPen, QPainter, QColor
-from PyQt6.QtWidgets import QStyledItemDelegate, QProgressBar, QDialog, QSlider, QVBoxLayout, QLineEdit
+from PyQt6.QtWidgets import (
+    QStyledItemDelegate,
+    QProgressBar,
+    QDialog,
+    QSlider,
+    QVBoxLayout,
+    QLineEdit,
+)
 
 
 class CustomDelegate(QStyledItemDelegate):
@@ -16,21 +23,31 @@ class CustomDelegate(QStyledItemDelegate):
             progress_bar.setGeometry(option.rect)
             progress_bar.setValue(int(index.data()))
             progress_bar.setTextVisible(False)
-            progress_bar.setStyleSheet("QProgressBar::chunk { background-color: #006400; }")
+            progress_bar.setStyleSheet(
+                "QProgressBar::chunk { background-color: #006400; }"
+            )
             pixmap = QPixmap(option.rect.size())
             progress_bar.render(pixmap)
             painter.drawPixmap(option.rect, pixmap)
         elif row == 3:
             old_pen = painter.pen()
-            pen = QPen(QColor("#FFD700"), 1, Qt.PenStyle.DashLine, Qt.PenCapStyle .RoundCap, Qt.PenJoinStyle .RoundJoin)
+            pen = QPen(
+                QColor("#FFD700"),
+                1,
+                Qt.PenStyle.DashLine,
+                Qt.PenCapStyle.RoundCap,
+                Qt.PenJoinStyle.RoundJoin,
+            )
             painter.setPen(pen)
             painter.setBrush(QColor("#FFD700"))
             painter.setRenderHint(QPainter.RenderHint.Antialiasing)
 
-            painter.drawRect(option.rect.center().x() - 30,
-                             option.rect.center().y() - 10, 20, 20)
-            painter.drawRect(option.rect.center().x() + 10,
-                             option.rect.center().y() - 10, 20, 20)
+            painter.drawRect(
+                option.rect.center().x() - 30, option.rect.center().y() - 10, 20, 20
+            )
+            painter.drawRect(
+                option.rect.center().x() + 10, option.rect.center().y() - 10, 20, 20
+            )
             painter.setPen(old_pen)
         else:
             # draw background blue
@@ -76,5 +93,3 @@ class CustomDelegate(QStyledItemDelegate):
         else:
             line_edit = editor
             model.setData(index, line_edit.text())
-
-            

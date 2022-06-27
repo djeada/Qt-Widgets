@@ -26,7 +26,7 @@ class TransformationDisplay(QWidget):
     @property
     def scale(self):
         return self._scale
-    
+
     @scale.setter
     def scale(self, scale):
         self._scale = scale
@@ -34,11 +34,11 @@ class TransformationDisplay(QWidget):
 
     def update_scale(self, scale):
         self.scale = scale
-    
+
     @property
     def rotate(self):
         return self._rotation
-    
+
     @rotate.setter
     def rotate(self, angle):
         self._rotation = angle
@@ -46,7 +46,7 @@ class TransformationDisplay(QWidget):
 
     def update_rotate(self, angle):
         self.rotate = angle
-      
+
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.translate(self._translation)

@@ -15,13 +15,17 @@ class ImageCropper(QtWidgets.QWidget):
         painter.begin(self)
         painter.setPen(QPen(QColor("black")))
         painter.setBrush(Qt.BrushStyle.NoBrush)
-        painter.drawEllipse(self.rect().center(), self.rect().width() / 2, self.rect().height() / 2)
+        painter.drawEllipse(
+            self.rect().center(), self.rect().width() / 2, self.rect().height() / 2
+        )
         painter.end()
         if self.pixmap.isNull():
             painter.begin(self)
             painter.setPen(QPen(QColor("black")))
             painter.setBrush(Qt.BrushStyle.NoBrush)
-            painter.drawText(self.rect(), Qt.AlignmentFlag.AlignCenter, "Drag and drop an image here")
+            painter.drawText(
+                self.rect(), Qt.AlignmentFlag.AlignCenter, "Drag and drop an image here"
+            )
             painter.end()
         else:
             painter.begin(self)
@@ -30,19 +34,20 @@ class ImageCropper(QtWidgets.QWidget):
             painter.setClipPath(path)
             painter.drawPixmap(self.rect(), self.pixmap)
             painter.end()
-    
+
     def dropEvent(self, event):
         urls = event.mimeData().urls()
         if len(urls) == 0:
             return
         file_name = urls[0].toLocalFile()
         self.set_pixmap_from_file(file_name)
-    
+
     def set_pixmap_from_file(self, file_name):
         new_pix = QtGui.QPixmap(file_name)
         if new_pix.isNull():
-            QMessageBox.warning(self, "Invalid Image",
-                                 "You tried loading an invalid file.")
+            QMessageBox.warning(
+                self, "Invalid Image", "You tried loading an invalid file."
+            )
             return
         self.pixmap = new_pix
         self.update()
@@ -50,8 +55,7 @@ class ImageCropper(QtWidgets.QWidget):
     def dragEnterEvent(self, event):
         if event.mimeData().hasUrls():
             event.acceptProposedAction()
-    
+
     def dragMoveEvent(self, event):
         if event.mimeData().hasUrls():
             event.acceptProposedAction()
-    

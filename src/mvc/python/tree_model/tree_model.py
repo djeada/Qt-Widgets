@@ -113,11 +113,18 @@ class TreeModel(QAbstractItemModel):
         if self.hasChildren(index):
             return Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable
         else:
-            return Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsEditable
+            return (
+                Qt.ItemFlag.ItemIsEnabled
+                | Qt.ItemFlag.ItemIsSelectable
+                | Qt.ItemFlag.ItemIsEditable
+            )
         return Qt.ItemFlag.ItemIsEnabled
 
     def headerData(self, section, orientation, role):
-        if orientation == Qt.Orientation.Horizontal and role == Qt.ItemDataRole.DisplayRole:
+        if (
+            orientation == Qt.Orientation.Horizontal
+            and role == Qt.ItemDataRole.DisplayRole
+        ):
             return self.root_item.data(section)
         return QVariant()
 
@@ -125,7 +132,9 @@ class TreeModel(QAbstractItemModel):
         if not self.hasIndex(row, column, parent):
             return QModelIndex()
 
-        parent_item = self.root_item if not parent.isValid() else parent.internalPointer()
+        parent_item = (
+            self.root_item if not parent.isValid() else parent.internalPointer()
+        )
         child_item = parent_item.child(row)
 
         if child_item:
@@ -212,7 +221,9 @@ class TreeModel(QAbstractItemModel):
             item.setData(index.column(), value)
         except Exception as e:
             return False
-        self.dataChanged.emit(index, index, [Qt.ItemDataRole.DisplayRole, Qt.ItemDataRole.EditRole])
+        self.dataChanged.emit(
+            index, index, [Qt.ItemDataRole.DisplayRole, Qt.ItemDataRole.EditRole]
+        )
         return True
 
     def setHeaderData(self, section, orientation, value, role):

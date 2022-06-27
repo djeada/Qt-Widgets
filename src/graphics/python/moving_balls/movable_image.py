@@ -26,13 +26,13 @@ class MovableImage(QGraphicsItem, QObject):
         rect = self.boundingRect()
 
         if len(self.scene().collidingItems(self)) > 0:
-            pen = QPen(QColor('red'))
+            pen = QPen(QColor("red"))
             painter.setPen(pen)
-            brush = QBrush(QColor('red'))
+            brush = QBrush(QColor("red"))
             self.collide_wall()
         else:
-            pen = QPen(QColor('green'))
-            brush = QBrush(QColor('green'))
+            pen = QPen(QColor("green"))
+            brush = QBrush(QColor("green"))
             painter.setPen(pen)
         painter.setBrush(brush)
         painter.drawEllipse(rect)

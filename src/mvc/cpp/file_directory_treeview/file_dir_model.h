@@ -12,7 +12,8 @@ public:
   QModelIndex mkdir(const QModelIndex &parent, const QString &name);
   bool touch(const QModelIndex &index, const QString &name);
   bool paste(const QModelIndex &index, const QString &path);
-  bool appendToDestination(QModelIndex sourceIndex, QModelIndex destinationIndex);
+  bool appendToDestination(QModelIndex sourceIndex,
+                           QModelIndex destinationIndex);
 
 private:
   QModelIndex firstDirAncestor(const QModelIndex &index);

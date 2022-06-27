@@ -24,7 +24,7 @@ class EmojiPickerItem(QStandardItem):
                 icon = QIcon(category.emojis[next_index].iconPath)
                 items.append(QStandardItem(icon, ""))
             self.appendRow(items)
-    
+
     def setColumnCount(self, count):
         QStandardItem.setColumnCount(self, count)
         self.setCategory(self.itemCategory)
@@ -32,13 +32,15 @@ class EmojiPickerItem(QStandardItem):
     def category(self):
         return self.itemCategory
 
-    
+
 class EmojiPickerModel(QStandardItemModel):
     def __init__(self, parent):
         super().__init__(parent)
-        
+
     def appendRow(self, category):
-        QStandardItemModel.appendRow(self, EmojiPickerItem(category, self.columnCount()))
+        QStandardItemModel.appendRow(
+            self, EmojiPickerItem(category, self.columnCount())
+        )
 
     def clear(self):
         QStandardItemModel.removeRows(self, 0, self.rowCount())
@@ -60,7 +62,7 @@ class EmojiPickerTree(QTreeView):
         self.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectItems)
         self.setItemDelegate(EmojiPickerDelegate(self))
         self.header().setStretchLastSection(False)
-    
+
     def setModel(self, model):
         super().setModel(model)
         self.expandAll()

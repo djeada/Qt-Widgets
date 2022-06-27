@@ -26,7 +26,7 @@ class MatrixView(QTableWidget):
     @matrix.setter
     def matrix(self, matrix: np.ndarray):
         self._matrix = matrix
-    
+
         # clear previous content
         self.clearContents()
         self.blockSignals(True)
@@ -69,15 +69,28 @@ class MatrixView(QTableWidget):
         if not self.colored_cells:
             return
         self.blockSignals(True)
-        colors = ['#053061', '#2166ac', '#4393c3', '#92c5de', '#d1e5f0', '#f7f7f7', '#fddbc7', '#f4a582', '#d6604d',
-                  '#b2182b', '#67001f']
+        colors = [
+            "#053061",
+            "#2166ac",
+            "#4393c3",
+            "#92c5de",
+            "#d1e5f0",
+            "#f7f7f7",
+            "#fddbc7",
+            "#f4a582",
+            "#d6604d",
+            "#b2182b",
+            "#67001f",
+        ]
         matrix = self.matrix
         min_value = np.min(matrix)
         max_value = np.max(matrix)
         for row in range(self.rowCount()):
             for col in range(self.columnCount()):
                 value = matrix[row, col]
-                index = int((value - min_value) / (max_value - min_value) * (len(colors) - 1))
+                index = int(
+                    (value - min_value) / (max_value - min_value) * (len(colors) - 1)
+                )
                 color = QColor(colors[index])
                 self.set_item_color(row, col, color)
         self.blockSignals(False)
@@ -90,7 +103,7 @@ class MatrixView(QTableWidget):
     def _value_from_string(self, value: str) -> Union[str, float, int]:
         if re.match("^[+-]?\d+$", value):
             return int(value)
-        elif re.match(r'^[+-]?\d+(\.\d+)?$', str(value)):
+        elif re.match(r"^[+-]?\d+(\.\d+)?$", str(value)):
             return float(value)
         return value
 

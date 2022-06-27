@@ -12,15 +12,15 @@ class CryptoRankingModel(QAbstractTableModel):
 
     def rowCount(self, parent):
         return len(self.modelData)
-    
+
     def columnCount(self, parent):
         return 5
 
     def data(self, index, role):
         if not index.isValid():
             return QVariant()
-        
-        if role ==  Qt.ItemDataRole.DisplayRole:
+
+        if role == Qt.ItemDataRole.DisplayRole:
             if index.column() == 0:
                 return self.modelData[index.row()].name
             elif index.column() == 1:
@@ -72,7 +72,7 @@ class CryptoRankingModel(QAbstractTableModel):
     def clear(self):
         self.modelData.clear()
 
-    
+
 class CryptoRankingTable(QTableView):
     def __init__(self, parent=None):
         super(CryptoRankingTable, self).__init__(parent)
@@ -83,5 +83,3 @@ class CryptoRankingTable(QTableView):
 
     def getModel(self):
         return super().getModel()
-
-    

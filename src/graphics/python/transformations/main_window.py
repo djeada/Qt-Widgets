@@ -13,12 +13,20 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # connect ui->transformationDisplay setTranslate() to xSpinBox and ySpinBox
         self.xSpinBox.valueChanged.connect(
-                lambda x: self.transformationDisplay.update_translate(QPoint(x, self.transformationDisplay.translate.y())))
+            lambda x: self.transformationDisplay.update_translate(
+                QPoint(x, self.transformationDisplay.translate.y())
+            )
+        )
         self.ySpinBox.valueChanged.connect(
-                lambda y: self.transformationDisplay.update_translate(QPoint(self.transformationDisplay.translate.x(), y)))
+            lambda y: self.transformationDisplay.update_translate(
+                QPoint(self.transformationDisplay.translate.x(), y)
+            )
+        )
         self.scaleSpinBox.valueChanged.connect(
-                lambda scale: self.transformationDisplay.update_scale(scale / 100))
+            lambda scale: self.transformationDisplay.update_scale(scale / 100)
+        )
         self.rotateSpinBox.valueChanged.connect(
-                lambda angle: self.transformationDisplay.update_rotate(angle))
-        
+            lambda angle: self.transformationDisplay.update_rotate(angle)
+        )
+
         self.show()

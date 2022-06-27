@@ -1,5 +1,6 @@
 from PyQt6 import QtWidgets, uic
 
+
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()

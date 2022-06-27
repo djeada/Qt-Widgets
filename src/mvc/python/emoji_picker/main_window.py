@@ -18,12 +18,12 @@ class MainWindow(QtWidgets.QMainWindow):
         fileInfoList = dir.entryInfoList(QDir.Filter.Files)
         for fileInfo in fileInfoList:
             iconPaths.append(fileInfo.absoluteFilePath())
-        
+
         emojis = []
 
         for iconPath in iconPaths:
             emojis.append(EmojiData(iconPath, iconPath, list()))
-        
+
         category = EmojiCategory("Category A", emojis)
         model.setColumnCount(7)
         model.appendRow(category)

@@ -16,7 +16,9 @@ class EmojiPickerDelegate(QStyledItemDelegate):
             # check if item is hovered
             if option.state & QStyle.StateFlag.State_MouseOver:
                 painter.save()
-                gradient = QLinearGradient(QPointF(rect.topLeft()), QPointF(rect.bottomLeft()))
+                gradient = QLinearGradient(
+                    QPointF(rect.topLeft()), QPointF(rect.bottomLeft())
+                )
                 gradient.setColorAt(0, QColor(0, 0, 255, 50))
                 gradient.setColorAt(1, QColor(0, 0, 255, 50))
                 painter.fillRect(rect, gradient)
@@ -33,7 +35,6 @@ class EmojiPickerDelegate(QStyledItemDelegate):
             option_copy = option
             option_copy.state = QStyle.StateFlag.State_Enabled
             super().paint(painter, option_copy, index)
-
 
     def sizeHint(self, option, index):
         original_size = QStyledItemDelegate.sizeHint(self, option, index)

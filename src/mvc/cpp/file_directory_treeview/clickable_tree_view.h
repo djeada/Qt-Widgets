@@ -25,5 +25,4 @@ private:
   QString selectedPath;
   void setupContextMenu(const QPoint &pos);
   void keyPressEvent(QKeyEvent *event);
-
 };
