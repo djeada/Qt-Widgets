@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import QCheckBox
 
 class SwitchButton(QCheckBox):
     """
-    Toogle button is a QCheckBox with a custom paint event.
+    Switch button is a QCheckBox with a custom paint event.
     """
 
     def __init__(self, parent=None):
