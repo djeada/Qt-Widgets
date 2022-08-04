@@ -1,13 +1,12 @@
 from enum import Enum, auto
-from itertools import chain
+
 import matplotlib
 import numpy as np
-from PyQt6.QtCore import pyqtSignal
 from matplotlib.path import Path
 from matplotlib.widgets import LassoSelector
-
 from plot_widget import PlotWidget
 from plot_widget_interface import Labels
+from PyQt6.QtCore import pyqtSignal
 
 
 class SelectionMode(Enum):

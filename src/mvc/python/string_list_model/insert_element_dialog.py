@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from PyQt6 import uic, QtCore
+from PyQt6 import QtCore, uic
 from PyQt6.QtWidgets import QDialog
 
 

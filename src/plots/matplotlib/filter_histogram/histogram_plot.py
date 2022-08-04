@@ -1,7 +1,6 @@
 from typing import List
 
 import numpy as np
-
 from plot_widget import PlotWidget
 from plot_widget_interface import Labels
 

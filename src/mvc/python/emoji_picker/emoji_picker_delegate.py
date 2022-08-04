@@ -1,6 +1,6 @@
-from PyQt6.QtCore import Qt, QSize, QPointF
-from PyQt6.QtGui import QPen, QColor, QLinearGradient
-from PyQt6.QtWidgets import QStyledItemDelegate, QStyle
+from PyQt6.QtCore import QPointF, QSize, Qt
+from PyQt6.QtGui import QColor, QLinearGradient
+from PyQt6.QtWidgets import QStyle, QStyledItemDelegate
 
 
 class EmojiPickerDelegate(QStyledItemDelegate):

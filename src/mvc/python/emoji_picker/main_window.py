@@ -1,8 +1,7 @@
-from PyQt6 import QtWidgets, uic
-from PyQt6.QtCore import QDir
-
 from emoji_picker_data import EmojiCategory, EmojiData
 from emoji_picker_tree import EmojiPickerModel
+from PyQt6 import QtWidgets, uic
+from PyQt6.QtCore import QDir
 
 
 class MainWindow(QtWidgets.QMainWindow):

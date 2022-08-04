@@ -1,6 +1,5 @@
-from PyQt6 import QtWidgets, QtGui, QtCore
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QColor, QPen, QPainter, QPolygonF
+from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtGui import QColor, QPainter, QPen, QPolygonF
 
 
 class ArrowBox(QtWidgets.QWidget):

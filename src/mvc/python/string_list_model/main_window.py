@@ -1,8 +1,7 @@
-from PyQt6 import QtWidgets, uic
-from PyQt6.QtCore import QDir, QStringListModel
-from PyQt6.QtWidgets import QAbstractItemView
-
 from insert_element_dialog import InsertElementDialog
+from PyQt6 import QtWidgets, uic
+from PyQt6.QtCore import QStringListModel
+from PyQt6.QtWidgets import QAbstractItemView
 
 
 class MainWindow(QtWidgets.QMainWindow):

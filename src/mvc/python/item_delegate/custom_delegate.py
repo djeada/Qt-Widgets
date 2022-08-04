@@ -1,12 +1,12 @@
-from PyQt6.QtCore import Qt, QSize
-from PyQt6.QtGui import QPixmap, QPen, QPainter, QColor
+from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtGui import QColor, QPainter, QPen, QPixmap
 from PyQt6.QtWidgets import (
-    QStyledItemDelegate,
-    QProgressBar,
     QDialog,
-    QSlider,
-    QVBoxLayout,
     QLineEdit,
+    QProgressBar,
+    QSlider,
+    QStyledItemDelegate,
+    QVBoxLayout,
 )
 
 

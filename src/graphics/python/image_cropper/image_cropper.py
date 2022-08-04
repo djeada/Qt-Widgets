@@ -1,6 +1,6 @@
-from PyQt6 import QtWidgets, uic, QtGui
-from PyQt6.QtCore import Qt, QRectF
-from PyQt6.QtGui import QPixmap, QPen, QColor
+from PyQt6 import QtGui, QtWidgets
+from PyQt6.QtCore import QRectF, Qt
+from PyQt6.QtGui import QColor, QPen, QPixmap
 from PyQt6.QtWidgets import QMessageBox
 
 

@@ -1,8 +1,7 @@
-from PyQt6 import QtWidgets, uic, QtGui, QtCore
-from PyQt6.QtCore import QRectF, QObject
-
 from bordered_scene import BorderedScene
 from movable_image import MovableImage
+from PyQt6 import QtCore, QtWidgets, uic
+from PyQt6.QtCore import QRectF
 
 
 class MainWindow(QtWidgets.QMainWindow):

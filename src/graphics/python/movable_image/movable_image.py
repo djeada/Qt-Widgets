@@ -1,6 +1,6 @@
 from PyQt6 import QtGui
-from PyQt6.QtCore import QRectF, QObject, Qt
-from PyQt6.QtGui import QPen, QColor
+from PyQt6.QtCore import QObject, QRectF
+from PyQt6.QtGui import QColor, QPen
 from PyQt6.QtWidgets import QGraphicsItem
 
 rect_size = 100

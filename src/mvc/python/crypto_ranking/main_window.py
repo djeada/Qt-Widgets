@@ -1,8 +1,6 @@
-from PyQt6 import QtWidgets, uic
-from PyQt6.QtCore import QDir
-
 from crypto_ranking_data import CryptoRankingData
 from crypto_ranking_table import CryptoRankingModel
+from PyQt6 import QtWidgets, uic
 
 
 class MainWindow(QtWidgets.QMainWindow):

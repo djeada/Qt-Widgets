@@ -4,8 +4,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 from matplotlib.ticker import MaxNLocator
-
-from plot_widget_interface import Labels, PlotStyle, Font, Legend, PlotWidgetInterface
+from plot_widget_interface import Font, Labels, Legend, PlotStyle, PlotWidgetInterface
 
 
 class PlotWidget(FigureCanvas, PlotWidgetInterface):
@@ -17,7 +16,7 @@ class PlotWidget(FigureCanvas, PlotWidgetInterface):
         self.axes.grid(True)
         super().__init__(self.fig)
         self.setParent(parent)
-        tool_bar = NavigationToolbar(self, parent)
+        NavigationToolbar(self, parent)
 
     def plot(self, x, y, labels: Labels, title: str = ""):
         self.axes.clear()
@@ -107,7 +106,8 @@ class PlotWidget(FigureCanvas, PlotWidgetInterface):
         matplotlib.rcParams.update({"ytick.labelsize": small_size})
         matplotlib.rcParams.update({"lines.marker": style.marker_style})
         matplotlib.rcParams.update({"lines.markersize": style.marker_size})
-        self.axes.set_facecolor(style.background_color)  # figure background color
+        # figure background color
+        self.axes.set_facecolor(style.background_color)
         self.draw()
 
     @property

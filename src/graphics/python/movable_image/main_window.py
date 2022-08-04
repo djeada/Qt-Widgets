@@ -1,7 +1,6 @@
-from PyQt6 import QtWidgets, uic, QtGui
-from PyQt6.QtWidgets import QGraphicsItem
-
 from movable_image import MovableImage
+from PyQt6 import QtGui, QtWidgets, uic
+from PyQt6.QtWidgets import QGraphicsItem
 
 
 class MainWindow(QtWidgets.QMainWindow):

@@ -1,6 +1,6 @@
 from PyQt6 import QtCore
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QColor, QPen, QPainter, QFontMetrics
+from PyQt6.QtGui import QColor, QFontMetrics, QPainter, QPen
 from PyQt6.QtWidgets import QComboBox
 
 

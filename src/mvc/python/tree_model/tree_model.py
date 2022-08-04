@@ -1,4 +1,4 @@
-from PyQt6.QtCore import QModelIndex, QVariant, Qt, QAbstractItemModel, QObject
+from PyQt6.QtCore import QAbstractItemModel, QModelIndex, QObject, Qt, QVariant
 
 
 class TreeItem(QObject):
@@ -188,7 +188,7 @@ class TreeModel(QAbstractItemModel):
         self.beginRemoveColumns(parent, position, position + columns - 1)
         try:
             self.root_item.removeColumns(position, columns)
-        except Exception as e:
+        except Exception:
             self.endRemoveColumns()
             return False
         self.endRemoveColumns()
@@ -206,7 +206,7 @@ class TreeModel(QAbstractItemModel):
         try:
             parent_item.remove_rows(position, rows)
 
-        except Exception as e:
+        except Exception:
             self.endRemoveRows()
             return False
         self.endRemoveRows()
@@ -219,7 +219,7 @@ class TreeModel(QAbstractItemModel):
         item = self.itemFromIndex(index)
         try:
             item.setData(index.column(), value)
-        except Exception as e:
+        except Exception:
             return False
         self.dataChanged.emit(
             index, index, [Qt.ItemDataRole.DisplayRole, Qt.ItemDataRole.EditRole]
@@ -231,7 +231,7 @@ class TreeModel(QAbstractItemModel):
             return False
         try:
             self.root_item.setData(section, value)
-        except Exception as e:
+        except Exception:
             return False
         self.headerDataChanged.emit(orientation, section, section)
         return True
@@ -240,7 +240,7 @@ class TreeModel(QAbstractItemModel):
         self.beginInsertColumns(parent, position, position + columns - 1)
         try:
             self.root_item.insertColumns(position, columns)
-        except Exception as e:
+        except Exception:
             self.endInsertColumns()
             return False
         self.endInsertColumns()
@@ -253,7 +253,7 @@ class TreeModel(QAbstractItemModel):
         self.beginInsertRows(parent, position, position + rows - 1)
         try:
             parent_item.insertRows(position, rows, self.root_item.column_count())
-        except Exception as e:
+        except Exception:
             self.endInsertRows()
             return False
         self.endInsertRows()

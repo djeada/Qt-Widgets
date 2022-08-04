@@ -1,7 +1,6 @@
-from PyQt6 import QtWidgets, uic
 import numpy as np
-
-from plot_widget import Labels, PlotStyle, Legend, Font
+from plot_widget import Font, Labels, Legend, PlotStyle
+from PyQt6 import QtWidgets, uic
 
 
 class MainWindow(QtWidgets.QMainWindow):

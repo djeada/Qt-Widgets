@@ -1,10 +1,9 @@
 from dataclasses import dataclass
 
 import numpy as np
-from PyQt6.QtCore import Qt, pyqtSignal
-from PyQt6.QtWidgets import QCheckBox, QWidget, QHBoxLayout, QTableWidgetItem
-
 from matrix_view import MatrixView
+from PyQt6.QtCore import Qt, pyqtSignal
+from PyQt6.QtWidgets import QCheckBox, QHBoxLayout, QTableWidgetItem, QWidget
 
 
 @dataclass

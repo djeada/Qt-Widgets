@@ -1,5 +1,4 @@
 from PyQt6 import QtWidgets, uic
-
 from tree_model import TreeModel
 
 

@@ -1,8 +1,7 @@
-from PyQt6.QtCore import Qt, QModelIndex
-from PyQt6.QtGui import QIcon, QStandardItem, QStandardItemModel
-from PyQt6.QtWidgets import QTreeView, QAbstractItemView, QHeaderView
-
 from emoji_picker_delegate import EmojiPickerDelegate
+from PyQt6.QtCore import QModelIndex, Qt
+from PyQt6.QtGui import QIcon, QStandardItem, QStandardItemModel
+from PyQt6.QtWidgets import QAbstractItemView, QHeaderView, QTreeView
 
 
 class EmojiPickerItem(QStandardItem):

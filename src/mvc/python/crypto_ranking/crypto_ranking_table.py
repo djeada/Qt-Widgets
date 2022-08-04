@@ -1,8 +1,7 @@
-from PyQt6.QtCore import QAbstractTableModel, QVariant, Qt
+from crypto_ranking_delegate import CryptoRankingDelegate
+from PyQt6.QtCore import QAbstractTableModel, Qt, QVariant
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QTableView
-
-from crypto_ranking_delegate import CryptoRankingDelegate
 
 
 class CryptoRankingModel(QAbstractTableModel):

@@ -1,7 +1,6 @@
-from PyQt6 import QtCore
-
 from json_utils import dict_to_json
 from player import Player
+from PyQt6 import QtCore
 
 
 def main():

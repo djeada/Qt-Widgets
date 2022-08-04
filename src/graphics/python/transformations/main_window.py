@@ -1,4 +1,4 @@
-from PyQt6 import QtWidgets, uic, QtGui
+from PyQt6 import QtWidgets, uic
 from PyQt6.QtCore import QPoint
 
 
@@ -11,7 +11,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.scaleSpinBox.setValue(self.transformationDisplay.scale * 100)
         self.rotateSpinBox.setValue(self.transformationDisplay.rotate)
 
-        # connect ui->transformationDisplay setTranslate() to xSpinBox and ySpinBox
+        # connect ui->transformationDisplay setTranslate() to xSpinBox and
+        # ySpinBox
         self.xSpinBox.valueChanged.connect(
             lambda x: self.transformationDisplay.update_translate(
                 QPoint(x, self.transformationDisplay.translate.y())

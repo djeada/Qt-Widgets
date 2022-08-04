@@ -1,10 +1,9 @@
 import numpy as np
+from plot_widget_interface import Labels
 from PyQt6 import uic
-from PyQt6.QtCore import QRect, QCoreApplication
+from PyQt6.QtCore import QCoreApplication, QRect
 from PyQt6.QtGui import QResizeEvent
 from PyQt6.QtWidgets import QWidget
-
-from plot_widget_interface import Labels
 
 
 class FilterHistogram(QWidget):

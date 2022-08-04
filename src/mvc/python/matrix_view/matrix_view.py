@@ -101,7 +101,7 @@ class MatrixView(QTableWidget):
         return f"{value}"
 
     def _value_from_string(self, value: str) -> Union[str, float, int]:
-        if re.match("^[+-]?\d+$", value):
+        if re.match("^[+-]?\\d+$", value):
             return int(value)
         elif re.match(r"^[+-]?\d+(\.\d+)?$", str(value)):
             return float(value)

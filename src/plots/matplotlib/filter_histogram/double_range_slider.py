@@ -2,9 +2,9 @@ from dataclasses import dataclass
 from enum import Enum, auto
 
 from PyQt6 import QtCore
-from PyQt6.QtCore import Qt, QRect
+from PyQt6.QtCore import QRect, Qt
 from PyQt6.QtGui import QPainter
-from PyQt6.QtWidgets import QSlider, QStyle, QStyleOptionSlider, QApplication
+from PyQt6.QtWidgets import QApplication, QSlider, QStyle, QStyleOptionSlider
 
 HANDLE_WIDTH = 5
 

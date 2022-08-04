@@ -1,7 +1,7 @@
 from random import randint, uniform
 
-from PyQt6.QtCore import QPointF, QRectF, QObject, QPoint
-from PyQt6.QtGui import QBrush, QPen, QColor, QPainter
+from PyQt6.QtCore import QObject, QPoint, QPointF, QRectF
+from PyQt6.QtGui import QBrush, QColor, QPainter, QPen
 from PyQt6.QtWidgets import QGraphicsItem
 
 rectSize = 30

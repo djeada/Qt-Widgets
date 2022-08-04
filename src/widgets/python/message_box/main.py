@@ -1,6 +1,7 @@
+import sys
+
 from PyQt6 import QtWidgets, uic
 from PyQt6.QtWidgets import QMessageBox
-import sys
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -43,7 +44,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    window = MainWindow()
+    MainWindow()
     app.exec()
 
 

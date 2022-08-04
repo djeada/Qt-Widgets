@@ -1,8 +1,7 @@
-from PyQt6.QtCore import QLineF, QPointF
-from PyQt6.QtGui import QPen, QColor
-from PyQt6.QtWidgets import QGraphicsScene
-
 from movable_image import MovableImage
+from PyQt6.QtCore import QLineF, QPointF
+from PyQt6.QtGui import QColor, QPen
+from PyQt6.QtWidgets import QGraphicsScene
 
 
 class BorderedScene(QGraphicsScene):

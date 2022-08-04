@@ -1,5 +1,6 @@
-from PyQt6 import QtWidgets, uic
 import sys
+
+from PyQt6 import QtWidgets, uic
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -29,7 +30,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    window = MainWindow()
+    MainWindow()
     app.exec()
 
 
