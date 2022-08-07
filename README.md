@@ -207,9 +207,9 @@ Description | Screenshot
 
 Qt applications may be used to build visually appealing, interactive dashboards. Aside from the native QtCharts library, there is also support for the widely used Matplotlib. Any modern plotting library may, however, be used (with little effort).
 
-![plot](https://user-images.githubusercontent.com/37275728/182579732-a0a52499-6400-4fa0-9f22-a8e65c9f55f3.gif)
-![histogram](https://user-images.githubusercontent.com/37275728/182579743-b68b169f-d24b-470d-8a12-2f9fc3e2783d.gif)
+**[Spawn Thread](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/spawn_thread)** - Spawn a thread and run a function in it. Use internal Qt framework for managing threads.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/status_bar">Python</a> implementation as well. | <img width="2000"/>![plot](https://user-images.githubusercontent.com/37275728/182579732-a0a52499-6400-4fa0-9f22-a8e65c9f55f3.gif)
+**[Gui Thread](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/gui_thread.cpp)** - Ensure the GUI's responsiveness while the threads perform their tasks. When worker threads finish their work, the view is updated to show the results of their work. When the worker thread completes its task, <code>QFutureWatcher</code> emits the <code>finished()</code> signal. Regrettably, there is currently no support for clearing the watcher. One solution is to spawn the watchers along with the threads on the fly.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/status_bar">Python</a> implementation as well. |![histogram](https://user-images.githubusercontent.com/37275728/182579743-b68b169f-d24b-470d-8a12-2f9fc3e2783d.gif)
+**[Spawn Thread](https://github.com/djeada/Qt-Widgets/tree/master/src/concurrent_computing/spawn_thread)** - Spawn a thread and run a function in it. Use internal Qt framework for managing threads.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/widgets/python/status_bar">Python</a> implementation as well. | <img width="2000"/>
 ![lasso_scatter](https://user-images.githubusercontent.com/37275728/182579749-83b1d6c5-e943-4068-bb1d-51b1b8c5ff40.gif)
-
     
 ### Other
