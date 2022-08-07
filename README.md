@@ -25,6 +25,11 @@
 # Qt-Widgets
 Programs written in C++ and Python that make use of Qt6 widgets.
 
+## Purpose
+
+The goal of this repository is to gather a large number of reusable Qt widgets that may be used in any application.
+By doing so, we avoid having to reinvent the wheel every time we start a new project and can instead focus on adjustments and revisions rather than starting from scratch.
+
 ## Requirements
 
 For C++ projects you will need:
@@ -210,7 +215,7 @@ Qt applications may be used to build visually appealing, interactive dashboards.
 Description | Screenshot 
 ---|---
 **[Simple plot](https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/plot_widget)** - Spawn a thread and run a function in it. Use internal Qt framework for managing threads.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/plot_widget">Python</a> implementation as well. | <img width="2000"/>![plot](https://user-images.githubusercontent.com/37275728/182579732-a0a52499-6400-4fa0-9f22-a8e65c9f55f3.gif)
-**[Lasso selection](https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/lasso_scatter_plot)** - Ensure the GUI's responsiveness while the threads perform their tasks. When worker threads finish their work, the view is updated to show the results of their work. When the worker thread completes its task, <code>QFutureWatcher</code> emits the <code>finished()</code> signal. Regrettably, there is currently no support for clearing the watcher. One solution is to spawn the watchers along with the threads on the fly.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/lasso_scatter_plot">Python</a> implementation as well. | ![histogram](https://user-images.githubusercontent.com/37275728/182579743-b68b169f-d24b-470d-8a12-2f9fc3e2783d.gif)
-**[Histogram filtering](https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/filter_histogram)** - Spawn a thread and run a function in it. Use internal Qt framework for managing threads.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/filter_histogram">Python</a> implementation as well. | ![lasso_scatter](https://user-images.githubusercontent.com/37275728/182579749-83b1d6c5-e943-4068-bb1d-51b1b8c5ff40.gif)
+**[Lasso selection](https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/lasso_scatter_plot)** - Ensure the GUI's responsiveness while the threads perform their tasks. When worker threads finish their work, the view is updated to show the results of their work. When the worker thread completes its task, <code>QFutureWatcher</code> emits the <code>finished()</code> signal. Regrettably, there is currently no support for clearing the watcher. One solution is to spawn the watchers along with the threads on the fly.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/lasso_scatter_plot">Python</a> implementation as well. | ![lasso_scatter](https://user-images.githubusercontent.com/37275728/182579749-83b1d6c5-e943-4068-bb1d-51b1b8c5ff40.gif)
+**[Histogram filtering](https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/filter_histogram)** - Spawn a thread and run a function in it. Use internal Qt framework for managing threads.<br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/filter_histogram">Python</a> implementation as well. | ![histogram](https://user-images.githubusercontent.com/37275728/182579743-b68b169f-d24b-470d-8a12-2f9fc3e2783d.gif)
     
 ### Other
