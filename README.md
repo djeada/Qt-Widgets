@@ -1,3 +1,6 @@
+# Qt-Widgets
+Collection of examples and reusable elements created with Qt6 widgets.
+
 ## Table of Contents
 <!--ts-->
 
@@ -21,9 +24,6 @@
     - [Other](#Other)
 
 <!--te-->
-
-# Qt-Widgets
-Programs written in C++ and Python that make use of Qt6 widgets.
 
 ## Purpose
 
