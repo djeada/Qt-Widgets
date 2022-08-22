@@ -1,5 +1,5 @@
 # Qt-Widgets
-Collection of examples and reusable elements created with Qt6 widgets.
+A collection of examples and reusable elements created with Qt6 widgets.
 
 ![Capture](https://user-images.githubusercontent.com/37275728/185923826-67a8472a-4216-4062-bb65-5dd9efbb2a3b.PNG)
 
