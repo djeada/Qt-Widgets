@@ -1,24 +1,24 @@
 #include "tree_model.h"
 #include <QTreeView>
 
-class ReordableTreeModel : public TreeModel {
+class ReorderableTreeModel : public TreeModel {
 
 public:
-  ReordableTreeModel(const QStringList &headers, QObject *parent = nullptr);
+  ReorderableTreeModel(const QStringList &headers, QObject *parent = nullptr);
   void appendToDestination(QModelIndex sourceIndex,
                            QModelIndex destinationIndex);
   Qt::ItemFlags flags(const QModelIndex &index) const override;
   Qt::DropActions supportedDropActions() const override;
 };
 
-class ReordableTreeView : public QTreeView {
+class ReorderableTreeView : public QTreeView {
   Q_OBJECT
 
 public:
-  ReordableTreeView(QWidget *parent = nullptr);
-  ~ReordableTreeView();
-  void setModel(ReordableTreeModel *model);
-  ReordableTreeModel *model() const;
+  ReorderableTreeView(QWidget *parent = nullptr);
+  ~ReorderableTreeView();
+  void setModel(ReorderableTreeModel *model);
+  ReorderableTreeModel *model() const;
 
 private:
   void startDrag(Qt::DropActions supportedActions);

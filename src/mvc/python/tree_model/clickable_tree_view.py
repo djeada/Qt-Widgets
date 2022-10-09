@@ -46,8 +46,7 @@ class ClickableTreeView(QTreeView):
 
     def removeItem(self, index):
         model = self.model()
-        model.itemFromIndex(index).parent().remove_child(model.itemFromIndex(index))
-        self.expandAll()
+        model.removeRow(index.row(), index.parent())
 
     def editItem(self, index):
         self.edit(index)

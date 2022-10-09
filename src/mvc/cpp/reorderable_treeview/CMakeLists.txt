@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(reordable_tree_view VERSION 0.1 LANGUAGES CXX)
+project(reorderable_tree_view VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -19,8 +19,8 @@ set(PROJECT_SOURCES
         main_window.cpp
         main_window.h
         main_window.ui
-        reordable_tree_view.cpp
-        reordable_tree_view.h
+        reorderable_tree_view.cpp
+        reorderable_tree_view.h
         tree_model.cpp
         tree_model.h
 )

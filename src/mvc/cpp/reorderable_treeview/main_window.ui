@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="ReordableTreeView" name="treeView"/>
+     <widget class="ReorderableTreeView" name="treeView"/>
     </item>
    </layout>
   </widget>
@@ -34,9 +34,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ReordableTreeView</class>
+   <class>ReorderableTreeView</class>
    <extends>QTreeView</extends>
-   <header>reordable_tree_view.h</header>
+   <header>reorderable_tree_view.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

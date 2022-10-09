@@ -166,9 +166,7 @@ class TreeModel(QAbstractItemModel):
 
     def itemFromIndex(self, index):
         if index.isValid():
-            item = index.internalPointer()
-            if item is not None:
-                return item
+            return index.internalPointer()
 
         return self.root
 

@@ -1,5 +1,5 @@
 from PyQt6 import QtWidgets, uic
-from tree_model import TreeModel
+from tree_model import TreeModel, TreeItem
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -7,9 +7,9 @@ class MainWindow(QtWidgets.QMainWindow):
         super().__init__()
         uic.loadUi("main_window.ui", self)
 
-        model = TreeModel(["Col A", "Col B", "Col C"])
-        model.appendRow(["Elements"])
-        model.appendRow(["Items"])
+        model = TreeModel()
+        model.appendRow(TreeItem(["Elements"]))
+        model.appendRow(TreeItem(["Items"]))
         self.treeView.setModel(model)
 
         self.show()

@@ -1,12 +1,12 @@
-#include "reordable_tree_view.h"
+#include "reorderable_tree_view.h"
 #include <QDebug>
 #include <QMouseEvent>
 
-ReordableTreeModel::ReordableTreeModel(const QStringList &headers,
+ReorderableTreeModel::ReorderableTreeModel(const QStringList &headers,
                                        QObject *parent)
     : TreeModel(headers, parent) {}
 
-void ReordableTreeModel::appendToDestination(QModelIndex sourceIndex,
+void ReorderableTreeModel::appendToDestination(QModelIndex sourceIndex,
                                              QModelIndex destinationIndex) {
   auto sourceItem = static_cast<TreeItem *>(sourceIndex.internalPointer());
   auto destinationItem =
@@ -16,11 +16,11 @@ void ReordableTreeModel::appendToDestination(QModelIndex sourceIndex,
   emit dataChanged(destinationIndex, destinationIndex);
 }
 
-Qt::DropActions ReordableTreeModel::supportedDropActions() const {
+Qt::DropActions ReorderableTreeModel::supportedDropActions() const {
   return Qt::CopyAction | Qt::MoveAction;
 }
 
-Qt::ItemFlags ReordableTreeModel::flags(const QModelIndex &index) const {
+Qt::ItemFlags ReorderableTreeModel::flags(const QModelIndex &index) const {
 
   Qt::ItemFlags defaultFlags = QAbstractItemModel::flags(index);
 
@@ -30,7 +30,7 @@ Qt::ItemFlags ReordableTreeModel::flags(const QModelIndex &index) const {
     return Qt::ItemIsDropEnabled | defaultFlags;
 }
 
-ReordableTreeView::ReordableTreeView(QWidget *parent) : QTreeView(parent) {
+ReorderableTreeView::ReorderableTreeView(QWidget *parent) : QTreeView(parent) {
 
   setDragEnabled(true);
   setAcceptDrops(true);
@@ -38,36 +38,36 @@ ReordableTreeView::ReordableTreeView(QWidget *parent) : QTreeView(parent) {
   setDragDropMode(QAbstractItemView::InternalMove);
 }
 
-ReordableTreeView::~ReordableTreeView() {}
+ReorderableTreeView::~ReorderableTreeView() {}
 
-ReordableTreeModel *ReordableTreeView::model() const {
-  return static_cast<ReordableTreeModel *>(QTreeView::model());
+ReorderableTreeModel *ReorderableTreeView::model() const {
+  return static_cast<ReorderableTreeModel *>(QTreeView::model());
 }
 
-void ReordableTreeView::setModel(ReordableTreeModel *model) {
+void ReorderableTreeView::setModel(ReorderableTreeModel *model) {
   QTreeView::setModel(model);
 }
 
-void ReordableTreeView::startDrag(Qt::DropActions supportedActions) {
+void ReorderableTreeView::startDrag(Qt::DropActions supportedActions) {
   dragIndex = currentIndex();
   QTreeView::startDrag(supportedActions);
 }
 
-void ReordableTreeView::dragEnterEvent(QDragEnterEvent *event) {
+void ReorderableTreeView::dragEnterEvent(QDragEnterEvent *event) {
   QTreeView::dragEnterEvent(event);
 }
 
-void ReordableTreeView::dropEvent(QDropEvent *event) {
+void ReorderableTreeView::dropEvent(QDropEvent *event) {
   dropIndex = indexAt(event->position().toPoint());
   model()->appendToDestination(dragIndex, dropIndex);
   reset();
   expandAll();
 }
 
-void ReordableTreeView::dragMoveEvent(QDragMoveEvent *event) {
+void ReorderableTreeView::dragMoveEvent(QDragMoveEvent *event) {
   QTreeView::dragMoveEvent(event);
 }
 
-void ReordableTreeView::dragLeaveEvent(QDragLeaveEvent *event) {
+void ReorderableTreeView::dragLeaveEvent(QDragLeaveEvent *event) {
   QTreeView::dragLeaveEvent(event);
 }

@@ -6,7 +6,7 @@ from PyQt6 import QtWidgets
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow()
+    window = MainWindow()
     app.exec()
 
 
