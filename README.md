@@ -78,6 +78,14 @@ The recommended approach to launch PyQT projects is to use <code>virtualenv</cod
     $ source env/bin/activate
     $ pip install -r requirements.txt
     $ python main.py
+    
+Use the following snippet to convert *.ui* files to *.py* scripts:
+
+    from PyQt6 import uic
+  
+    with open("source.ui") as ui_file:
+        with open("output_ui.py","w") as py_ui_file:
+            uic.compileUi(ui_file,py_ui_file)
 
 ## Content
 
