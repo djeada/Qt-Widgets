@@ -229,3 +229,11 @@ Description | Screenshot
 **[Histogram filtering](https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/filter_histogram)** - To select or deselect bins on the histogram, move one of the slider handles. <br><br> Check out the <a href="https://github.com/djeada/Qt-Widgets/tree/master/src/plots/matplotlib/filter_histogram">Python</a> implementation as well. | ![histogram](https://user-images.githubusercontent.com/37275728/182579743-b68b169f-d24b-470d-8a12-2f9fc3e2783d.gif)
     
 ### Other
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
